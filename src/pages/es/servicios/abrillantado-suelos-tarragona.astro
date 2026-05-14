@@ -2,7 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
-import ContactForm from '../../../components/ContactForm';
+import ServiceLayout from '../../../components/ServiceLayout.astro';
 import { flattenI18n } from '../../../utils/i18n';
 
 const rawT = await import('../../../i18n/es.json');
@@ -17,72 +17,40 @@ const flat = flattenI18n(t as unknown as Record<string, unknown>);
   canonical="https://naturlimp.com/es/servicios/abrillantado-suelos-tarragona"
 >
   <Header lang="es" t={flat} />
-
   <main id="main-content">
-    <article class="py-20 bg-[var(--color-background)]">
-      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-
-        <header class="mb-12">
-          <nav aria-label="Breadcrumb" class="mb-4">
-            <ol class="flex items-center gap-2 text-sm text-[var(--color-muted-fg)]">
-              <li><a href="/" class="hover:text-[var(--color-primary)]">Inicio</a></li>
-              <li aria-hidden="true">›</li>
-              <li><a href="/#servicios" class="hover:text-[var(--color-primary)]">Servicios</a></li>
-              <li aria-hidden="true">›</li>
-              <li aria-current="page" class="text-[var(--color-foreground)]">Abrillantado de suelos</li>
-            </ol>
-          </nav>
-          <h1 class="font-heading text-4xl font-bold text-[var(--color-foreground)] sm:text-5xl">
-            Abrillantado y pulido de suelos en Tarragona
-          </h1>
-          <p class="mt-6 text-lg text-[var(--color-muted-fg)] leading-relaxed">
-            Recuperamos el brillo original de suelos de mármol, terrazo y porcelánico en viviendas, comunidades y locales de Tarragona, Reus y comarca. Maquinaria profesional, resultados visibles desde la primera sesión y sin interrumpir la actividad del espacio más de lo necesario.
-          </p>
-        </header>
-
-        <section aria-labelledby="service-details">
-          <h2 id="service-details" class="font-heading text-2xl font-semibold text-[var(--color-foreground)] mb-6">¿Qué incluye el servicio?</h2>
-          <ul class="space-y-3 text-[var(--color-muted-fg)]">
-            {[
-              'Limpieza previa profunda de suelos y juntas',
-              'Decapado y eliminación de capas antiguas de cera o suciedad incrustada',
-              'Pulido con maquinaria profesional (terrazo, mármol y porcelánico)',
-              'Cristalizado de suelos de mármol y terrazo',
-              'Abrillantado final con productos de alta durabilidad',
-              'Sellado de poros y tratamiento antihumedad',
-              'Aplicación de cera de mantenimiento si se solicita',
-              'Servicio de mantenimiento periódico para prolongar el resultado',
-            ].map(item => (
-              <li class="flex items-start gap-3">
-                <svg class="mt-0.5 flex-shrink-0 text-[var(--color-accent)]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
-                </svg>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section class="mt-12" aria-labelledby="zones-heading">
-          <h2 id="zones-heading" class="font-heading text-2xl font-semibold text-[var(--color-foreground)] mb-4">
-            Zonas de servicio en Tarragona y comarca
-          </h2>
-          <p class="text-[var(--color-muted-fg)]">
-            Realizamos abrillantado y pulido de suelos en <strong>Tarragona</strong> (Part Alta, Serrallo, Eixample, Bonavista), <strong>Reus</strong>, <strong>Salou</strong>, <strong>Cambrils</strong>, <strong>Vila-seca</strong>, <strong>Torredembarra</strong> y toda la comarca. Servicio para viviendas particulares, portales de comunidades, hoteles, restaurantes y locales comerciales.
-          </p>
-        </section>
-
-        <section class="mt-12 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8" aria-labelledby="cta-form">
-          <h2 id="cta-form" class="font-heading text-2xl font-semibold text-[var(--color-foreground)] mb-2">
-            Solicita presupuesto sin compromiso
-          </h2>
-          <p class="mb-6 text-[var(--color-muted-fg)]">Te respondemos en menos de 24 horas.</p>
-          <ContactForm client:visible t={t.contact} lang="es" />
-        </section>
-
-      </div>
-    </article>
+    <ServiceLayout
+      lang="es"
+      t={t}
+      serviceNum="04"
+      serviceTag="Terrazo · Mármol · Porcelánico"
+      breadcrumb="Abrillantado de suelos"
+      headline="Abrillantado y pulido de suelos en Tarragona"
+      subheadline="Recuperamos el brillo original de mármol, terrazo y porcelánico en viviendas, comunidades y locales. Maquinaria profesional, resultados desde la primera sesión."
+      stats={[
+        { value: '15', label: 'años de experiencia' },
+        { value: '1ª sesión', label: 'resultado visible' },
+        { value: '30 km', label: 'radio de servicio' },
+        { value: '24 h', label: 'tiempo de respuesta' },
+      ]}
+      checklist={[
+        'Limpieza previa profunda de suelos y juntas',
+        'Decapado y eliminación de capas antiguas de cera o suciedad incrustada',
+        'Pulido con maquinaria profesional (terrazo, mármol y porcelánico)',
+        'Cristalizado de suelos de mármol y terrazo',
+        'Abrillantado final con productos de alta durabilidad',
+        'Sellado de poros y tratamiento antihumedad',
+        'Aplicación de cera de mantenimiento si se solicita',
+        'Servicio de mantenimiento periódico para prolongar el resultado',
+      ]}
+      gallery={[
+        { src: 'https://picsum.photos/seed/nl-suelo-1/600/820', alt: 'Suelo de terrazo abrillantado en Tarragona', caption: 'Terrazo recuperado como nuevo' },
+        { src: 'https://picsum.photos/seed/nl-suelo-2/500/400', alt: 'Mármol pulido y brillante en portal de comunidad', caption: 'Mármol pulido en portal' },
+        { src: 'https://picsum.photos/seed/nl-suelo-3/500/400', alt: 'Proceso de pulido profesional de suelos', caption: 'Proceso de pulido profesional' },
+        { src: 'https://picsum.photos/seed/nl-suelo-4/900/520', alt: 'Resultado final de abrillantado de suelo en local', caption: 'Resultado final en local comercial' },
+      ]}
+      zonesText="Realizamos abrillantado y pulido de suelos en Tarragona (Part Alta, Serrallo, Eixample, Bonavista), Reus, Salou, Cambrils, Vila-seca, Torredembarra y toda la comarca. Servicio para viviendas, portales de comunidades, hoteles, restaurantes y locales comerciales."
+      zones={['Tarragona', 'Reus', 'Salou', 'Cambrils', 'Vila-seca', 'Torredembarra', 'Constantí', 'Altafulla', 'Valls']}
+    />
   </main>
-
   <Footer lang="es" t={flat} />
 </BaseLayout>
