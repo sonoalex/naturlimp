@@ -69,7 +69,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 4px;
 }
 
-/* ── Mobile bottom nav clearance ─────────────────────────────────────────── */
+/* ── Mobile nav clearance ─────────────────────────────────────────────────── */
 @media (max-width: 767px) {
   body {
     padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
