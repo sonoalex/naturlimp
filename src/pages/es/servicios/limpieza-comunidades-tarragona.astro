@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ContactForm from '../../../components/ContactForm';
+import { flattenI18n } from '../../../utils/i18n';
+
+const rawT = await import('../../../i18n/es.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Limpieza de comunidades de vecinos en Tarragona | NaturLimp"
+  description="Servicio profesional de limpieza de comunidades en Tarragona, Reus, Salou y Cambrils. Portales, escaleras, garajes y zonas comunes. Presupuesto sin compromiso. ☎ 977 000 000"
+  lang="es"
+  canonical="https://naturlimp.com/es/servicios/limpieza-comunidades-tarragona"
+>
+  <Header lang="es" t={flat} />
+
+  <main id="main-content">
+    <article class="py-20 bg-[var(--color-background)]">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+
+        <header class="mb-12">
+          <nav aria-label="Breadcrumb" class="mb-4">
+            <ol class="flex items-center gap-2 text-sm text-[var(--color-muted-fg)]">
+              <li><a href="/" class="hover:text-[var(--color-primary)]">Inicio</a></li>
+              <li aria-hidden="true">›</li>
+              <li><a href="#servicios" class="hover:text-[var(--color-primary)]">Servicios</a></li>
+              <li aria-hidden="true">›</li>
+              <li aria-current="page" class="text-[var(--color-foreground)]">Limpieza de comunidades</li>
+            </ol>
+          </nav>
+          <h1 class="font-heading text-4xl font-bold text-[var(--color-foreground)] sm:text-5xl">
+            Limpieza de comunidades de vecinos en Tarragona
+          </h1>
+          <p class="mt-6 text-lg text-[var(--color-muted-fg)] leading-relaxed">
+            Servicio profesional de limpieza para comunidades de propietarios en Tarragona, Reus, Salou, Cambrils y toda la comarca. Portales, escaleras, garajes, ascensores y zonas comunes con equipo propio y seguro de responsabilidad civil.
+          </p>
+        </header>
+
+        <section aria-labelledby="service-details">
+          <h2 id="service-details" class="font-heading text-2xl font-semibold text-[var(--color-foreground)] mb-6">¿Qué incluye el servicio?</h2>
+          <ul class="space-y-3 text-[var(--color-muted-fg)]">
+            {[
+              'Limpieza y fregado de portales, hall y recibidor',
+              'Barrido y fregado de escaleras y rellanos',
+              'Limpieza de ascensores: suelo, paredes y espejos',
+              'Limpieza de garajes y trasteros comunes',
+              'Limpieza de cristales y ventanas de zonas comunes',
+              'Vaciado de papeleras y gestión de residuos',
+              'Zonas exteriores: patios, jardines y accesos',
+              'Informe mensual de trabajos realizados',
+            ].map(item => (
+              <li class="flex items-start gap-3">
+                <svg class="mt-0.5 flex-shrink-0 text-[var(--color-accent)]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="mt-12" aria-labelledby="zones-heading">
+          <h2 id="zones-heading" class="font-heading text-2xl font-semibold text-[var(--color-foreground)] mb-4">
+            Zonas de servicio en Tarragona y comarca
+          </h2>
+          <p class="text-[var(--color-muted-fg)]">
+            Prestamos servicio de limpieza de comunidades en <strong>Tarragona</strong> (Serrallo, Part Alta, Eixample, Campclar, Bonavista), <strong>Reus</strong>, <strong>Salou</strong>, <strong>Cambrils</strong>, <strong>Vila-seca</strong>, <strong>Torredembarra</strong>, <strong>Constantí</strong> y todos los municipios en un radio de 30 km.
+          </p>
+        </section>
+
+        <section class="mt-12 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8" aria-labelledby="cta-form">
+          <h2 id="cta-form" class="font-heading text-2xl font-semibold text-[var(--color-foreground)] mb-2">
+            Solicita presupuesto sin compromiso
+          </h2>
+          <p class="mb-6 text-[var(--color-muted-fg)]">Te respondemos en menos de 24 horas.</p>
+          <ContactForm client:visible t={t.contact} lang="es" />
+        </section>
+
+      </div>
+    </article>
+  </main>
+
+  <Footer lang="es" t={flat} />
+</BaseLayout>

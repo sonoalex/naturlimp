@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ContactForm from '../../../components/ContactForm';
+import { flattenI18n } from '../../../utils/i18n';
+
+const rawT = await import('../../../i18n/ca.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Neteja de comunitats de veïns a Tarragona | NaturLimp"
+  description="Servei professional de neteja de comunitats a Tarragona, Reus, Salou i Cambrils. Portals, escales, garatges i zones comunes. Pressupost sense compromís. ☎ 977 000 000"
+  lang="ca"
+  canonical="https://naturlimp.com/ca/serveis/neteja-comunitats-tarragona"
+>
+  <Header lang="ca" t={flat} />
+
+  <main id="main-content">
+    <article class="py-20 bg-[var(--color-background)]">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+
+        <header class="mb-12">
+          <nav aria-label="Breadcrumb" class="mb-4">
+            <ol class="flex items-center gap-2 text-sm text-[var(--color-muted-fg)]">
+              <li><a href="/ca" class="hover:text-[var(--color-primary)]">Inici</a></li>
+              <li aria-hidden="true">›</li>
+              <li><a href="/ca#serveis" class="hover:text-[var(--color-primary)]">Serveis</a></li>
+              <li aria-hidden="true">›</li>
+              <li aria-current="page" class="text-[var(--color-foreground)]">Neteja de comunitats</li>
+            </ol>
+          </nav>
+          <h1 class="font-heading text-4xl font-bold text-[var(--color-foreground)] sm:text-5xl">
+            Neteja de comunitats de veïns a Tarragona
+          </h1>
+          <p class="mt-6 text-lg text-[var(--color-muted-fg)] leading-relaxed">
+            Servei professional de neteja per a comunitats de propietaris a Tarragona, Reus, Salou, Cambrils i tota la comarca. Portals, escales, garatges, ascensors i zones comunes amb equip propi i assegurança de responsabilitat civil.
+          </p>
+        </header>
+
+        <section aria-labelledby="service-details">
+          <h2 id="service-details" class="font-heading text-2xl font-semibold text-[var(--color-foreground)] mb-6">Què inclou el servei?</h2>
+          <ul class="space-y-3 text-[var(--color-muted-fg)]">
+            {[
+              'Neteja i fregat de portals, hall i rebedor',
+              'Escombrat i fregat d\'escales i replans',
+              'Neteja d\'ascensors: terra, parets i miralls',
+              'Neteja de garatges i trasters comuns',
+              'Neteja de vidres i finestres de zones comunes',
+              'Buidat de papereres i gestió de residus',
+              'Zones exteriors: patis, jardins i accessos',
+              'Informe mensual dels treballs realitzats',
+            ].map(item => (
+              <li class="flex items-start gap-3">
+                <svg class="mt-0.5 flex-shrink-0 text-[var(--color-accent)]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="mt-12" aria-labelledby="zones-heading">
+          <h2 id="zones-heading" class="font-heading text-2xl font-semibold text-[var(--color-foreground)] mb-4">
+            Zones de servei a Tarragona i comarca
+          </h2>
+          <p class="text-[var(--color-muted-fg)]">
+            Prestem servei de neteja de comunitats a <strong>Tarragona</strong> (Serrallo, Part Alta, Eixample, Campclar, Bonavista), <strong>Reus</strong>, <strong>Salou</strong>, <strong>Cambrils</strong>, <strong>Vila-seca</strong>, <strong>Torredembarra</strong>, <strong>Constantí</strong> i tots els municipis en un radi de 30 km.
+          </p>
+        </section>
+
+        <section class="mt-12 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8" aria-labelledby="cta-form">
+          <h2 id="cta-form" class="font-heading text-2xl font-semibold text-[var(--color-foreground)] mb-2">
+            Sol·licita pressupost sense compromís
+          </h2>
+          <p class="mb-6 text-[var(--color-muted-fg)]">Et responem en menys de 24 hores.</p>
+          <ContactForm client:visible t={t.contact} lang="ca" />
+        </section>
+
+      </div>
+    </article>
+  </main>
+
+  <Footer lang="ca" t={flat} />
+</BaseLayout>

@@ -1,0 +1,73 @@
+---
+import '../styles/global.css';
+import BackToTop from '../components/BackToTop.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: 'es' | 'ca';
+  canonical?: string;
+  ogImage?: string;
+}
+
+const { title, description, lang, canonical, ogImage } = Astro.props;
+const schema = await import('../../public/schema.json');
+const altLang = lang === 'es' ? 'ca' : 'es';
+const baseUrl = 'https://naturlimp.com';
+const currentPath = Astro.url.pathname;
+const altPath = lang === 'es'
+  ? currentPath.replace(/^\/es/, '/ca')
+  : currentPath.replace(/^\/ca/, '/es');
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#15803d" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical ?? `${baseUrl}${currentPath}`} />
+
+    <!-- hreflang i18n -->
+    <link rel="alternate" hreflang={lang} href={`${baseUrl}${currentPath}`} />
+    <link rel="alternate" hreflang={altLang} href={`${baseUrl}${altPath}`} />
+    <link rel="alternate" hreflang="x-default" href={`${baseUrl}${currentPath}`} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical ?? `${baseUrl}${currentPath}`} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'ca_ES'} />
+    {ogImage && <meta property="og:image" content={`${baseUrl}${ogImage}`} />}
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap"
+    />
+
+    <!-- JSON-LD structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema.default ?? schema)} />
+  </head>
+
+  <body>
+    <!-- Skip link for keyboard/screen reader users -->
+    <a href="#main-content" class="skip-link">
+      {lang === 'es' ? 'Saltar al contenido principal' : 'Saltar al contingut principal'}
+    </a>
+
+    <slot />
+    <BackToTop lang={lang} />
+  </body>
+</html>

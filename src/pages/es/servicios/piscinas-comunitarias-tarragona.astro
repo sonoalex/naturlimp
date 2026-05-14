@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ContactForm from '../../../components/ContactForm';
+import { flattenI18n } from '../../../utils/i18n';
+
+const rawT = await import('../../../i18n/es.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Limpieza y mantenimiento de piscinas comunitarias en Tarragona | NaturLimp"
+  description="Servicio profesional de limpieza y mantenimiento de piscinas comunitarias en Tarragona, Salou, Cambrils y Vila-seca. Tratamiento del agua, limpieza de vasos y filtros. Presupuesto sin compromiso."
+  lang="es"
+  canonical="https://naturlimp.com/es/servicios/piscinas-comunitarias-tarragona"
+>
+  <Header lang="es" t={flat} />
+
+  <main id="main-content">
+    <article class="py-20 bg-[var(--color-background)]">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+
+        <header class="mb-12">
+          <nav aria-label="Breadcrumb" class="mb-4">
+            <ol class="flex items-center gap-2 text-sm text-[var(--color-muted-fg)]">
+              <li><a href="/" class="hover:text-[var(--color-primary)]">Inicio</a></li>
+              <li aria-hidden="true">›</li>
+              <li><a href="/#servicios" class="hover:text-[var(--color-primary)]">Servicios</a></li>
+              <li aria-hidden="true">›</li>
+              <li aria-current="page" class="text-[var(--color-foreground)]">Piscinas comunitarias</li>
+            </ol>
+          </nav>
+          <h1 class="font-heading text-4xl font-bold text-[var(--color-foreground)] sm:text-5xl">
+            Limpieza y mantenimiento de piscinas comunitarias en Tarragona
+          </h1>
+          <p class="mt-6 text-lg text-[var(--color-muted-fg)] leading-relaxed">
+            Servicio de limpieza, desinfección y mantenimiento de piscinas para comunidades de propietarios en Tarragona, Salou, Cambrils, Vila-seca y la Costa Daurada. Equipo especializado con formación en tratamiento de aguas y seguro de responsabilidad civil incluido.
+          </p>
+        </header>
+
+        <section aria-labelledby="service-details">
+          <h2 id="service-details" class="font-heading text-2xl font-semibold text-[var(--color-foreground)] mb-6">¿Qué incluye el servicio?</h2>
+          <ul class="space-y-3 text-[var(--color-muted-fg)]">
+            {[
+              'Análisis y corrección de los parámetros del agua: cloro, pH y alcalinidad',
+              'Limpieza del vaso: cepillado de paredes y suelo',
+              'Aspirado de fondos y recogida de hojas y residuos flotantes',
+              'Limpieza y revisión de filtros, bombas y skimmers',
+              'Tratamiento con productos homologados y aptos para uso comunitario',
+              'Limpieza de bordillos, escaleras y playa de la piscina',
+              'Control de algas y tratamiento preventivo',
+              'Informe del estado del agua en cada visita',
+            ].map(item => (
+              <li class="flex items-start gap-3">
+                <svg class="mt-0.5 flex-shrink-0 text-[var(--color-accent)]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="mt-12" aria-labelledby="zones-heading">
+          <h2 id="zones-heading" class="font-heading text-2xl font-semibold text-[var(--color-foreground)] mb-4">
+            Zonas de servicio en Tarragona y la Costa Daurada
+          </h2>
+          <p class="text-[var(--color-muted-fg)]">
+            Realizamos mantenimiento de piscinas comunitarias en <strong>Salou</strong>, <strong>Cambrils</strong>, <strong>Vila-seca</strong>, <strong>Miami Platja</strong>, <strong>Torredembarra</strong>, <strong>Altafulla</strong> y toda la Costa Daurada. También en <strong>Tarragona</strong> y <strong>Reus</strong>. Servicio disponible de abril a octubre, con apertura y cierre de temporada incluidos.
+          </p>
+        </section>
+
+        <section class="mt-12 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8" aria-labelledby="cta-form">
+          <h2 id="cta-form" class="font-heading text-2xl font-semibold text-[var(--color-foreground)] mb-2">
+            Solicita presupuesto sin compromiso
+          </h2>
+          <p class="mb-6 text-[var(--color-muted-fg)]">Te respondemos en menos de 24 horas.</p>
+          <ContactForm client:visible t={t.contact} lang="es" />
+        </section>
+
+      </div>
+    </article>
+  </main>
+
+  <Footer lang="es" t={flat} />
+</BaseLayout>

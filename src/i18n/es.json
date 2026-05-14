@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "services": "Servicios",
+    "before_after": "Antes & Después",
+    "testimonials": "Opiniones",
+    "contact": "Contacto",
+    "cta": "Pide Presupuesto"
+  },
+  "hero": {
+    "headline": "Limpieza profesional en Tarragona y alrededores",
+    "subheadline": "Comunidades, piscinas, final de obra y más. Equipo propio, seguro de responsabilidad civil y presupuesto sin compromiso.",
+    "cta_primary": "Pide tu presupuesto",
+    "cta_secondary": "Ver servicios",
+    "badge": "Radio de servicio: 30 km"
+  },
+  "trust": {
+    "years": "años de experiencia",
+    "insured": "Seguro RC incluido",
+    "team": "Equipo propio",
+    "local": "Empresa local Tarragona"
+  },
+  "services": {
+    "title": "Nuestros servicios",
+    "subtitle": "Soluciones de limpieza profesional para toda la provincia de Tarragona",
+    "items": {
+      "communities": {
+        "name": "Comunidades de vecinos",
+        "desc": "Limpieza regular de portales, escaleras, garajes y zonas comunes en Tarragona, Reus y Salou."
+      },
+      "pools": {
+        "name": "Piscinas comunitarias",
+        "desc": "Mantenimiento, limpieza y desinfección de piscinas en comunidades de Cambrils, Vila-seca y Torredembarra."
+      },
+      "construction": {
+        "name": "Final de obra",
+        "desc": "Limpieza exhaustiva tras reformas y obra nueva. Retiramos polvo, escombros y residuos en toda la Costa Daurada."
+      },
+      "floors": {
+        "name": "Abrillantado de suelos",
+        "desc": "Pulido, cristalizado y abrillantado de mármol, terrazo y porcelánico en el Part Alta, Serrallo y toda Tarragona."
+      },
+      "windows": {
+        "name": "Limpieza de cristales",
+        "desc": "Fachadas, escaparates y ventanas con técnicas profesionales en altura. Servicio en Tarragona y comarca."
+      },
+      "offices": {
+        "name": "Oficinas y locales",
+        "desc": "Mantenimiento diario o periódico de espacios comerciales e industriales en el área metropolitana de Tarragona."
+      }
+    }
+  },
+  "before_after": {
+    "title": "Resultados reales",
+    "subtitle": "Arrastra para comparar antes y después de nuestros trabajos",
+    "drag_hint": "Arrastra para comparar"
+  },
+  "map": {
+    "title": "Zona de servicio",
+    "subtitle": "Cubrimos Tarragona y un radio de 30 km: Reus, Salou, Cambrils, Vila-seca, Torredembarra, Constantí y más"
+  },
+  "testimonials": {
+    "title": "Lo que dicen nuestros clientes",
+    "subtitle": "Más de 200 comunidades y empresas confían en NaturLimp"
+  },
+  "stats": {
+    "clients": "clientes activos",
+    "years": "años de experiencia",
+    "zones": "municipios cubiertos",
+    "rating": "valoración media"
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "subtitle": "Todo lo que necesitas saber sobre nuestros servicios de limpieza en Tarragona",
+    "items": [
+      {
+        "q": "¿Cuánto cuesta la limpieza de una comunidad en Tarragona?",
+        "a": "El precio depende del número de plantas, portales y frecuencia del servicio. Para una comunidad estándar de 10 viviendas en Tarragona, el servicio semanal parte desde 120 €/mes. Contacta para un presupuesto sin compromiso adaptado a tu comunidad."
+      },
+      {
+        "q": "¿Cubrís Reus, Salou y Cambrils además de Tarragona?",
+        "a": "Sí. Prestamos servicio en un radio de 30 km desde Tarragona: Reus, Salou, Vila-seca, Cambrils, Torredembarra, Constantí, La Canonja, Altafulla, El Vendrell, Calafell y Valls, entre otros municipios."
+      },
+      {
+        "q": "¿Tenéis seguro de responsabilidad civil?",
+        "a": "Sí, todos nuestros trabajos están cubiertos por seguro de responsabilidad civil. También disponemos de seguro de accidentes para nuestro equipo. Puedes solicitarnos el certificado en cualquier momento."
+      },
+      {
+        "q": "¿Cuánto tiempo tarda una limpieza final de obra?",
+        "a": "Una vivienda de 80-100 m² requiere entre 6 y 8 horas con un equipo de 2 personas. Para comunidades o locales grandes, elaboramos un calendario específico. El plazo exacto se confirma en el presupuesto."
+      },
+      {
+        "q": "¿Con qué frecuencia se recomienda limpiar una comunidad?",
+        "a": "Lo más habitual es servicio semanal o bisemanal para portales y escaleras, y mensual para garajes y zonas exteriores. Lo adaptamos a las necesidades y presupuesto de cada comunidad."
+      },
+      {
+        "q": "¿Utilizáis productos ecológicos certificados?",
+        "a": "Usamos productos de limpieza con certificación ecológica siempre que es posible, especialmente en entornos con niños o mascotas. También disponemos de productos de desinfección homologados para piscinas y zonas sanitarias."
+      },
+      {
+        "q": "¿Cómo pido un presupuesto sin compromiso?",
+        "a": "Rellena el formulario de contacto o llámanos directamente. Te respondemos en menos de 24 horas con un presupuesto detallado, sin letra pequeña ni costes ocultos."
+      },
+      {
+        "q": "¿Ofrecéis limpieza de piscinas comunitarias en Salou y Cambrils?",
+        "a": "Sí. Realizamos mantenimiento, limpieza y desinfección de piscinas comunitarias en toda la Costa Daurada: Salou, Cambrils, Vila-seca, Miami Platja y zonas adyacentes. Servicio disponible de abril a octubre."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Pide tu presupuesto",
+    "subtitle": "Respuesta en menos de 24 horas. Sin compromiso.",
+    "name": "Nombre",
+    "phone": "Teléfono",
+    "service": "Servicio",
+    "zone": "Municipio / Barrio",
+    "message": "Mensaje (opcional)",
+    "service_options": {
+      "communities": "Comunidades de vecinos",
+      "pools": "Piscinas comunitarias",
+      "construction": "Final de obra",
+      "floors": "Abrillantado de suelos",
+      "windows": "Limpieza de cristales",
+      "offices": "Oficinas y locales",
+      "other": "Otro servicio"
+    },
+    "submit": "Enviar solicitud",
+    "submitting": "Enviando...",
+    "success": "¡Solicitud enviada! Te contactamos en menos de 24h.",
+    "error": "Error al enviar. Por favor, llámanos directamente.",
+    "required": "Campo obligatorio",
+    "phone_hint": "Ej: 977 123 456 o 640 123 456"
+  },
+  "footer": {
+    "tagline": "Limpieza profesional en Tarragona y comarca",
+    "address": "Tarragona, Catalunya",
+    "schedule": "Lunes a viernes: 8h - 18h · Sábados: 9h - 14h",
+    "privacy": "Política de privacidad",
+    "legal": "Aviso legal",
+    "cookies": "Cookies",
+    "rights": "Todos los derechos reservados"
+  }
+}

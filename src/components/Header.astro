@@ -1,0 +1,239 @@
+---
+interface Props {
+  lang: 'es' | 'ca';
+  t: Record<string, string>;
+}
+
+const { lang, t } = Astro.props;
+const isCa = lang === 'ca';
+
+const altLang = isCa ? 'es' : 'ca';
+const altPath = isCa ? '/' : '/ca';
+
+const servicesHref     = isCa ? '#serveis'       : '#servicios';
+const testimonialsHref = isCa ? '#opinions'      : '#testimonios';
+const contactHref      = isCa ? '#contacte'      : '#contacto';
+const faqHref          = '#faq';
+
+const navLinks = [
+  { label: t['nav.services'],     href: servicesHref,     section: isCa ? 'serveis'  : 'servicios' },
+  { label: t['nav.testimonials'], href: testimonialsHref, section: isCa ? 'opinions' : 'testimonios' },
+  { label: 'FAQ',                 href: faqHref,          section: 'faq' },
+];
+---
+
+<!-- ── Desktop pill navbar ─────────────────────────────────────────────────── -->
+<header
+  id="pill-nav"
+  class="fixed top-5 left-1/2 z-50 hidden -translate-x-1/2 md:flex items-center gap-1 px-3 py-2 rounded-full
+         bg-[var(--color-surface)]/92 backdrop-blur-lg
+         border border-[var(--color-border)]
+         shadow-[0_2px_24px_rgba(0,0,0,0.07)]
+         transition-shadow duration-300"
+>
+
+  <!-- Logo -->
+  <a
+    href={isCa ? '/ca' : '/'}
+    class="flex items-center gap-2 px-2 py-1 rounded-full hover:bg-[var(--color-muted)] transition-colors duration-150"
+    aria-label="NaturLimp — Inicio"
+  >
+    <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <rect width="32" height="32" rx="6" fill="#15803d"/>
+      <path d="M10 22c0-5 3-9 6-11 3 2 6 6 6 11" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      <path d="M16 11v11" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M13 15l3-3 3 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="font-display text-sm font-bold tracking-tight text-[var(--color-foreground)]">NaturLimp</span>
+  </a>
+
+  <!-- Separator -->
+  <div class="h-4 w-px bg-[var(--color-border)] mx-1" aria-hidden="true" />
+
+  <!-- Nav links with text-scroll hover -->
+  <nav class="flex items-center" aria-label={isCa ? 'Navegació principal' : 'Navegación principal'}>
+    {navLinks.map(({ label, href, section }) => (
+      <a
+        href={href}
+        data-nav-section={section}
+        class="nav-pill-link group relative flex items-center px-3 py-1.5 rounded-full text-sm hover:bg-[var(--color-muted)] transition-colors duration-150 cursor-pointer"
+      >
+        <span style="display:block; height:1.25rem; overflow:hidden;">
+          <span class="flex flex-col transition-transform duration-300 ease-out group-hover:-translate-y-1/2">
+            <span class="leading-5 text-[var(--color-muted-fg)]">{label}</span>
+            <span class="leading-5 font-medium text-[var(--color-foreground)]">{label}</span>
+          </span>
+        </span>
+      </a>
+    ))}
+  </nav>
+
+  <!-- Separator -->
+  <div class="h-4 w-px bg-[var(--color-border)] mx-1" aria-hidden="true" />
+
+  <!-- Language switcher -->
+  <a
+    href={altPath}
+    class="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest text-[var(--color-muted-fg)] hover:bg-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors duration-150"
+    aria-label={`Cambiar idioma a ${altLang === 'ca' ? 'Català' : 'Castellano'}`}
+  >
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="2" y1="12" x2="22" y2="12"/>
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+    </svg>
+    {altLang.toUpperCase()}
+  </a>
+
+  <!-- CTA -->
+  <a
+    href={contactHref}
+    class="ml-1 rounded-full bg-[var(--color-primary)] px-4 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-[var(--color-primary-dark)] transition-colors duration-150"
+  >
+    {isCa ? 'Pressupost' : 'Presupuesto'}
+  </a>
+
+</header>
+
+
+<!-- ── Mobile bottom nav ──────────────────────────────────────────────────── -->
+<nav
+  class="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] inset-x-4 z-50 md:hidden rounded-2xl
+         bg-[var(--color-surface)]/95 backdrop-blur-lg
+         border border-[var(--color-border)]
+         shadow-[0_4px_32px_rgba(0,0,0,0.10)]"
+  aria-label={isCa ? 'Navegació principal' : 'Navegación principal'}
+>
+  <div class="flex items-center justify-around px-1 py-2">
+
+    <!-- Servicios -->
+    <a
+      href={servicesHref}
+      data-nav-section={isCa ? 'serveis' : 'servicios'}
+      class="mobile-nav-link flex flex-col items-center gap-0.5 min-w-[2.75rem] px-1 py-1.5 text-[10px] font-medium text-[var(--color-muted-fg)] transition-colors relative"
+    >
+      <span class="mobile-nav-dot absolute top-0 left-1/2 -translate-x-1/2 h-0.5 w-5 rounded-full bg-[var(--color-primary)] scale-x-0 transition-transform duration-200 origin-center" aria-hidden="true"></span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+        <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+      </svg>
+      <span>{t['nav.services']}</span>
+    </a>
+
+    <!-- Opiniones -->
+    <a
+      href={testimonialsHref}
+      data-nav-section={isCa ? 'opinions' : 'testimonios'}
+      class="mobile-nav-link flex flex-col items-center gap-0.5 min-w-[2.75rem] px-1 py-1.5 text-[10px] font-medium text-[var(--color-muted-fg)] transition-colors relative"
+    >
+      <span class="mobile-nav-dot absolute top-0 left-1/2 -translate-x-1/2 h-0.5 w-5 rounded-full bg-[var(--color-primary)] scale-x-0 transition-transform duration-200 origin-center" aria-hidden="true"></span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+      <span>{isCa ? 'Opinions' : 'Opiniones'}</span>
+    </a>
+
+    <!-- Presupuesto CTA -->
+    <a
+      href={contactHref}
+      class="flex flex-col items-center gap-0.5 rounded-xl bg-[var(--color-primary)] px-3.5 py-2 text-[10px] font-semibold text-white shadow-md shadow-[var(--color-primary)]/30 hover:bg-[var(--color-primary-dark)] transition-colors"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+      <span>{isCa ? 'Pressupost' : 'Presupuesto'}</span>
+    </a>
+
+    <!-- FAQ -->
+    <a
+      href={faqHref}
+      data-nav-section="faq"
+      class="mobile-nav-link flex flex-col items-center gap-0.5 min-w-[2.75rem] px-1 py-1.5 text-[10px] font-medium text-[var(--color-muted-fg)] transition-colors relative"
+    >
+      <span class="mobile-nav-dot absolute top-0 left-1/2 -translate-x-1/2 h-0.5 w-5 rounded-full bg-[var(--color-primary)] scale-x-0 transition-transform duration-200 origin-center" aria-hidden="true"></span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+        <line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+      <span>FAQ</span>
+    </a>
+
+    <!-- Language -->
+    <a
+      href={altPath}
+      class="flex flex-col items-center gap-0.5 min-w-[2.75rem] px-1 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-[var(--color-muted-fg)] hover:text-[var(--color-primary)] transition-colors"
+      aria-label={`Cambiar idioma a ${altLang === 'ca' ? 'Català' : 'Castellano'}`}
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      <span>{altLang.toUpperCase()}</span>
+    </a>
+
+  </div>
+</nav>
+
+
+<!-- ── Active section tracking ────────────────────────────────────────────── -->
+<script>
+  function initNavActive() {
+    const allSectionIds = [
+      'servicios', 'serveis',
+      'testimonios', 'opinions',
+      'faq',
+      'contacto', 'contacte',
+    ];
+
+    const sections = allSectionIds
+      .map(id => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    // Only mobile links — desktop pill links also carry data-nav-section
+    const mobileLinks = document.querySelectorAll<HTMLElement>('.mobile-nav-link[data-nav-section]');
+
+    function setActive(sectionId: string | null) {
+      mobileLinks.forEach(link => {
+        const isActive = link.dataset.navSection === sectionId;
+        link.style.color = isActive ? 'var(--color-primary)' : '';
+        const dot = link.querySelector<HTMLElement>('.mobile-nav-dot');
+        if (dot) dot.style.transform = isActive ? 'translateX(-50%) scaleX(1)' : 'translateX(-50%) scaleX(0)';
+      });
+    }
+
+    function getActiveSection(): string | null {
+      const threshold = window.innerHeight * 0.45;
+      let activeId: string | null = null;
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= threshold) {
+          activeId = section.id;
+        }
+      }
+      return activeId;
+    }
+
+    let rafId = 0;
+    window.addEventListener('scroll', () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => setActive(getActiveSection()));
+    }, { passive: true });
+
+    setActive(getActiveSection());
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavActive);
+  } else {
+    initNavActive();
+  }
+</script>
+
+<style>
+  /* Subtle active state for desktop pill nav links */
+  .nav-pill-link[data-active='true'] span span:first-child {
+    color: var(--color-foreground);
+    font-weight: 500;
+  }
+</style>

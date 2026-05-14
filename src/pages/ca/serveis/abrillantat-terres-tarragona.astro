@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ContactForm from '../../../components/ContactForm';
+import { flattenI18n } from '../../../utils/i18n';
+
+const rawT = await import('../../../i18n/ca.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Abrillantat i polit de terres a Tarragona | NaturLimp"
+  description="Polit, cristal·litzat i abrillantat professional de marbre, terratzo i porcelànic a Tarragona, Reus i comarca. Resultats visibles des de la primera sessió. Pressupost sense compromís."
+  lang="ca"
+  canonical="https://naturlimp.com/ca/serveis/abrillantat-terres-tarragona"
+>
+  <Header lang="ca" t={flat} />
+
+  <main id="main-content">
+    <article class="py-20 bg-[var(--color-background)]">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+
+        <header class="mb-12">
+          <nav aria-label="Breadcrumb" class="mb-4">
+            <ol class="flex items-center gap-2 text-sm text-[var(--color-muted-fg)]">
+              <li><a href="/ca" class="hover:text-[var(--color-primary)]">Inici</a></li>
+              <li aria-hidden="true">›</li>
+              <li><a href="/ca#serveis" class="hover:text-[var(--color-primary)]">Serveis</a></li>
+              <li aria-hidden="true">›</li>
+              <li aria-current="page" class="text-[var(--color-foreground)]">Abrillantat de terres</li>
+            </ol>
+          </nav>
+          <h1 class="font-heading text-4xl font-bold text-[var(--color-foreground)] sm:text-5xl">
+            Abrillantat i polit de terres a Tarragona
+          </h1>
+          <p class="mt-6 text-lg text-[var(--color-muted-fg)] leading-relaxed">
+            Recuperem la brillantor original de terres de marbre, terratzo i porcelànic en habitatges, comunitats i locals de Tarragona, Reus i comarca. Maquinària professional, resultats visibles des de la primera sessió i sense interrompre l'activitat de l'espai més del necessari.
+          </p>
+        </header>
+
+        <section aria-labelledby="service-details">
+          <h2 id="service-details" class="font-heading text-2xl font-semibold text-[var(--color-foreground)] mb-6">Què inclou el servei?</h2>
+          <ul class="space-y-3 text-[var(--color-muted-fg)]">
+            {[
+              'Neteja prèvia profunda de terres i juntes',
+              'Decapat i eliminació de capes antigues de cera o brutícia incrustada',
+              'Polit amb maquinària professional (terratzo, marbre i porcelànic)',
+              'Cristal·litzat de terres de marbre i terratzo',
+              'Abrillantat final amb productes d\'alta durabilitat',
+              'Segellat de porus i tractament antihumitat',
+              'Aplicació de cera de manteniment si es sol·licita',
+              'Servei de manteniment periòdic per prolongar el resultat',
+            ].map(item => (
+              <li class="flex items-start gap-3">
+                <svg class="mt-0.5 flex-shrink-0 text-[var(--color-accent)]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="mt-12" aria-labelledby="zones-heading">
+          <h2 id="zones-heading" class="font-heading text-2xl font-semibold text-[var(--color-foreground)] mb-4">
+            Zones de servei a Tarragona i comarca
+          </h2>
+          <p class="text-[var(--color-muted-fg)]">
+            Realitzem abrillantat i polit de terres a <strong>Tarragona</strong> (Part Alta, Serrallo, Eixample, Bonavista), <strong>Reus</strong>, <strong>Salou</strong>, <strong>Cambrils</strong>, <strong>Vila-seca</strong>, <strong>Torredembarra</strong> i tota la comarca. Servei per a habitatges particulars, portals de comunitats, hotels, restaurants i locals comercials.
+          </p>
+        </section>
+
+        <section class="mt-12 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8" aria-labelledby="cta-form">
+          <h2 id="cta-form" class="font-heading text-2xl font-semibold text-[var(--color-foreground)] mb-2">
+            Sol·licita pressupost sense compromís
+          </h2>
+          <p class="mb-6 text-[var(--color-muted-fg)]">Et responem en menys de 24 hores.</p>
+          <ContactForm client:visible t={t.contact} lang="ca" />
+        </section>
+
+      </div>
+    </article>
+  </main>
+
+  <Footer lang="ca" t={flat} />
+</BaseLayout>

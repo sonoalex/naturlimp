@@ -1,0 +1,159 @@
+{
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "CleaningService"],
+  "name": "NaturLimp",
+  "alternateName": "NaturLimp Tarragona",
+  "url": "https://naturlimp.com",
+  "telephone": "+34977000000",
+  "email": "info@naturlimp.com",
+  "description": "Empresa de limpieza profesional en Tarragona especializada en comunidades de vecinos, piscinas comunitarias, limpieza final de obra y abrillantado de suelos. Servicio en Tarragona, Reus, Salou, Cambrils y comarca.",
+  "image": "https://naturlimp.com/images/logo.svg",
+  "logo": "https://naturlimp.com/images/logo.svg",
+  "foundingDate": "2010",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Tarragona",
+    "addressLocality": "Tarragona",
+    "addressRegion": "Catalunya",
+    "postalCode": "43001",
+    "addressCountry": "ES"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 41.1189,
+    "longitude": 1.2445
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "14:00"
+    }
+  ],
+  "serviceArea": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 41.1189,
+      "longitude": 1.2445
+    },
+    "geoRadius": "30000"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Tarragona",
+      "sameAs": "https://www.wikidata.org/wiki/Q15083"
+    },
+    { "@type": "City", "name": "Reus" },
+    { "@type": "City", "name": "Salou" },
+    { "@type": "City", "name": "Vila-seca" },
+    { "@type": "City", "name": "Cambrils" },
+    { "@type": "City", "name": "Torredembarra" },
+    { "@type": "City", "name": "Constantí" },
+    { "@type": "City", "name": "La Canonja" },
+    { "@type": "City", "name": "Altafulla" },
+    { "@type": "City", "name": "Cunit" },
+    { "@type": "City", "name": "Calafell" },
+    { "@type": "City", "name": "El Vendrell" },
+    { "@type": "City", "name": "Valls" },
+    { "@type": "City", "name": "Mont-roig del Camp" },
+    { "@type": "City", "name": "Riudoms" }
+  ],
+  "knowsAbout": [
+    "limpieza de comunidades de vecinos",
+    "neteja de comunitats de veïns",
+    "limpieza de piscinas comunitarias",
+    "neteja de piscines comunitàries",
+    "limpieza final de obra",
+    "neteja final d'obra",
+    "abrillantado de suelos",
+    "abrillantat de terres",
+    "limpieza de cristales",
+    "neteja de vidres",
+    "limpieza de oficinas",
+    "desinfección profesional",
+    "mantenimiento de zonas comunes"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios de limpieza NaturLimp",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Limpieza de comunidades de vecinos Tarragona",
+          "description": "Servicio regular de limpieza de portales, escaleras, garajes y zonas comunes en comunidades de Tarragona, Reus y Salou."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Limpieza de piscinas comunitarias Tarragona",
+          "description": "Mantenimiento, limpieza y desinfección de piscinas comunitarias en Cambrils, Vila-seca y toda la Costa Daurada."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Limpieza final de obra Tarragona",
+          "description": "Limpieza exhaustiva tras reformas y obra nueva. Retiramos polvo, escombros y residuos en toda la provincia."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Abrillantado de suelos Tarragona",
+          "description": "Pulido, cristalizado y abrillantado profesional de mármol, terrazo y porcelánico."
+        }
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "47",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "María García"
+      },
+      "reviewBody": "Llevamos 3 años con NaturLimp para la limpieza de nuestra comunidad en el Serrallo. Siempre puntuales, profesionales y el edificio queda impecable."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Jordi Puig"
+      },
+      "reviewBody": "Contractem NaturLimp per a la neteja final d'obra del nostre local a Reus. Feina excel·lent, puntuals i preu molt competitiu."
+    }
+  ],
+  "sameAs": [
+    "https://www.google.com/maps?cid=naturlimp"
+  ]
+}

@@ -1,0 +1,330 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FAQSection from '../components/FAQSection.astro';
+import ServiceAreaMap from '../components/ServiceAreaMap.astro';
+import HeroAnimation from '../components/HeroAnimation';
+import BeforeAfterSlider from '../components/BeforeAfterSlider';
+import ContactForm from '../components/ContactForm';
+import TestimonialsScroll from '../components/TestimonialsScroll';
+import { flattenI18n } from '../utils/i18n';
+
+const rawT = await import('../i18n/es.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+
+type ServiceIcon = 'communities' | 'pools' | 'construction' | 'floors' | 'windows' | 'offices';
+type ServiceItem = { name: string; desc: string; icon: ServiceIcon; href: string; };
+
+const serviceKeys: { key: string; icon: ServiceIcon; href: string }[] = [
+  { key: 'communities', icon: 'communities', href: '/es/servicios/limpieza-comunidades-tarragona' },
+  { key: 'pools',       icon: 'pools',       href: '/es/servicios/piscinas-comunitarias-tarragona' },
+  { key: 'construction',icon: 'construction',href: '/es/servicios/limpieza-final-obra-tarragona' },
+  { key: 'floors',      icon: 'floors',      href: '/es/servicios/abrillantado-suelos-tarragona' },
+  { key: 'windows',     icon: 'windows',     href: '/es/servicios/limpieza-cristales-tarragona' },
+  { key: 'offices',     icon: 'offices',     href: '/es/servicios/limpieza-oficinas-tarragona' },
+];
+
+const serviceIcons: Record<string, string> = {
+  communities: `<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>`,
+  pools:        `<path d="M2 12h4l2-6 4 12 2-8 2 4h6"/>`,
+  construction: `<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="8" y1="21" x2="16" y2="21"/>`,
+  floors:       `<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>`,
+  windows:      `<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="12" y1="3" x2="12" y2="17"/>`,
+  offices:      `<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>`,
+};
+
+const items = t.services.items as unknown as Record<string, { name: string; desc: string }>;
+const services: ServiceItem[] = serviceKeys.map(({ key, icon, href }) => ({
+  name: items[key].name,
+  desc: items[key].desc,
+  icon,
+  href,
+}));
+
+const beforeAfterItems = [
+  {
+    before: 'https://picsum.photos/seed/nl-obra-b/700/340',
+    after:  'https://picsum.photos/seed/nl-obra-a/700/340',
+    label:  'Final de obra',
+    beforeAlt: 'Suelo de obra antes de la limpieza — polvo y residuos',
+    afterAlt:  'Suelo de obra después de la limpieza — impecable',
+  },
+  {
+    before: 'https://picsum.photos/seed/nl-suelo-b/700/340',
+    after:  'https://picsum.photos/seed/nl-suelo-a/700/340',
+    label:  'Abrillantado de suelos',
+    beforeAlt: 'Suelo de terrazo opaco antes del abrillantado',
+    afterAlt:  'Suelo de terrazo brillante después del abrillantado',
+  },
+  {
+    before: 'https://picsum.photos/seed/nl-pool-b/700/340',
+    after:  'https://picsum.photos/seed/nl-pool-a/700/340',
+    label:  'Limpieza piscinas',
+    beforeAlt: 'Piscina comunitaria con algas antes de la limpieza',
+    afterAlt:  'Piscina comunitaria limpia y transparente',
+  },
+  {
+    before: 'https://picsum.photos/seed/nl-lobby-b/700/340',
+    after:  'https://picsum.photos/seed/nl-lobby-a/700/340',
+    label:  'Zonas comunes',
+    beforeAlt: 'Portal y escaleras antes de la limpieza regular',
+    afterAlt:  'Portal y escaleras impecables después del servicio',
+  },
+];
+
+const testimonials = [
+  { name: 'María García',   role: 'Presidenta comunidad · Serrallo',         rating: 5, text: 'Llevamos 3 años con NaturLimp para la limpieza de nuestra comunidad. Siempre puntuales y el edificio queda impecable. Ante cualquier incidencia responden el mismo día.' },
+  { name: 'Ana Martínez',   role: 'Administradora · Salou',                  rating: 5, text: 'Gestionamos varias comunidades en Salou y NaturLimp se encarga de todo: portales, piscinas, cristales. Muy recomendables y siempre de fiar.' },
+  { name: 'Laura Sánchez',  role: 'Presidenta · Part Alta Tarragona',        rating: 5, text: 'El portal del edificio nunca había estado tan limpio. El equipo es muy profesional y siempre atentos a los detalles. Totalmente recomendable.' },
+  { name: 'Jordi Puig',     role: 'Propietario local · Reus',                rating: 5, text: 'Contratamos a NaturLimp para la limpieza final de obra de nuestro local. Excelente trabajo y precio muy competitivo. Volvería a contratarlos sin dudarlo.' },
+  { name: 'Pere Vidal',     role: 'Administrador fincas · Cambrils',         rating: 5, text: 'Puntualidad, profesionalidad y precios justos. Llevo tres años trabajando con ellos en Cambrils sin ningún problema. Un servicio de diez.' },
+  { name: 'Roberto Gómez',  role: 'Gerente de oficinas · Reus',              rating: 5, text: 'Limpieza de oficinas diaria, siempre impecable. Son muy flexibles con los horarios y el personal respeta las instalaciones. Muy satisfecho.' },
+  { name: 'Elena Torres',   role: 'Administradora · Torredembarra',          rating: 5, text: 'Contratamos el abrillantado de suelos y el resultado fue espectacular. Los terrazos quedaron como nuevos. Totalmente recomendable y buen precio.' },
+  { name: 'Carlos Ruiz',    role: 'Promotor inmobiliario · Tarragona',       rating: 5, text: 'Trabajan con nosotros en todas las limpiezas de obra nueva. Rapidez, calidad y sin sorpresas en el presupuesto. Muy buena relación calidad-precio.' },
+  { name: 'Montse Ferrer',  role: 'Presidenta comunitat · Vila-seca',        rating: 5, text: 'Des que contractem NaturLimp, la piscina de la comunitat queda perfecta tota la temporada. Molt professionals i de confiança. 100% recomanables.' },
+];
+
+const stats = [
+  { value: '200+', label: t.stats.clients },
+  { value: '15',   label: t.stats.years },
+  { value: '13',   label: t.stats.zones },
+  { value: '4.9★', label: t.stats.rating },
+];
+
+const trustStats = [
+  { value: '15',    label: t.trust.years },
+  { value: 'RC',    label: t.trust.insured },
+  { value: '100%',  label: t.trust.team },
+  { value: '30 km', label: t.trust.local },
+];
+---
+
+<BaseLayout
+  title="Limpieza profesional en Tarragona y comarca | NaturLimp"
+  description="Empresa de limpieza en Tarragona especializada en comunidades de vecinos, piscinas, final de obra y abrillantado de suelos. Servicio en Reus, Salou, Cambrils y 30km. Presupuesto sin compromiso."
+  lang="es"
+>
+  <Header lang="es" t={flat} />
+
+  <main id="main-content">
+
+    <HeroAnimation
+      client:load
+      subheadline={t.hero.subheadline}
+      ctaPrimary={t.hero.cta_primary}
+      ctaSecondary={t.hero.cta_secondary}
+      badge={t.hero.badge}
+      lang="es"
+    />
+
+    <!-- ── Trust bar ──────────────────────────────────────────────────────────── -->
+    <section class="border-b border-[var(--color-primary-dark)] bg-[var(--color-primary)]" aria-label="Credenciales">
+      <div class="mx-auto max-w-7xl">
+        <ul class="grid grid-cols-2 divide-x divide-y divide-white/20 sm:grid-cols-4 sm:divide-y-0" role="list">
+          {trustStats.map(({ value, label }) => (
+            <li class="px-6 py-5 text-center sm:px-8">
+              <span class="block font-display text-2xl font-bold text-white">{value}</span>
+              <span class="mt-0.5 block text-xs text-white/60">{label}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── Services ───────────────────────────────────────────────────────────── -->
+    <section id="servicios" class="bg-[var(--color-background)]" aria-labelledby="services-heading">
+
+      <div class="mx-auto max-w-7xl px-6 pt-20 pb-0 sm:px-8 lg:px-12">
+        <div class="flex flex-col gap-2 border-b border-[var(--color-border)] pb-10 sm:flex-row sm:items-end sm:justify-between">
+          <h2 id="services-heading" class="font-display text-4xl font-bold text-[var(--color-foreground)] sm:text-5xl">
+            {t.services.title}
+          </h2>
+          <p class="max-w-xs text-sm text-[var(--color-muted-fg)] sm:text-right">{t.services.subtitle}</p>
+        </div>
+      </div>
+
+      <div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+        {services.map((svc, index) => (
+          <a
+            href={svc.href}
+            class="group flex items-center gap-5 border-b border-[var(--color-border)] py-7 transition-colors duration-200 hover:bg-[var(--color-primary)]/[0.025] sm:gap-8 sm:py-8 -mx-6 px-6 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12"
+          >
+            <span class="w-10 flex-shrink-0 font-display text-2xl font-bold tabular-nums text-[var(--color-primary)]/25 sm:w-14 sm:text-3xl">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+
+            <div class="hidden h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[var(--color-primary-light)] sm:flex">
+              <svg
+                width="20" height="20" viewBox="0 0 24 24"
+                fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true" set:html={serviceIcons[svc.icon]}
+              />
+            </div>
+
+            <div class="flex flex-1 flex-col gap-1 sm:flex-row sm:items-center sm:gap-10">
+              <h3 class="font-heading text-lg font-semibold text-[var(--color-foreground)] sm:w-64 sm:flex-shrink-0">
+                {svc.name}
+              </h3>
+              <p class="text-sm text-[var(--color-muted-fg)] sm:flex-1">{svc.desc}</p>
+            </div>
+
+            <svg
+              class="ml-2 h-5 w-5 flex-shrink-0 text-[var(--color-primary)] opacity-0 transition-all duration-200 group-hover:translate-x-1 group-hover:opacity-100"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        ))}
+      </div>
+
+      <div class="pb-20" />
+    </section>
+
+    <!-- ── Before / After ─────────────────────────────────────────────────────── -->
+    <section id="antes-despues" class="py-20 bg-[var(--color-foreground)]" aria-labelledby="ba-heading">
+      <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <div class="flex flex-col gap-2 border-b border-white/10 pb-10 mb-10 sm:flex-row sm:items-end sm:justify-between">
+          <h2 id="ba-heading" class="font-display text-4xl font-bold text-white sm:text-5xl">
+            {t.before_after.title}
+          </h2>
+          <p class="max-w-xs text-sm text-white/50 sm:text-right">{t.before_after.subtitle}</p>
+        </div>
+        <BeforeAfterSlider client:visible items={beforeAfterItems} dragHint={t.before_after.drag_hint} lang="es" dark />
+      </div>
+    </section>
+
+    <!-- ── Map ────────────────────────────────────────────────────────────────── -->
+    <ServiceAreaMap title={t.map.title} subtitle={t.map.subtitle} lang="es" />
+
+    <!-- ── Testimonials ───────────────────────────────────────────────────────── -->
+    <section id="testimonios" class="py-20 bg-[var(--color-surface)]" aria-labelledby="testimonials-heading">
+      <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <div class="flex flex-col gap-2 border-b border-[var(--color-border)] pb-10 mb-10 sm:flex-row sm:items-end sm:justify-between">
+          <h2 id="testimonials-heading" class="font-display text-4xl font-bold text-[var(--color-foreground)] sm:text-5xl">
+            {t.testimonials.title}
+          </h2>
+          <p class="max-w-xs text-sm text-[var(--color-muted-fg)] sm:text-right">{t.testimonials.subtitle}</p>
+        </div>
+        <TestimonialsScroll client:visible testimonials={testimonials} />
+      </div>
+    </section>
+
+    <!-- ── Stats ──────────────────────────────────────────────────────────────── -->
+    <section class="bg-[var(--color-foreground)]" aria-label="Estadísticas">
+      <div class="mx-auto max-w-7xl">
+        <ul class="grid grid-cols-2 gap-px bg-white/5 sm:grid-cols-4" role="list">
+          {stats.map(({ value, label }) => (
+            <li class="bg-[var(--color-foreground)] px-6 py-14 text-center">
+              <span class="block font-display text-5xl font-bold text-[var(--color-primary-light)] sm:text-6xl">{value}</span>
+              <span class="mt-2 block text-xs uppercase tracking-widest text-white/35">{label}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── FAQ ────────────────────────────────────────────────────────────────── -->
+    <FAQSection title={t.faq.title} subtitle={t.faq.subtitle} items={t.faq.items} lang="es" />
+
+    <!-- ── Contact ────────────────────────────────────────────────────────────── -->
+    <section id="contacto" class="relative py-24 bg-[var(--color-foreground)] overflow-hidden" aria-labelledby="contact-heading">
+
+      <!-- Green glow behind left column -->
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background: radial-gradient(ellipse 55% 70% at 10% 60%, rgba(21,128,61,0.18) 0%, transparent 65%);" />
+
+      <div class="relative mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <div class="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-20 xl:gap-28">
+
+          <!-- Left: info + contact methods -->
+          <div class="flex flex-col justify-center">
+
+            <div class="mb-8 inline-flex w-fit items-center gap-2 rounded-sm border border-[var(--color-primary)]/40 bg-[var(--color-primary)]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-primary-light)]">
+              <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]" aria-hidden="true"></span>
+              Presupuesto gratuito
+            </div>
+
+            <h2 id="contact-heading" class="font-display text-4xl font-bold text-white sm:text-5xl lg:text-6xl" style="line-height:1.05">
+              {t.contact.title}
+            </h2>
+            <p class="mt-5 max-w-sm text-lg leading-relaxed text-white/45">
+              {t.contact.subtitle}
+            </p>
+
+            <!-- Direct contact methods -->
+            <div class="mt-10 space-y-3">
+              <a
+                href="tel:+34977000000"
+                class="group flex items-center gap-4 rounded-xl border border-white/8 px-4 py-3.5 transition-colors duration-200 hover:border-[var(--color-primary)]/40 hover:bg-white/4"
+              >
+                <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]/20 text-[var(--color-primary-light)] transition-colors group-hover:bg-[var(--color-primary)]/30">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </span>
+                <div>
+                  <span class="block text-[11px] uppercase tracking-widest text-white/35">Teléfono</span>
+                  <span class="block text-sm font-semibold text-white">977 000 000</span>
+                </div>
+              </a>
+
+              <a
+                href="https://wa.me/34977000000?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20un%20presupuesto"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex items-center gap-4 rounded-xl border border-white/8 px-4 py-3.5 transition-colors duration-200 hover:border-[var(--color-primary)]/40 hover:bg-white/4"
+              >
+                <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]/20 text-[var(--color-primary-light)] transition-colors group-hover:bg-[var(--color-primary)]/30">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                  </svg>
+                </span>
+                <div>
+                  <span class="block text-[11px] uppercase tracking-widest text-white/35">WhatsApp</span>
+                  <span class="block text-sm font-semibold text-white">Escríbenos directamente</span>
+                </div>
+              </a>
+
+              <a
+                href="mailto:info@naturlimp.com"
+                class="group flex items-center gap-4 rounded-xl border border-white/8 px-4 py-3.5 transition-colors duration-200 hover:border-[var(--color-primary)]/40 hover:bg-white/4"
+              >
+                <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]/20 text-[var(--color-primary-light)] transition-colors group-hover:bg-[var(--color-primary)]/30">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                  </svg>
+                </span>
+                <div>
+                  <span class="block text-[11px] uppercase tracking-widest text-white/35">Email</span>
+                  <span class="block text-sm font-semibold text-white">info@naturlimp.com</span>
+                </div>
+              </a>
+            </div>
+
+            <!-- Trust signals -->
+            <div class="mt-10 border-t border-white/8 pt-8 flex flex-col gap-2.5">
+              {['Respuesta en menos de 24 horas', 'Presupuesto sin compromiso', 'Servicio en toda la provincia de Tarragona'].map(s => (
+                <span class="flex items-center gap-2.5 text-sm text-white/30">
+                  <span class="h-px w-4 flex-shrink-0 bg-[var(--color-primary)]" aria-hidden="true"></span>
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <!-- Right: form card -->
+          <div class="rounded-2xl bg-white p-8 shadow-2xl lg:p-10">
+            <ContactForm client:visible t={t.contact} lang="es" />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer lang="es" t={flat} />
+</BaseLayout>

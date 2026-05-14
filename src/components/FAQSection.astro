@@ -1,0 +1,71 @@
+---
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  items: FAQItem[];
+  lang: 'es' | 'ca';
+}
+
+const { title, subtitle, items, lang } = Astro.props;
+---
+
+<section id="faq" class="bg-[var(--color-surface)] py-20" aria-labelledby="faq-heading">
+  <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+
+    <div class="flex flex-col gap-2 border-b border-[var(--color-border)] pb-10 sm:flex-row sm:items-end sm:justify-between">
+      <h2 id="faq-heading" class="font-display text-4xl font-bold tracking-tight text-[var(--color-foreground)] sm:text-5xl">
+        {title}
+      </h2>
+      <p class="max-w-xs text-sm text-[var(--color-muted-fg)] sm:text-right">{subtitle}</p>
+    </div>
+
+    <div
+      class="mt-0"
+      itemscope
+      itemtype="https://schema.org/FAQPage"
+    >
+      {items.map((item, i) => (
+        <div
+          itemscope
+          itemprop="mainEntity"
+          itemtype="https://schema.org/Question"
+          class="border-b border-[var(--color-border)]"
+        >
+          <details class="group">
+            <summary
+              class="flex cursor-pointer items-center justify-between py-6 font-heading font-semibold text-[var(--color-foreground)] text-base hover:text-[var(--color-primary)] transition-colors duration-200 list-none [&::-webkit-details-marker]:hidden"
+              itemprop="name"
+            >
+              <span class="pr-8">{item.q}</span>
+              <svg
+                class="h-5 w-5 flex-shrink-0 text-[var(--color-primary)] transition-transform duration-200 group-open:rotate-180"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                aria-hidden="true"
+              >
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </summary>
+            <div
+              class="pb-6 text-sm text-[var(--color-muted-fg)] leading-relaxed"
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <p itemprop="text" class="max-w-2xl">{item.a}</p>
+            </div>
+          </details>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

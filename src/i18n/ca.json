@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "services": "Serveis",
+    "before_after": "Abans & Després",
+    "testimonials": "Opinions",
+    "contact": "Contacte",
+    "cta": "Demana Pressupost"
+  },
+  "hero": {
+    "headline": "Neteja professional a Tarragona i rodalies",
+    "subheadline": "Comunitats, piscines, final d'obra i més. Equip propi, assegurança de responsabilitat civil i pressupost sense compromís.",
+    "cta_primary": "Demana el teu pressupost",
+    "cta_secondary": "Veure serveis",
+    "badge": "Radi de servei: 30 km"
+  },
+  "trust": {
+    "years": "anys d'experiència",
+    "insured": "Assegurança RC inclosa",
+    "team": "Equip propi",
+    "local": "Empresa local Tarragona"
+  },
+  "services": {
+    "title": "Els nostres serveis",
+    "subtitle": "Solucions de neteja professional per a tota la província de Tarragona",
+    "items": {
+      "communities": {
+        "name": "Comunitats de veïns",
+        "desc": "Neteja regular de portals, escales, garatges i zones comunes a Tarragona, Reus i Salou."
+      },
+      "pools": {
+        "name": "Piscines comunitàries",
+        "desc": "Manteniment, neteja i desinfecció de piscines en comunitats de Cambrils, Vila-seca i Torredembarra."
+      },
+      "construction": {
+        "name": "Final d'obra",
+        "desc": "Neteja exhaustiva després de reformes i obra nova. Retirem pols, runa i residus a tota la Costa Daurada."
+      },
+      "floors": {
+        "name": "Abrillantat de terres",
+        "desc": "Polit, cristal·litzat i abrillantat de marbre, terratzo i porcelànic al Part Alta, Serrallo i tota Tarragona."
+      },
+      "windows": {
+        "name": "Neteja de vidres",
+        "desc": "Façanes, aparadors i finestres amb tècniques professionals en altura. Servei a Tarragona i comarca."
+      },
+      "offices": {
+        "name": "Oficines i locals",
+        "desc": "Manteniment diari o periòdic d'espais comercials i industrials a l'àrea metropolitana de Tarragona."
+      }
+    }
+  },
+  "before_after": {
+    "title": "Resultats reals",
+    "subtitle": "Arrossega per comparar abans i després dels nostres treballs",
+    "drag_hint": "Arrossega per comparar"
+  },
+  "map": {
+    "title": "Zona de servei",
+    "subtitle": "Cobrim Tarragona i un radi de 30 km: Reus, Salou, Cambrils, Vila-seca, Torredembarra, Constantí i més"
+  },
+  "testimonials": {
+    "title": "El que diuen els nostres clients",
+    "subtitle": "Més de 200 comunitats i empreses confien en NaturLimp"
+  },
+  "stats": {
+    "clients": "clients actius",
+    "years": "anys d'experiència",
+    "zones": "municipis coberts",
+    "rating": "valoració mitjana"
+  },
+  "faq": {
+    "title": "Preguntes freqüents",
+    "subtitle": "Tot el que necessites saber sobre els nostres serveis de neteja a Tarragona",
+    "items": [
+      {
+        "q": "Quant costa la neteja d'una comunitat a Tarragona?",
+        "a": "El preu depèn del nombre de plantes, portals i freqüència del servei. Per a una comunitat estàndard de 10 habitatges a Tarragona, el servei setmanal part des de 120 €/mes. Contacta per a un pressupost sense compromís adaptat a la teva comunitat."
+      },
+      {
+        "q": "Cobriu Reus, Salou i Cambrils a més de Tarragona?",
+        "a": "Sí. Prestem servei en un radi de 30 km des de Tarragona: Reus, Salou, Vila-seca, Cambrils, Torredembarra, Constantí, La Canonja, Altafulla, El Vendrell, Calafell i Valls, entre d'altres municipis."
+      },
+      {
+        "q": "Teniu assegurança de responsabilitat civil?",
+        "a": "Sí, tots els nostres treballs estan coberts per assegurança de responsabilitat civil. També disposem d'assegurança d'accidents per al nostre equip. Pots sol·licitar-nos el certificat en qualsevol moment."
+      },
+      {
+        "q": "Quant temps tarda una neteja final d'obra?",
+        "a": "Un habitatge de 80-100 m² requereix entre 6 i 8 hores amb un equip de 2 persones. Per a comunitats o locals grans, elaborem un calendari específic. El termini exacte es confirma al pressupost."
+      },
+      {
+        "q": "Amb quina freqüència es recomana netejar una comunitat?",
+        "a": "El més habitual és servei setmanal o bimensual per a portals i escales, i mensual per a garatges i zones exteriors. Ho adaptem a les necessitats i pressupost de cada comunitat."
+      },
+      {
+        "q": "Utilitzeu productes ecològics certificats?",
+        "a": "Fem servir productes de neteja amb certificació ecològica sempre que és possible, especialment en entorns amb nens o mascotes. També disposem de productes de desinfecció homologats per a piscines i zones sanitàries."
+      },
+      {
+        "q": "Com demano un pressupost sense compromís?",
+        "a": "Omple el formulari de contacte o truca'ns directament. Et responem en menys de 24 hores amb un pressupost detallat, sense lletra petita ni costos ocults."
+      },
+      {
+        "q": "Oferiu neteja de piscines comunitàries a Salou i Cambrils?",
+        "a": "Sí. Realitzem manteniment, neteja i desinfecció de piscines comunitàries a tota la Costa Daurada: Salou, Cambrils, Vila-seca, Miami Platja i zones adjacents. Servei disponible d'abril a octubre."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Demana el teu pressupost",
+    "subtitle": "Resposta en menys de 24 hores. Sense compromís.",
+    "name": "Nom",
+    "phone": "Telèfon",
+    "service": "Servei",
+    "zone": "Municipi / Barri",
+    "message": "Missatge (opcional)",
+    "service_options": {
+      "communities": "Comunitats de veïns",
+      "pools": "Piscines comunitàries",
+      "construction": "Final d'obra",
+      "floors": "Abrillantat de terres",
+      "windows": "Neteja de vidres",
+      "offices": "Oficines i locals",
+      "other": "Altre servei"
+    },
+    "submit": "Enviar sol·licitud",
+    "submitting": "Enviant...",
+    "success": "Sol·licitud enviada! Et contactem en menys de 24h.",
+    "error": "Error en enviar. Si us plau, truca'ns directament.",
+    "required": "Camp obligatori",
+    "phone_hint": "Ex: 977 123 456 o 640 123 456"
+  },
+  "footer": {
+    "tagline": "Neteja professional a Tarragona i comarca",
+    "address": "Tarragona, Catalunya",
+    "schedule": "Dilluns a divendres: 8h - 18h · Dissabtes: 9h - 14h",
+    "privacy": "Política de privacitat",
+    "legal": "Avís legal",
+    "cookies": "Cookies",
+    "rights": "Tots els drets reservats"
+  }
+}

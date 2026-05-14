@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Color system ─────────────────────────────────────────────────────────── */
+  --color-primary:          #15803d;
+  --color-primary-dark:     #166534;
+  --color-primary-light:    #dcfce7;
+  --color-secondary:        #0891b2;
+  --color-secondary-dark:   #0e7490;
+  --color-accent:           #059669;
+  --color-background:       #f2fdf5;
+  --color-surface:          #ffffff;
+  --color-foreground:       #0f1a0f;
+  --color-muted:            #edf7f0;
+  --color-muted-fg:         #526b58;
+  --color-border:           #d8eede;
+  --color-destructive:      #dc2626;
+  --color-destructive-light:#fef2f2;
+  --color-ring:             #15803d;
+
+  /* ── Typography ──────────────────────────────────────────────────────────── */
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-heading: 'Barlow', sans-serif;
+  --font-body:    'Barlow', sans-serif;
+
+  /* ── Spacing ─────────────────────────────────────────────────────────────── */
+  --spacing-section:    5rem;
+  --spacing-section-sm: 3rem;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-size: 17px;
+}
+
+body {
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.15;
+}
+
+/* ── Skip link ────────────────────────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 0 0 0.5rem 0.5rem;
+  font-weight: 600;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+/* ── Focus ring ───────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Mobile bottom nav clearance ─────────────────────────────────────────── */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* ── Reduced motion ───────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
