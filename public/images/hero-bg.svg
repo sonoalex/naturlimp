@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8e6f4"/>
+      <stop offset="45%" stop-color="#a8d4ea"/>
+      <stop offset="75%" stop-color="#b8d8c0"/>
+      <stop offset="100%" stop-color="#8dc49a"/>
+    </linearGradient>
+    <linearGradient id="hills-back" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5a8c5a"/>
+      <stop offset="100%" stop-color="#3a6640"/>
+    </linearGradient>
+    <linearGradient id="hills-mid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3d7044"/>
+      <stop offset="100%" stop-color="#2a5230"/>
+    </linearGradient>
+    <linearGradient id="foreground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a5230"/>
+      <stop offset="100%" stop-color="#1a3820"/>
+    </linearGradient>
+    <linearGradient id="glare" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="white" stop-opacity="0.18"/>
+      <stop offset="35%" stop-color="white" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blur-trees">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+
+  <!-- Subtle clouds -->
+  <ellipse cx="300" cy="120" rx="180" ry="45" fill="white" fill-opacity="0.45"/>
+  <ellipse cx="420" cy="105" rx="120" ry="35" fill="white" fill-opacity="0.35"/>
+  <ellipse cx="200" cy="130" rx="100" ry="30" fill="white" fill-opacity="0.30"/>
+  <ellipse cx="1400" cy="90" rx="220" ry="50" fill="white" fill-opacity="0.38"/>
+  <ellipse cx="1550" cy="75" rx="140" ry="38" fill="white" fill-opacity="0.28"/>
+  <ellipse cx="1280" cy="105" rx="110" ry="32" fill="white" fill-opacity="0.25"/>
+  <ellipse cx="850" cy="150" rx="160" ry="40" fill="white" fill-opacity="0.22"/>
+
+  <!-- Background mountains -->
+  <ellipse cx="500" cy="720" rx="650" ry="320" fill="url(#hills-back)" filter="url(#blur-trees)"/>
+  <ellipse cx="1400" cy="740" rx="700" ry="300" fill="url(#hills-back)" filter="url(#blur-trees)"/>
+  <ellipse cx="960" cy="700" rx="500" ry="260" fill="#4e7d55" filter="url(#blur-trees)"/>
+
+  <!-- Mid hills -->
+  <ellipse cx="200" cy="850" rx="450" ry="280" fill="url(#hills-mid)"/>
+  <ellipse cx="1750" cy="860" rx="420" ry="260" fill="url(#hills-mid)"/>
+  <ellipse cx="960" cy="830" rx="600" ry="250" fill="#3d7044"/>
+
+  <!-- Pine trees silhouette — left cluster -->
+  <polygon points="80,780 110,650 140,780" fill="#1e4826"/>
+  <polygon points="100,800 135,645 170,800" fill="#234f2a"/>
+  <polygon points="150,790 185,660 220,790" fill="#1e4826"/>
+  <polygon points="170,810 210,670 250,810" fill="#234f2a"/>
+  <polygon points="50,800 80,680 110,800" fill="#1a3f22"/>
+
+  <!-- Pine trees silhouette — right cluster -->
+  <polygon points="1720,770 1752,640 1784,770" fill="#1e4826"/>
+  <polygon points="1760,790 1795,648 1830,790" fill="#234f2a"/>
+  <polygon points="1800,780 1836,652 1872,780" fill="#1e4826"/>
+  <polygon points="1840,800 1878,658 1916,800" fill="#1a3f22"/>
+  <polygon points="1680,800 1714,660 1748,800" fill="#234f2a"/>
+
+  <!-- Mid trees scattered -->
+  <polygon points="420,820 448,705 476,820" fill="#1e4826"/>
+  <polygon points="620,830 650,715 680,830" fill="#234f2a"/>
+  <polygon points="1280,825 1310,710 1340,825" fill="#1e4826"/>
+  <polygon points="1500,835 1530,718 1560,835" fill="#234f2a"/>
+
+  <!-- Foreground ground -->
+  <rect y="900" width="1920" height="180" fill="url(#foreground)"/>
+  <ellipse cx="960" cy="900" rx="1100" ry="80" fill="#224a28"/>
+
+  <!-- Glass glare — diagonal stripe top-left -->
+  <rect width="1920" height="1080" fill="url(#glare)"/>
+
+  <!-- Subtle glass edge reflection -->
+  <rect width="8" height="1080" fill="white" fill-opacity="0.08"/>
+  <rect y="0" width="1920" height="5" fill="white" fill-opacity="0.06"/>
+</svg>

@@ -88,17 +88,41 @@ export default function HeroAnimation({ subheadline, ctaPrimary, ctaSecondary, b
       className="relative flex min-h-dvh flex-col justify-center overflow-hidden bg-[var(--color-foreground)] text-white"
       aria-label={isCa ? 'Secció principal' : 'Sección principal'}
     >
-      {/* Background: glow + grid */}
+      {/* Background: hero photo — swap hero-bg.svg for a real JPG/WebP when available */}
       <div
         className="absolute inset-0"
         style={{
+          backgroundImage: `url('/images/hero-bg.svg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Dark overlay — heavier on left for text legibility, fades right to reveal nature */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(to right,
+            rgba(8,18,12,0.93) 0%,
+            rgba(8,18,12,0.82) 40%,
+            rgba(8,18,12,0.58) 65%,
+            rgba(8,18,12,0.32) 100%
+          )`,
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Subtle grid on top */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
           backgroundImage: `
-            radial-gradient(ellipse 80% 70% at 10% 60%, rgba(21,128,61,0.20) 0%, transparent 65%),
-            radial-gradient(ellipse 45% 50% at 85% 15%, rgba(8,145,178,0.10) 0%, transparent 55%),
-            linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)
+            linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px)
           `,
-          backgroundSize: 'auto, auto, 52px 52px, 52px 52px',
+          backgroundSize: '52px 52px',
         }}
         aria-hidden="true"
       />
