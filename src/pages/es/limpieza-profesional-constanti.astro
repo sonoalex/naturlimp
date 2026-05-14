@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import LocalSeoLayout from '../../components/LocalSeoLayout.astro';
+import { flattenI18n } from '../../utils/i18n';
+
+const rawT = await import('../../i18n/es.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Limpieza profesional en Constantí | NaturLimp · Tarragona"
+  description="Empresa de limpieza en Constantí a 6 km de Tarragona. Comunidades de vecinos, polígonos industriales, final de obra y cristales. Equipo propio. Presupuesto gratuito."
+  lang="es"
+  canonical="https://naturlimp.com/es/limpieza-profesional-constanti"
+>
+  <Header lang="es" t={flat} />
+  <main id="main-content">
+    <LocalSeoLayout
+      city="Constantí"
+      citySlug="constanti"
+      distanceKm={6}
+      province="Tarragona"
+      t={t}
+      lang="es"
+    />
+  </main>
+  <Footer lang="es" t={flat} />
+</BaseLayout>

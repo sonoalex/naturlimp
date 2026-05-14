@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import LocalSeoLayout from '../../components/LocalSeoLayout.astro';
+import { flattenI18n } from '../../utils/i18n';
+
+const rawT = await import('../../i18n/es.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Limpieza profesional en La Canonja | NaturLimp · Tarragona"
+  description="Servicio de limpieza en La Canonja a 5 km de Tarragona. Comunidades, naves industriales, final de obra y oficinas. Empresa local con equipo propio. Presupuesto en 24 h."
+  lang="es"
+  canonical="https://naturlimp.com/es/limpieza-profesional-la-canonja"
+>
+  <Header lang="es" t={flat} />
+  <main id="main-content">
+    <LocalSeoLayout
+      city="La Canonja"
+      citySlug="la-canonja"
+      distanceKm={5}
+      province="Tarragona"
+      t={t}
+      lang="es"
+    />
+  </main>
+  <Footer lang="es" t={flat} />
+</BaseLayout>

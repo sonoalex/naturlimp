@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import LocalSeoLayout from '../../components/LocalSeoLayout.astro';
+import { flattenI18n } from '../../utils/i18n';
+
+const rawT = await import('../../i18n/es.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Limpieza profesional en Valls | NaturLimp · Alt Camp"
+  description="Empresa de limpieza en Valls (Alt Camp) a 20 km de Tarragona. Comunidades de vecinos, final de obra, abrillantado de suelos y limpieza de oficinas. Presupuesto sin compromiso."
+  lang="es"
+  canonical="https://naturlimp.com/es/limpieza-profesional-valls"
+>
+  <Header lang="es" t={flat} />
+  <main id="main-content">
+    <LocalSeoLayout
+      city="Valls"
+      citySlug="valls"
+      distanceKm={20}
+      province="Tarragona"
+      t={t}
+      lang="es"
+    />
+  </main>
+  <Footer lang="es" t={flat} />
+</BaseLayout>

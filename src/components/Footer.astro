@@ -28,7 +28,29 @@ const serviceLinks = isCa ? [
   { label: 'Oficinas y locales',     href: contactHref },
 ];
 
-const zones = ['Tarragona', 'Reus', 'Salou', 'Cambrils', 'Vila-seca', 'Torredembarra', 'Constantí', 'La Canonja', 'Altafulla', 'El Vendrell', 'Calafell', 'Valls'];
+const zoneLinks = isCa ? [
+  { label: 'Neteja a Reus',          href: '/es/limpieza-profesional-reus' },
+  { label: 'Neteja a Salou',         href: '/es/limpieza-profesional-salou' },
+  { label: 'Neteja a Cambrils',      href: '/es/limpieza-profesional-cambrils' },
+  { label: 'Neteja a Vila-seca',     href: '/es/limpieza-profesional-vila-seca' },
+  { label: 'Neteja a Torredembarra', href: '/es/limpieza-profesional-torredembarra' },
+  { label: 'Neteja a Constantí',     href: '/es/limpieza-profesional-constanti' },
+  { label: 'Neteja a La Canonja',    href: '/es/limpieza-profesional-la-canonja' },
+  { label: 'Neteja a Altafulla',     href: '/es/limpieza-profesional-altafulla' },
+  { label: 'Neteja a El Vendrell',   href: '/es/limpieza-profesional-el-vendrell' },
+  { label: 'Neteja a Valls',         href: '/es/limpieza-profesional-valls' },
+] : [
+  { label: 'Limpieza en Reus',          href: '/es/limpieza-profesional-reus' },
+  { label: 'Limpieza en Salou',         href: '/es/limpieza-profesional-salou' },
+  { label: 'Limpieza en Cambrils',      href: '/es/limpieza-profesional-cambrils' },
+  { label: 'Limpieza en Vila-seca',     href: '/es/limpieza-profesional-vila-seca' },
+  { label: 'Limpieza en Torredembarra', href: '/es/limpieza-profesional-torredembarra' },
+  { label: 'Limpieza en Constantí',     href: '/es/limpieza-profesional-constanti' },
+  { label: 'Limpieza en La Canonja',    href: '/es/limpieza-profesional-la-canonja' },
+  { label: 'Limpieza en Altafulla',     href: '/es/limpieza-profesional-altafulla' },
+  { label: 'Limpieza en El Vendrell',   href: '/es/limpieza-profesional-el-vendrell' },
+  { label: 'Limpieza en Valls',         href: '/es/limpieza-profesional-valls' },
+];
 ---
 
 <footer class="relative overflow-hidden text-white" style="background: #060d06; border-top: 1px solid rgba(21,128,61,0.25);">
@@ -127,12 +149,15 @@ const zones = ['Tarragona', 'Reus', 'Salou', 'Cambrils', 'Vila-seca', 'Torredemb
         <h3 class="mb-5 text-xs font-semibold uppercase tracking-widest text-white/35">
           {isCa ? 'Zones de servei' : 'Zonas de servicio'}
         </h3>
-        <ul class="flex flex-wrap gap-1.5">
-          {zones.map(zone => (
+        <ul class="flex flex-col gap-2.5">
+          {zoneLinks.map(({ label, href }) => (
             <li>
-              <span class="inline-block rounded-md border border-white/8 px-2 py-0.5 text-xs text-white/35">
-                {zone}
-              </span>
+              <a
+                href={href}
+                class="text-sm text-white/50 hover:text-[var(--color-primary-light)] transition-colors duration-150"
+              >
+                {label}
+              </a>
             </li>
           ))}
         </ul>

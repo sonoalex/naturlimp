@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import LocalSeoLayout from '../../components/LocalSeoLayout.astro';
+import { flattenI18n } from '../../utils/i18n';
+
+const rawT = await import('../../i18n/es.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Limpieza profesional en Altafulla | NaturLimp · Tarragona"
+  description="Empresa de limpieza en Altafulla: comunidades de vecinos, piscinas, cristales y final de obra. A 12 km de Tarragona con equipo propio y seguro RC. Presupuesto sin compromiso."
+  lang="es"
+  canonical="https://naturlimp.com/es/limpieza-profesional-altafulla"
+>
+  <Header lang="es" t={flat} />
+  <main id="main-content">
+    <LocalSeoLayout
+      city="Altafulla"
+      citySlug="altafulla"
+      distanceKm={12}
+      province="Tarragona"
+      t={t}
+      lang="es"
+    />
+  </main>
+  <Footer lang="es" t={flat} />
+</BaseLayout>
