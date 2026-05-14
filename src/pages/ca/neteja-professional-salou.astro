@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import LocalSeoLayout from '../../components/LocalSeoLayout.astro';
+import { flattenI18n } from '../../utils/i18n';
+
+const rawT = await import('../../i18n/ca.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Neteja professional a Salou | NaturLimp · Empresa local"
+  description="Empresa de neteja a Salou: comunitats de veïns, piscines, final d'obra, abrillantat de terres i vidres. Equip propi a 10 km de Tarragona. Pressupost gratuït en 24 h."
+  lang="ca"
+  canonical="https://naturlimp.com/ca/neteja-professional-salou"
+>
+  <Header lang="ca" t={flat} />
+  <main id="main-content">
+    <LocalSeoLayout
+      city="Salou"
+      citySlug="salou"
+      distanceKm={10}
+      province="Tarragona"
+      t={t}
+      lang="ca"
+    />
+  </main>
+  <Footer lang="ca" t={flat} />
+</BaseLayout>
