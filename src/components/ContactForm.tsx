@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import Button from './Button';
 
 interface FormT {
   name: string;
@@ -205,19 +206,21 @@ export default function ContactForm({ t, lang }: Props) {
       </div>
 
       {/* Submit */}
-      <button
+      <Button
         type="submit"
         disabled={status === 'loading'}
-        className="w-full rounded-xl bg-[var(--color-accent)] px-6 py-4 text-base font-semibold text-white transition-all duration-200 hover:bg-[var(--color-primary)] disabled:cursor-not-allowed disabled:opacity-60 active:scale-[0.98] min-h-[44px] flex items-center justify-center gap-2"
+        variant="primary"
+        size="lg"
+        className="w-full"
         aria-busy={status === 'loading'}
-      >
-        {status === 'loading' && (
-          <svg className="animate-spin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+        leftIcon={status === 'loading' ? (
+          <svg className="animate-spin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
             <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
           </svg>
-        )}
+        ) : undefined}
+      >
         {status === 'loading' ? t.submitting : t.submit}
-      </button>
+      </Button>
 
       {status === 'error' && (
         <p role="alert" className="text-center text-sm text-[var(--color-destructive)]">{t.error}</p>

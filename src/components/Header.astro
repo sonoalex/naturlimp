@@ -1,4 +1,6 @@
 ---
+import Button from './Button';
+
 interface Props {
   lang: 'es' | 'ca';
   t: Record<string, string>;
@@ -42,12 +44,16 @@ const navLinks = [
     </svg>
     <span class="font-display text-sm font-bold tracking-tight text-[var(--color-foreground)]">NaturLimp</span>
   </a>
-  <a
+  <Button
+    client:load
+    as="a"
     href={contactHref}
-    class="rounded-full bg-[var(--color-primary)] px-3.5 py-1.5 text-xs font-semibold text-white"
+    variant="primary"
+    size="sm"
+    className="h-8 px-3.5 !rounded-full"
   >
     {isCa ? 'Pressupost' : 'Presupuesto'}
-  </a>
+  </Button>
 </div>
 
 <script>
@@ -127,12 +133,16 @@ const navLinks = [
   </a>
 
   <!-- CTA -->
-  <a
+  <Button
+    client:load
+    as="a"
     href={contactHref}
-    class="ml-1 rounded-full bg-[var(--color-primary)] px-4 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-[var(--color-primary-dark)] transition-colors duration-150"
+    variant="primary"
+    size="sm"
+    className="ml-1 h-8 !rounded-full"
   >
     {isCa ? 'Pressupost' : 'Presupuesto'}
-  </a>
+  </Button>
 
 </header>
 

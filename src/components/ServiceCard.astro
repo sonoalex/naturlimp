@@ -1,4 +1,6 @@
 ---
+import Button from './Button';
+
 interface Props {
   name: string;
   desc: string;
@@ -40,15 +42,21 @@ const icons: Record<string, string> = {
       <h3 class="font-heading text-xl font-bold text-white mb-3">{name}</h3>
       <p class="text-sm text-white/75 leading-relaxed flex-1">{desc}</p>
 
-      <a
+      <Button
+        client:load
+        as="a"
         href={href}
-        class="mt-8 inline-flex w-fit items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-[var(--color-primary)] transition-all duration-200 hover:bg-white/90 hover:gap-3"
+        variant="white"
+        size="sm"
+        className="mt-8 hover:gap-3 !rounded-full"
+        rightIcon={
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        }
       >
         {ctaLabel}
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </a>
+      </Button>
     </div>
   </article>
 ) : (
@@ -64,14 +72,19 @@ const icons: Record<string, string> = {
     <h3 class="font-heading text-base font-semibold text-[var(--color-foreground)] mb-2">{name}</h3>
     <p class="text-sm text-[var(--color-muted-fg)] leading-relaxed flex-1">{desc}</p>
 
-    <a
+    <Button
+      client:load
+      as="a"
       href={href}
-      class="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-primary)] transition-all duration-200 hover:text-[var(--color-primary-dark)] hover:gap-2"
+      variant="link"
+      className="mt-5 hover:gap-2 !text-[var(--color-primary)]"
+      rightIcon={
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      }
     >
       {ctaLabel}
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
-      </svg>
-    </a>
+    </Button>
   </article>
 )}

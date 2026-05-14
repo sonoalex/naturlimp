@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { motion, useReducedMotion, LayoutGroup } from 'framer-motion';
 import { TextRotate, type TextRotateRef } from './TextRotate';
+import Button from './Button';
 
 interface Props {
   subheadline: string;
@@ -266,21 +267,29 @@ export default function HeroAnimation({ subheadline, ctaPrimary, ctaSecondary, b
 
         {/* CTAs */}
         <motion.div {...item(0.54)} className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:items-start">
-          <a
+          <Button
+            as="a"
             href={contactHref}
-            className="inline-flex items-center justify-center rounded-lg bg-[var(--color-accent)] px-8 py-4 text-base font-semibold text-white transition-all duration-200 hover:bg-[var(--color-primary)] hover:scale-[1.02] active:scale-[0.99]"
+            variant="primary"
+            size="lg"
+            className="w-full sm:w-auto"
           >
             {ctaPrimary}
-          </a>
-          <a
+          </Button>
+          <Button
+            as="a"
             href={servicesHref}
-            className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/15 px-8 py-4 text-base font-medium text-white/70 transition-all duration-200 hover:border-white/30 hover:text-white"
+            variant="secondary"
+            size="lg"
+            className="w-full sm:w-auto !text-white !border-white/20 hover:!bg-white hover:!text-[var(--color-primary)]"
+            rightIcon={
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            }
           >
             {ctaSecondary}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
+          </Button>
         </motion.div>
 
         {/* Trust signals */}
