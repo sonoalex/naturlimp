@@ -10,10 +10,10 @@ const isCa = lang === 'ca';
 const altLang = isCa ? 'es' : 'ca';
 const altPath = isCa ? '/' : '/ca';
 
-const servicesHref     = isCa ? '#serveis'       : '#servicios';
-const testimonialsHref = isCa ? '#opinions'      : '#testimonios';
-const contactHref      = isCa ? '#contacte'      : '#contacto';
-const faqHref          = '#faq';
+const servicesHref     = isCa ? '/ca#serveis'   : '/#servicios';
+const testimonialsHref = isCa ? '/ca#opinions'  : '/#testimonios';
+const contactHref      = isCa ? '#contacte'     : '#contacto';
+const faqHref          = isCa ? '/ca#faq'       : '/#faq';
 
 const navLinks = [
   { label: t['nav.services'],     href: servicesHref,     section: isCa ? 'serveis'  : 'servicios' },
