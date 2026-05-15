@@ -27,15 +27,17 @@ const CustomHandle = (props: any) => {
       {...rest} 
       style={{
         ...style,
-        width: '40px', // Área de toque real
+        width: '40px',
         height: '100%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        transform: 'translateX(-50%)', // Centrado perfecto sin offsets manuales
         cursor: 'ew-resize',
         zIndex: 10,
-        touchAction: 'none'
+        // En iOS es vital que el handle tenga touchAction: none para no disparar scroll
+        touchAction: 'none',
+        // Evitamos que se mueva por el margen negativo, usamos transform para el centrado exacto de la línea
+        transform: 'translateX(-50%)' 
       }}
     >
       {/* Línea central visible */}
@@ -68,37 +70,39 @@ export default function BeforeAfterSlider({ items, dragHint, lang, dark = false 
   
   useEffect(() => {
     setMounted(true);
+    return () => setMounted(false);
   }, []);
 
   const labelClass = `mb-2 text-xs font-semibold uppercase tracking-widest ${dark ? 'text-white/40' : 'text-[var(--color-muted-fg)]'}`;
   const hintClass = `mt-6 text-center text-sm flex items-center justify-center gap-2 ${dark ? 'text-white/30' : 'text-[var(--color-muted-fg)]'}`;
 
   return (
-    <div>
+    <div key={mounted ? 'ready' : 'not-ready'}>
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         {items.map((item, i) => (
           <div key={i}>
             <p className={labelClass}>{item.label}</p>
             <div 
               className="relative overflow-hidden rounded-xl border border-white/5 shadow-lg bg-neutral-900" 
-              style={{ height: '280px' }}
+              style={{ height: '280px', touchAction: 'none' }} // Bloqueamos el scroll solo en el área del slider
             >
               {mounted ? (
                 <ReactCompareSlider
                   handle={<CustomHandle />}
                   position={50}
+                  // Forzamos que sea interactivo
                   itemOne={
                     <ReactCompareSliderImage
                       src={item.before}
                       alt={item.beforeAlt}
-                      style={{ objectFit: 'cover', height: '100%' }}
+                      style={{ objectFit: 'cover', height: '100%', userSelect: 'none', pointerEvents: 'none' }}
                     />
                   }
                   itemTwo={
                     <ReactCompareSliderImage
                       src={item.after}
                       alt={item.afterAlt}
-                      style={{ objectFit: 'cover', height: '100%' }}
+                      style={{ objectFit: 'cover', height: '100%', userSelect: 'none', pointerEvents: 'none' }}
                     />
                   }
                   style={{ height: '100%', width: '100%' }}

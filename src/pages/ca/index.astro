@@ -190,7 +190,7 @@ const trustStats = [
           </h2>
           <p class="max-w-xs text-sm text-white/50 sm:text-right">{t.before_after.subtitle}</p>
         </div>
-        <BeforeAfterSlider client:visible items={beforeAfterItems} dragHint={t.before_after.drag_hint} lang="ca" dark />
+        <BeforeAfterSlider client:load items={beforeAfterItems} dragHint={t.before_after.drag_hint} lang="ca" dark />
       </div>
     </section>
 
