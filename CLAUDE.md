@@ -35,7 +35,7 @@ The layout entry point is `src/layouts/BaseLayout.astro`. All pages extend it.
 ### Styling
 
 - **Tailwind CSS v4** with `@theme` blocks in `src/styles/global.css` — all design tokens (colors, typography, spacing) defined there as CSS custom properties.
-- Primary brand green: `#15803d`; accent: `#059669`; secondary cyan: `#0891b2`
+- Primary brand green: `#16a34a`; accent: `#059669`; secondary cyan: `#0891b2`
 - Fonts: Barlow (headings/body), Open Sans (labels)
 - All Framer Motion animations must respect `prefers-reduced-motion` (handled globally in CSS)
 

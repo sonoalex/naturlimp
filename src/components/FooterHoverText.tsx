@@ -46,7 +46,7 @@ export default function FooterHoverText({ text }: { text: string }) {
           {hovered && (
             <>
               <stop offset="0%"   stopColor="#dcfce7" />
-              <stop offset="28%"  stopColor="#15803d" />
+              <stop offset="28%"  stopColor="#16a34a" />
               <stop offset="55%"  stopColor="#22d3ee" />
               <stop offset="80%"  stopColor="#86efac" />
               <stop offset="100%" stopColor="#a3e635" />
@@ -84,7 +84,7 @@ export default function FooterHoverText({ text }: { text: string }) {
       <motion.text
         {...base}
         fill="transparent"
-        stroke="#15803d"
+        stroke="#16a34a"
         strokeOpacity={0.35}
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
         animate={{ strokeDashoffset: 0, strokeDasharray: 1000 }}

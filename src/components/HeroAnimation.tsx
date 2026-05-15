@@ -89,11 +89,11 @@ export default function HeroAnimation({ subheadline, ctaPrimary, ctaSecondary, b
       className="relative flex min-h-dvh flex-col justify-center overflow-hidden bg-[var(--color-foreground)] text-white"
       aria-label={isCa ? 'Secció principal' : 'Sección principal'}
     >
-      {/* Background: hero photo — swap hero-bg.svg for a real JPG/WebP when available */}
+      {/* Background: professional cleaning action (local asset) */}
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: `url('/images/hero-bg.svg')`,
+          backgroundImage: `url('/images/hero-cleaning.avif')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

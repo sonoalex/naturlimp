@@ -10,7 +10,7 @@ Defined in `src/styles/global.css` via Tailwind v4 `@theme`. Reference as `var(-
 
 | Token | Value | Usage |
 |---|---|---|
-| `--color-primary` | `#15803d` | Brand green — headings, links, icon strokes, focus ring |
+| `--color-primary` | `#16a34a` | Brand green — headings, links, icon strokes, focus ring |
 | `--color-primary-dark` | `#166534` | Hover on primary elements |
 | `--color-primary-light` | `#dcfce7` | Icon container backgrounds, badge fills |
 | `--color-secondary` | `#0891b2` | Cyan — pool/water service accent |
@@ -24,7 +24,7 @@ Defined in `src/styles/global.css` via Tailwind v4 `@theme`. Reference as `var(-
 | `--color-border` | `#e2efe7` | Card borders, dividers |
 | `--color-destructive` | `#dc2626` | Form errors |
 | `--color-destructive-light` | `#fef2f2` | Error field background |
-| `--color-ring` | `#15803d` | Focus outline |
+| `--color-ring` | `#16a34a` | Focus outline |
 
 ### Contrast pairs (WCAG AA verified)
 
@@ -32,7 +32,7 @@ Defined in `src/styles/global.css` via Tailwind v4 `@theme`. Reference as `var(-
 |---|---|---|
 | `#0f172a` | `#f0fdf4` | 15:1 AAA |
 | `#ffffff` | `#059669` | 4.6:1 AA |
-| `#ffffff` | `#15803d` | 5.9:1 AA |
+| `#ffffff` | `#16a34a` | 5.9:1 AA |
 | `#64748b` | `#ffffff` | 4.6:1 AA |
 
 ---
@@ -97,7 +97,7 @@ Container: `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8` (standard), `max-w-4xl` (nar
 
 ```html
 <div class="h-12 w-12 rounded-xl bg-[var(--color-primary-light)] flex items-center justify-center">
-  <svg width="24" height="24" stroke="#15803d" stroke-width="2" stroke-linecap="round" .../>
+  <svg width="24" height="24" stroke="#16a34a" stroke-width="2" stroke-linecap="round" .../>
 </div>
 ```
 
@@ -154,7 +154,7 @@ Library: inline SVG only (no icon font, no emoji).
 - Stroke width: `2` (UI icons), `2.5` (emphasis/checkmarks)
 - Stroke-linecap: `round`
 - Size: `24×24` standard, `18×18` trust bar, `16×16` inline text
-- Color: `currentColor` (inherits) or explicit `#15803d` on brand marks
+- Color: `currentColor` (inherits) or explicit `#16a34a` on brand marks
 - Always `aria-hidden="true"` on decorative icons
 
 ---
