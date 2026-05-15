@@ -30,19 +30,28 @@ const CustomHandle = (props: any) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: '2px',
-        backgroundColor: 'white',
-        boxShadow: '0 0 10px rgba(0,0,0,0.3)',
+        width: '40px', // Aumentamos el área de toque
+        marginLeft: '-20px', // Centramos el área de toque sobre la línea
+        backgroundColor: 'transparent',
         height: '100%',
         cursor: 'ew-resize',
-        zIndex: 10
+        zIndex: 10,
+        touchAction: 'none', // Bloqueamos gestos nativos para tomar control total
+        WebkitUserSelect: 'none',
+        userSelect: 'none'
       }}
     >
+      {/* Línea central visible */}
+      <div style={{ width: '2px', height: '100%', backgroundColor: 'white', boxShadow: '0 0 10px rgba(0,0,0,0.3)' }} />
+      
+      {/* Círculo del handle */}
       <div
-        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-white bg-[var(--color-primary)] shadow-xl"
+        className="absolute flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-white bg-[var(--color-primary)] shadow-xl"
         style={{ 
-          transform: 'translateX(-1px)',
-          touchAction: 'none' 
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          pointerEvents: 'none' // El toque lo gestiona el contenedor de 40px
         }}
       >
         <svg 
