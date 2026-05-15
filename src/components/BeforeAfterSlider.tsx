@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, PanInfo } from 'framer-motion';
 
 interface SlideItem {
   before: string;
@@ -36,27 +36,12 @@ const SliderItem = ({ item, lang, dark }: { item: SlideItem; lang: 'es' | 'ca'; 
   const clipPath = useTransform(springX, (val) => `inset(0 0 0 ${val}%)`);
   const handleLeft = useTransform(springX, (val) => `${val}%`);
 
-  const updatePosition = (clientX: number) => {
+  const handleUpdate = (clientX: number) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = clientX - rect.left;
     const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
     xPercent.set(percentage);
-  };
-
-  const onPointerDown = (e: React.PointerEvent) => {
-    setIsDragging(true);
-    updatePosition(e.clientX);
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
-  };
-
-  const onPointerMove = (e: React.PointerEvent) => {
-    if (!isDragging) return;
-    updatePosition(e.clientX);
-  };
-
-  const onPointerUp = (e: React.PointerEvent) => {
-    setIsDragging(false);
   };
 
   const labelClass = `mb-3 text-xs font-bold font-display uppercase tracking-[0.2em] ${dark ? 'text-white/50' : 'text-[var(--color-muted-fg)]'}`;
@@ -65,13 +50,13 @@ const SliderItem = ({ item, lang, dark }: { item: SlideItem; lang: 'es' | 'ca'; 
     <div className="group flex flex-col">
       <p className={labelClass}>{item.label}</p>
       
-      <div 
+      <motion.div 
         ref={containerRef}
         className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-neutral-900 shadow-2xl select-none touch-pan-y"
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerLeave={onPointerUp}
+        onPanStart={() => setIsDragging(true)}
+        onPan={(e, info) => handleUpdate(info.point.x)}
+        onPanEnd={() => setIsDragging(false)}
+        onTap={(e, info) => handleUpdate(info.point.x)}
         style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
       >
         {/* Before Image (Base) */}
@@ -159,7 +144,7 @@ const SliderItem = ({ item, lang, dark }: { item: SlideItem; lang: 'es' | 'ca'; 
             {lang === 'es' ? 'Después' : 'Després'}
           </span>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
