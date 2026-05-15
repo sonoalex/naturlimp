@@ -27,31 +27,27 @@ const CustomHandle = (props: any) => {
       {...rest} 
       style={{
         ...style,
+        width: '40px', // Área de toque real
+        height: '100%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: '40px', // Aumentamos el área de toque
-        marginLeft: '-20px', // Centramos el área de toque sobre la línea
-        backgroundColor: 'transparent',
-        height: '100%',
+        transform: 'translateX(-50%)', // Centrado perfecto sin offsets manuales
         cursor: 'ew-resize',
         zIndex: 10,
-        touchAction: 'none', // Bloqueamos gestos nativos para tomar control total
-        WebkitUserSelect: 'none',
-        userSelect: 'none'
+        touchAction: 'none'
       }}
     >
       {/* Línea central visible */}
-      <div style={{ width: '2px', height: '100%', backgroundColor: 'white', boxShadow: '0 0 10px rgba(0,0,0,0.3)' }} />
+      <div style={{ width: '2px', height: '100%', backgroundColor: 'white', boxShadow: '0 0 10px rgba(0,0,0,0.4)' }} />
       
       {/* Círculo del handle */}
       <div
         className="absolute flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-white bg-[var(--color-primary)] shadow-xl"
         style={{ 
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          pointerEvents: 'none' // El toque lo gestiona el contenedor de 40px
+          pointerEvents: 'none',
+          WebkitUserSelect: 'none',
+          userSelect: 'none'
         }}
       >
         <svg 
@@ -84,10 +80,9 @@ export default function BeforeAfterSlider({ items, dragHint, lang, dark = false 
           <div key={i}>
             <p className={labelClass}>{item.label}</p>
             <div 
-              className="relative overflow-hidden rounded-xl border border-white/5 shadow-lg bg-neutral-800" 
-              style={{ height: '280px', touchAction: 'pan-y' }}
+              className="relative overflow-hidden rounded-xl border border-white/5 shadow-lg bg-neutral-900" 
+              style={{ height: '280px' }}
             >
-              {/* Only render the interactive slider once mounted to avoid hydration mismatch */}
               {mounted ? (
                 <ReactCompareSlider
                   handle={<CustomHandle />}
@@ -109,7 +104,6 @@ export default function BeforeAfterSlider({ items, dragHint, lang, dark = false 
                   style={{ height: '100%', width: '100%' }}
                 />
               ) : (
-                /* Fallback for SSR / SEO / Initial Load */
                 <img 
                   src={item.after} 
                   alt={item.afterAlt} 
