@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
+'use client';
+
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 
 interface SlideItem {
   before: string;
@@ -16,50 +18,147 @@ interface Props {
   dark?: boolean;
 }
 
-/**
- * Custom handle for the slider.
- * Separated to ensure stable rendering.
- */
-const CustomHandle = (props: any) => {
-  const { style, ...rest } = props;
+const SliderItem = ({ item, lang, dark }: { item: SlideItem; lang: 'es' | 'ca'; dark: boolean }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  
+  // Position from 0 to 100
+  const xPercent = useMotionValue(50);
+  
+  // Spring for smooth movement
+  const springX = useSpring(xPercent, {
+    stiffness: 400,
+    damping: 40,
+    mass: 1
+  });
+
+  // Transform values for styling
+  const clipPath = useTransform(springX, (val) => `inset(0 0 0 ${val}%)`);
+  const handleLeft = useTransform(springX, (val) => `${val}%`);
+
+  const updatePosition = (clientX: number) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    xPercent.set(percentage);
+  };
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    setIsDragging(true);
+    updatePosition(e.clientX);
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!isDragging) return;
+    updatePosition(e.clientX);
+  };
+
+  const onPointerUp = (e: React.PointerEvent) => {
+    setIsDragging(false);
+  };
+
+  const labelClass = `mb-3 text-xs font-bold font-display uppercase tracking-[0.2em] ${dark ? 'text-white/50' : 'text-[var(--color-muted-fg)]'}`;
+
   return (
-    <div 
-      {...rest} 
-      style={{
-        ...style,
-        width: '40px',
-        height: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        cursor: 'ew-resize',
-        zIndex: 10,
-        // En iOS es vital que el handle tenga touchAction: none para no disparar scroll
-        touchAction: 'none',
-        // Evitamos que se mueva por el margen negativo, usamos transform para el centrado exacto de la línea
-        transform: 'translateX(-50%)' 
-      }}
-    >
-      {/* Línea central visible */}
-      <div style={{ width: '2px', height: '100%', backgroundColor: 'white', boxShadow: '0 0 10px rgba(0,0,0,0.4)' }} />
+    <div className="group flex flex-col">
+      <p className={labelClass}>{item.label}</p>
       
-      {/* Círculo del handle */}
-      <div
-        className="absolute flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-white bg-[var(--color-primary)] shadow-xl"
-        style={{ 
-          pointerEvents: 'none',
-          WebkitUserSelect: 'none',
-          userSelect: 'none'
-        }}
+      <div 
+        ref={containerRef}
+        className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-neutral-900 shadow-2xl select-none touch-pan-y"
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerLeave={onPointerUp}
+        style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
       >
-        <svg 
-          width="20" height="20" viewBox="0 0 24 24" 
-          fill="none" stroke="white" strokeWidth="3" 
-          strokeLinecap="round" strokeLinejoin="round"
+        {/* Before Image (Base) */}
+        <img 
+          src={item.before} 
+          alt={item.beforeAlt} 
+          className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+          draggable="false"
+        />
+
+        {/* After Image (Clipped Overlay) */}
+        <motion.div 
+          className="absolute inset-0 h-full w-full overflow-hidden pointer-events-none"
+          style={{ clipPath }}
         >
-          <path d="m15 18-6-6 6-6" />
-          <path d="m9 18 6-6-6-6" transform="translate(4,0)" />
-        </svg>
+          <img 
+            src={item.after} 
+            alt={item.afterAlt} 
+            className="absolute inset-0 h-full w-full object-cover"
+            draggable="false"
+          />
+        </motion.div>
+
+        {/* Separator Line */}
+        <motion.div 
+          className="absolute inset-y-0 z-20 w-[1px] bg-gradient-to-b from-transparent via-white/80 to-transparent pointer-events-none"
+          style={{ left: handleLeft, x: '-50%' }}
+        />
+
+        {/* Handle Button */}
+        <motion.div
+          className="absolute top-1/2 z-30 pointer-events-none"
+          style={{ 
+            left: handleLeft, 
+            x: '-50%', 
+            y: '-50%'
+          }}
+        >
+          {/* Outer expansion ring */}
+          <motion.div 
+            className="absolute inset-0 rounded-full bg-[var(--color-primary)]/20"
+            animate={{ 
+              scale: isDragging ? 1.8 : 1,
+              opacity: isDragging ? 1 : 0
+            }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          />
+
+          {/* Main Handle */}
+          <motion.div
+            className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/40 bg-[var(--color-primary)] text-white shadow-2xl backdrop-blur-sm"
+            animate={{
+              scale: isDragging ? 0.94 : 1,
+              backgroundColor: isDragging ? 'var(--color-primary-dark)' : 'var(--color-primary)'
+            }}
+            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+          >
+            <motion.svg 
+              width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+              className="relative z-10"
+            >
+              <motion.path 
+                d="M8 17l-5-5 5-5" 
+                animate={{ x: isDragging ? -2 : 0 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              />
+              <motion.path 
+                d="M16 7l5 5-5 5" 
+                animate={{ x: isDragging ? 2 : 0 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              />
+            </motion.svg>
+
+            {/* Subtle Inner Glow */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-white/20 to-transparent pointer-events-none" />
+          </motion.div>
+        </motion.div>
+
+        {/* Badges */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-4 z-20 flex justify-between px-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:opacity-100">
+          <span className="rounded-full bg-black/40 px-3 py-1 text-[10px] font-bold font-display uppercase tracking-wider text-white backdrop-blur-md border border-white/10">
+            {lang === 'es' ? 'Antes' : 'Abans'}
+          </span>
+          <span className="rounded-full bg-[var(--color-primary)]/80 px-3 py-1 text-[10px] font-bold font-display uppercase tracking-wider text-white backdrop-blur-md border border-white/10">
+            {lang === 'es' ? 'Después' : 'Després'}
+          </span>
+        </div>
       </div>
     </div>
   );
@@ -70,71 +169,46 @@ export default function BeforeAfterSlider({ items, dragHint, lang, dark = false 
   
   useEffect(() => {
     setMounted(true);
-    return () => setMounted(false);
   }, []);
 
-  const labelClass = `mb-2 text-xs font-semibold uppercase tracking-widest ${dark ? 'text-white/40' : 'text-[var(--color-muted-fg)]'}`;
-  const hintClass = `mt-6 text-center text-sm flex items-center justify-center gap-2 ${dark ? 'text-white/30' : 'text-[var(--color-muted-fg)]'}`;
-
-  return (
-    <div key={mounted ? 'ready' : 'not-ready'}>
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+  if (!mounted) {
+    return (
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
         {items.map((item, i) => (
-          <div key={i}>
-            <p className={labelClass}>{item.label}</p>
-            <div 
-              className="relative overflow-hidden rounded-xl border border-white/5 shadow-lg bg-neutral-900" 
-              style={{ height: '280px', touchAction: 'none' }} // Bloqueamos el scroll solo en el área del slider
-            >
-              {mounted ? (
-                <ReactCompareSlider
-                  handle={<CustomHandle />}
-                  position={50}
-                  // Forzamos que sea interactivo
-                  itemOne={
-                    <ReactCompareSliderImage
-                      src={item.before}
-                      alt={item.beforeAlt}
-                      style={{ objectFit: 'cover', height: '100%', userSelect: 'none', pointerEvents: 'none' }}
-                    />
-                  }
-                  itemTwo={
-                    <ReactCompareSliderImage
-                      src={item.after}
-                      alt={item.afterAlt}
-                      style={{ objectFit: 'cover', height: '100%', userSelect: 'none', pointerEvents: 'none' }}
-                    />
-                  }
-                  style={{ height: '100%', width: '100%' }}
-                />
-              ) : (
-                <img 
-                  src={item.after} 
-                  alt={item.afterAlt} 
-                  className="w-full h-full object-cover" 
-                />
-              )}
-              
-              {/* Badges */}
-              <div className="pointer-events-none absolute inset-x-0 top-3 z-20 flex justify-between px-3">
-                <span className="rounded-full bg-black/60 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-md border border-white/10">
-                  {lang === 'es' ? 'Antes' : 'Abans'}
-                </span>
-                <span className="rounded-full bg-[var(--color-primary)] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-md border border-white/10">
-                  {lang === 'es' ? 'Después' : 'Després'}
-                </span>
-              </div>
+          <div key={i} className="flex flex-col">
+            <p className="mb-3 text-xs font-bold font-display uppercase tracking-[0.2em] opacity-50">{item.label}</p>
+            <div className="aspect-[16/9] w-full overflow-hidden rounded-2xl bg-neutral-800">
+              <img src={item.after} alt={item.afterAlt} className="h-full w-full object-cover opacity-50" />
             </div>
           </div>
         ))}
       </div>
+    );
+  }
 
-      <p className={hintClass}>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
-          <path d="M5 9l-3 3 3 3M19 9l3 3-3 3M2 12h20"/>
-        </svg>
+
+  const hintClass = `mt-10 text-center text-sm flex items-center justify-center gap-3 transition-colors ${dark ? 'text-white/30 group-hover:text-white/50' : 'text-[var(--color-muted-fg)]'}`;
+
+  return (
+    <div className="group/section">
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:gap-12">
+        {items.map((item, i) => (
+          <SliderItem key={i} item={item} lang={lang} dark={dark} />
+        ))}
+      </div>
+
+      <motion.p 
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className={hintClass}
+      >
+        <span className="flex h-6 w-6 items-center justify-center rounded-full border border-current opacity-50">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden="true">
+            <path d="M7 12h10M7 12l3-3M7 12l3 3M17 12l-3-3M17 12l3 3"/>
+          </svg>
+        </span>
         {dragHint}
-      </p>
+      </motion.p>
     </div>
   );
 }
