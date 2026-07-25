@@ -44,6 +44,9 @@ const altPath = lang === 'es'
     <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'ca_ES'} />
     {ogImage && <meta property="og:image" content={`${baseUrl}${ogImage}`} />}
 
+    <!-- Preloads -->
+    <link rel="preload" as="image" href="/images/hero-cleaning.avif" fetchpriority="high" />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

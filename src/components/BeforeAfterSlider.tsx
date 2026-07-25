@@ -66,6 +66,8 @@ const SliderItem = ({ item, lang, dark }: { item: SlideItem; lang: 'es' | 'ca'; 
           alt={item.beforeAlt} 
           className="absolute inset-0 h-full w-full object-cover pointer-events-none"
           draggable="false"
+          loading="lazy"
+          decoding="async"
         />
 
         {/* After Image (Clipped Overlay) */}
@@ -78,6 +80,8 @@ const SliderItem = ({ item, lang, dark }: { item: SlideItem; lang: 'es' | 'ca'; 
             alt={item.afterAlt} 
             className="absolute inset-0 h-full w-full object-cover"
             draggable="false"
+            loading="lazy"
+            decoding="async"
           />
         </motion.div>
 
@@ -164,7 +168,13 @@ export default function BeforeAfterSlider({ items, dragHint, lang, dark = false 
           <div key={i} className="flex flex-col">
             <p className="mb-3 text-xs font-bold font-display uppercase tracking-[0.2em] opacity-50">{item.label}</p>
             <div className="aspect-[16/9] w-full overflow-hidden rounded-2xl bg-neutral-800">
-              <img src={item.after} alt={item.afterAlt} className="h-full w-full object-cover opacity-50" />
+              <img 
+                src={item.after} 
+                alt={item.afterAlt} 
+                className="h-full w-full object-cover opacity-50" 
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
         ))}

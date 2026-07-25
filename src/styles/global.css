@@ -26,6 +26,9 @@
   /* ── Spacing ─────────────────────────────────────────────────────────────── */
   --spacing-section:    5rem;
   --spacing-section-sm: 3rem;
+
+  /* ── Z-Index ──────────────────────────────────────────────────────────────── */
+  --z-index-skip-link: 100;
 }
 
 /* ── Base ─────────────────────────────────────────────────────────────────── */
@@ -52,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   top: -100%;
   left: 1rem;
-  z-index: 9999;
+  z-index: var(--z-index-skip-link);
   padding: 0.5rem 1rem;
   background: var(--color-primary);
   color: white;
@@ -84,4 +87,10 @@ h1, h2, h3, h4, h5, h6 {
     transition-duration: 0.01ms !important;
   }
   html { scroll-behavior: auto; }
+}
+
+/* ── Scroll Keyframes ─────────────────────────────────────────────────────── */
+@keyframes scroll-vertical {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
 }

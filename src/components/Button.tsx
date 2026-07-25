@@ -28,7 +28,7 @@ const Button: React.FC<ButtonProps> = ({
   leftIcon,
   rightIcon,
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-display font-bold transition-all duration-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
+  const baseStyles = 'inline-flex items-center justify-center font-display font-bold transition-colors duration-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
   
   const variants = {
     primary: 'bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-dark)] focus:ring-[var(--color-primary)]',
@@ -47,14 +47,8 @@ const Button: React.FC<ButtonProps> = ({
 
   const MotionComponent = motion.create(as as any);
 
-  const motionProps = {
-    whileHover: { scale: 1.02 },
-    whileTap: { scale: 0.98 },
-  };
-
   return (
     <MotionComponent
-      {...motionProps}
       type={as === 'button' ? type : undefined}
       onClick={onClick}
       disabled={disabled}

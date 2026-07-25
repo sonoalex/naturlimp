@@ -40,7 +40,7 @@ function Card({ item }: { item: Testimonial }) {
     <div className="rounded-2xl border border-[var(--color-border)] bg-white p-5 shadow-sm">
       <Stars count={item.rating} />
       <p className="mt-3 text-sm leading-relaxed text-[var(--color-foreground)]">
-        "{item.text}"
+        “{item.text}”
       </p>
       <div className="mt-4 flex items-center gap-3">
         <Avatar name={item.name} />
@@ -55,18 +55,19 @@ function Card({ item }: { item: Testimonial }) {
 
 function Column({ items, duration, className }: { items: Testimonial[]; duration: number; className?: string }) {
   return (
-    <div className={className ?? ''}>
-      <motion.div
-        animate={{ y: '-50%' }}
-        transition={{ duration, repeat: Infinity, ease: 'linear', repeatType: 'loop' }}
-        className="flex flex-col gap-4"
+    <div className={`${className ?? ''} overflow-hidden`}>
+      <div
+        className="flex flex-col gap-4 hover:[animation-play-state:paused] focus-within:[animation-play-state:paused]"
+        style={{
+          animation: `scroll-vertical ${duration}s linear infinite`,
+        }}
       >
         {[0, 1].map(idx => (
           <div key={idx} className="flex flex-col gap-4 pb-4">
             {items.map((item, i) => <Card key={i} item={item} />)}
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
