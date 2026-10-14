@@ -31,10 +31,10 @@ const Button: React.FC<ButtonProps> = ({
   const baseStyles = 'inline-flex items-center justify-center font-display font-bold transition-colors duration-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
   
   const variants = {
-    primary: 'bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-dark)] focus:ring-[var(--color-primary)]',
-    secondary: 'bg-transparent text-[var(--color-primary)] border-2 border-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 focus:ring-[var(--color-primary)]',
-    white: 'bg-white text-[var(--color-primary)] hover:bg-gray-50 focus:ring-white',
-    link: 'bg-transparent text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] underline-offset-4 hover:underline p-0 rounded-none',
+    primary: 'bg-[var(--color-primary)] text-[var(--color-foreground)] hover:bg-[var(--color-accent)] focus:ring-[var(--color-primary)]',
+    secondary: 'bg-transparent text-[var(--color-primary-dark)] border-2 border-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 focus:ring-[var(--color-primary)]',
+    white: 'bg-white text-[var(--color-foreground)] hover:bg-gray-50 focus:ring-white',
+    link: 'bg-transparent text-[var(--color-primary-dark)] hover:text-[var(--color-foreground)] underline-offset-4 hover:underline p-0 rounded-none',
   };
 
   const sizes = {

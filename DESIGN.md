@@ -10,21 +10,21 @@ Defined in `src/styles/global.css` via Tailwind v4 `@theme`. Reference as `var(-
 
 | Token | Value | Usage |
 |---|---|---|
-| `--color-primary` | `#16a34a` | Brand green — headings, links, icon strokes, focus ring |
-| `--color-primary-dark` | `#166534` | Hover on primary elements |
-| `--color-primary-light` | `#dcfce7` | Icon container backgrounds, badge fills |
+| `--color-primary` | `#a2d961` | Brand lime green (matches logo) — borders, badges, accents, brand marks |
+| `--color-primary-dark` | `#4d7c0f` | Hover on primary elements, high-contrast icon strokes |
+| `--color-primary-light` | `#f0fae1` | Icon container backgrounds, badge fills |
 | `--color-secondary` | `#0891b2` | Cyan — pool/water service accent |
 | `--color-secondary-dark` | `#0e7490` | Hover on secondary |
-| `--color-accent` | `#059669` | CTA buttons (primary action) |
-| `--color-background` | `#f0fdf4` | Page background (green-tinted white) |
+| `--color-accent` | `#8ec641` | CTA buttons and hover states |
+| `--color-background` | `#f8fcf5` | Page background (warm lime-tinted white) |
 | `--color-surface` | `#ffffff` | Cards, header, form containers |
-| `--color-foreground` | `#0f172a` | Body text, headings (15:1 contrast on background) |
-| `--color-muted` | `#f0f7f3` | Alternating section backgrounds |
-| `--color-muted-fg` | `#64748b` | Secondary text, nav links, labels |
-| `--color-border` | `#e2efe7` | Card borders, dividers |
+| `--color-foreground` | `#0f1a0f` | Body text, headings (>10:1 contrast on background/primary) |
+| `--color-muted` | `#f2f8ea` | Alternating section backgrounds |
+| `--color-muted-fg` | `#5a6d54` | Secondary text, nav links, labels |
+| `--color-border` | `#e0eccf` | Card borders, dividers |
 | `--color-destructive` | `#dc2626` | Form errors |
 | `--color-destructive-light` | `#fef2f2` | Error field background |
-| `--color-ring` | `#16a34a` | Focus outline |
+| `--color-ring` | `#a2d961` | Focus outline |
 
 ### Contrast pairs (WCAG AA verified)
 

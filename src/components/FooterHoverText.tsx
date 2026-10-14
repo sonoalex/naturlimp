@@ -45,10 +45,10 @@ export default function FooterHoverText({ text }: { text: string }) {
         <linearGradient id="nl-col" x1="0%" y1="0%" x2="100%" y2="0%">
           {hovered && (
             <>
-              <stop offset="0%"   stopColor="#dcfce7" />
-              <stop offset="28%"  stopColor="#16a34a" />
+              <stop offset="0%"   stopColor="#f0fae1" />
+              <stop offset="28%"  stopColor="#a2d961" />
               <stop offset="55%"  stopColor="#22d3ee" />
-              <stop offset="80%"  stopColor="#86efac" />
+              <stop offset="80%"  stopColor="#a2d961" />
               <stop offset="100%" stopColor="#a3e635" />
             </>
           )}
@@ -84,7 +84,7 @@ export default function FooterHoverText({ text }: { text: string }) {
       <motion.text
         {...base}
         fill="transparent"
-        stroke="#16a34a"
+        stroke="#a2d961"
         strokeOpacity={0.35}
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
         animate={{ strokeDashoffset: 0, strokeDasharray: 1000 }}
