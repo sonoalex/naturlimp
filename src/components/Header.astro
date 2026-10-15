@@ -16,24 +16,28 @@ let altPath = '/';
 if (isCa) {
   if (currentPath === '/ca/serveis') altPath = '/servicios';
   else if (currentPath === '/ca/contacte') altPath = '/contacto';
+  else if (currentPath === '/ca/nosaltres') altPath = '/nosotros';
   else if (currentPath === '/ca') altPath = '/';
   else altPath = currentPath.replace(/^\/ca/, '/es');
 } else {
   if (currentPath === '/servicios') altPath = '/ca/serveis';
   else if (currentPath === '/contacto') altPath = '/ca/contacte';
+  else if (currentPath === '/nosotros') altPath = '/ca/nosaltres';
   else if (currentPath === '/') altPath = '/ca';
   else altPath = `/ca${currentPath.replace(/^\/es/, '')}`;
 }
 
 const servicesHref     = isCa ? '/ca/serveis' : '/servicios';
+const aboutHref        = isCa ? '/ca/nosaltres' : '/nosotros';
 const testimonialsHref = isCa ? '/ca#opinions' : '/#testimonios';
 const contactHref      = isCa ? '/ca/contacte' : '/contacto';
 const faqHref          = isCa ? '/ca#faq' : '/#faq';
 
 const navLinks = [
-  { label: t['nav.services'],     href: servicesHref,     section: isCa ? 'serveis'  : 'servicios' },
-  { label: t['nav.testimonials'], href: testimonialsHref, section: isCa ? 'opinions' : 'testimonios' },
-  { label: 'FAQ',                 href: faqHref,          section: 'faq' },
+  { label: t['nav.services'],               href: servicesHref,     section: isCa ? 'serveis'   : 'servicios' },
+  { label: isCa ? 'Nosaltres' : 'Nosotros', href: aboutHref,        section: isCa ? 'nosaltres' : 'nosotros' },
+  { label: t['nav.testimonials'],           href: testimonialsHref, section: isCa ? 'opinions'  : 'testimonios' },
+  { label: 'FAQ',                           href: faqHref,          section: 'faq' },
 ];
 ---
 

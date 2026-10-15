@@ -1,0 +1,429 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Button from '../../components/Button';
+import { flattenI18n } from '../../utils/i18n';
+
+const rawT = await import('../../i18n/es.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+
+const values = [
+  {
+    title: 'Confianza y trato cercano',
+    desc: 'Tratamos cada instalación y comunidad como si fuera propia. Comunicación directa con los responsables sin intermediarios.',
+    icon: `<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>`,
+  },
+  {
+    title: 'Profesionalidad y equipo propio',
+    desc: 'Personal contratado, formado y de total confianza. Con seguro de responsabilidad civil para tu máxima tranquilidad.',
+    icon: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>`,
+  },
+  {
+    title: 'Soluciones a medida',
+    desc: 'Nos adaptamos a las necesidades, horarios y frecuencias de cada cliente: desde comunidades pequeñas hasta grandes instalaciones.',
+    icon: `<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>`,
+  },
+  {
+    title: 'Compromiso medioambiental',
+    desc: 'Utilizamos maquinaria eficiente y productos de limpieza profesionales respetuosos con las superficies y el entorno.',
+    icon: `<path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12A10 10 0 0 1 12 2z"/><path d="M12 6v6l4 2"/>`,
+  },
+];
+
+const multiservices = [
+  {
+    title: 'Limpieza y Desinfección Integral',
+    desc: 'Comunidades de propietarios, garajes, portales, oficinas, cristales, abrillantado y limpiezas de final de obra.',
+    icon: `<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>`,
+  },
+  {
+    title: 'Mantenimiento de Piscinas',
+    desc: 'Control químico del agua, depuradoras, limpieza de vaso y puesta a punto de temporada homologada.',
+    icon: `<path d="M2 12h4l2-6 4 12 2-8 2 4h6"/><path d="M2 20h20"/>`,
+  },
+  {
+    title: 'Jardinería y Zonas Verdes',
+    desc: 'Cuidado de césped, poda de setos y arbolado, sistemas de riego y mantenimiento periódico exterior.',
+    icon: `<path d="M12 22v-9"/><path d="M9 13a4.5 4.5 0 0 0 3-4.5 4.5 4.5 0 0 1 6 0 4.5 4.5 0 0 1-6 4.5"/><path d="M15 13a4.5 4.5 0 0 1-3-4.5 4.5 4.5 0 0 0-6 0 4.5 4.5 0 0 0 6 4.5"/>`,
+  },
+  {
+    title: 'Pintura y Mantenimiento General',
+    desc: 'Pintura de escaleras, parkings, zonas comunes y pequeñas reparaciones para centralizar todo con un único equipo.',
+    icon: `<path d="m19 11-8-8-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0L19 11Z"/><path d="m5 2 5 5"/><path d="M2 13h15"/>`,
+  },
+];
+---
+
+<BaseLayout
+  title="Quiénes Somos — Natur Limp Tarragona | Más de 17 Años de Experiencia"
+  description="Conoce Natur Limp Tarragona SLU. Más de 17 años ofreciendo servicios profesionales de limpieza, mantenimiento de comunidades, piscinas y jardinería en Tarragona."
+  lang="es"
+  canonical="https://naturlimp.com/nosotros/"
+>
+  <Header lang="es" t={flat} />
+
+  <main id="main-content">
+
+    <!-- ── Hero Section (Con foto de NaturLimp visible arriba) ───────────────── -->
+    <section class="relative bg-[var(--color-foreground)] text-white pt-32 pb-20 overflow-hidden">
+      <!-- Glow ambient background -->
+      <div
+        class="pointer-events-none absolute inset-0"
+        style="background: radial-gradient(ellipse 70% 55% at 50% 20%, rgba(162,217,97,0.18) 0%, transparent 70%);"
+        aria-hidden="true"
+      />
+
+      <div class="relative mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <!-- Breadcrumb -->
+        <nav class="mb-6 flex items-center gap-2 text-xs text-white/50" aria-label="Miga de pan">
+          <a href="/" class="hover:text-white transition-colors">Inicio</a>
+          <span>/</span>
+          <span class="text-[var(--color-primary)] font-medium">Quiénes somos</span>
+        </nav>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <!-- Text left column (7 cols) -->
+          <div class="lg:col-span-7">
+            <div class="mb-5 inline-flex items-center gap-2 rounded-sm border border-[var(--color-primary)]/40 bg-[var(--color-primary)]/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-primary-light)]">
+              <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]" aria-hidden="true"></span>
+              Más de 17 años de experiencia
+            </div>
+
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
+              Compromiso, confianza y cercanía en cada rincón.
+            </h1>
+
+            <p class="mt-6 text-lg sm:text-xl text-white/70 leading-relaxed font-sans">
+              <strong>Natur Limp Tarragona S.L.U.</strong> es una empresa consolidada de limpieza y multiservicios. Cuidamos cada espacio con la atención personalizada que solo un equipo local y profesional puede ofrecer.
+            </p>
+
+            <div class="mt-8 flex flex-wrap items-center gap-4">
+              <Button
+                client:load
+                as="a"
+                href="/contacto"
+                variant="primary"
+                size="lg"
+                className="!rounded-full font-bold"
+              >
+                Pedir presupuesto gratis
+              </Button>
+              <Button
+                client:load
+                as="a"
+                href="tel:+34603765253"
+                variant="secondary"
+                size="lg"
+                className="!rounded-full !border-white/20 !text-white hover:!bg-white/10"
+              >
+                Llamar al 603 765 253
+              </Button>
+            </div>
+          </div>
+
+          <!-- Foto real de NaturLimp (Visible arriba en el Hero) (5 cols) -->
+          <div class="lg:col-span-5">
+            <div class="relative overflow-hidden rounded-3xl border border-white/15 shadow-2xl bg-white/5 group">
+              <img
+                src="/images/nosotros-naturlimp.jpeg"
+                alt="Natur Limp Tarragona - Limpieza y multiservicios"
+                class="w-full h-80 sm:h-96 lg:h-[420px] object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="eager"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-foreground)]/80 via-transparent to-transparent flex items-end p-6">
+                <div>
+                  <span class="inline-block rounded-full bg-[var(--color-primary)] px-3 py-1 text-xs font-bold text-[var(--color-foreground)] mb-1">
+                    Natur Limp Tarragona
+                  </span>
+                  <p class="text-sm text-white/90 font-medium">Empresa local de limpieza y multiservicios</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ── Estadísticas clave ────────────────────────────────────────────────── -->
+    <section class="border-y border-[var(--color-border)] bg-[var(--color-surface)] py-12" aria-label="Cifras clave">
+      <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+          <div class="flex flex-col items-center text-center">
+            <span class="font-display text-4xl sm:text-5xl font-black text-[var(--color-primary-dark)]">+17</span>
+            <span class="mt-2 text-sm text-[var(--color-muted-fg)] font-medium">Años de experiencia</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <span class="font-display text-4xl sm:text-5xl font-black text-[var(--color-primary-dark)]">100%</span>
+            <span class="mt-2 text-sm text-[var(--color-muted-fg)] font-medium">Personal propio asegurado</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <span class="font-display text-4xl sm:text-5xl font-black text-[var(--color-primary-dark)]">30 km</span>
+            <span class="mt-2 text-sm text-[var(--color-muted-fg)] font-medium">Radio de cobertura</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <span class="font-display text-4xl sm:text-5xl font-black text-[var(--color-primary-dark)]">&lt; 24h</span>
+            <span class="mt-2 text-sm text-[var(--color-muted-fg)] font-medium">Respuesta presupuestos</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── Historia y Trayectoria ────────────────────────────────────────────── -->
+    <section class="py-24 bg-[var(--color-background)]">
+      <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+          <!-- Texto descriptivo -->
+          <div class="lg:col-span-7">
+            <div class="mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[var(--color-primary-dark)]">
+              Nuestra Trayectoria
+            </div>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[var(--color-foreground)]">
+              Creciendo junto a las comunidades y empresas de Tarragona
+            </h2>
+            <div class="mt-6 space-y-4 text-base sm:text-lg text-[var(--color-foreground)]/80 leading-relaxed font-sans">
+              <p>
+                <strong>Natur Limp Tarragona S.L.U.</strong> nació con una vocación clara: profesionalizar el sector de la limpieza y el mantenimiento en nuestra provincia, ofreciendo un servicio riguroso donde la confianza del cliente sea el pilar fundamental.
+              </p>
+              <p>
+                A lo largo de más de 17 años de trabajo constante, nos hemos consolidado como el socio de confianza para cientos de comunidades de propietarios, oficinas corporativas, locales comerciales e industrias en Tarragona, Reus, Salou, Cambrils, Vila-seca y municipios vecinos.
+              </p>
+              <p>
+                No somos una gran franquicia despersonalizada: conocemos a nuestros clientes por su nombre, supervisamos directamente cada servicio y resolvemos cualquier incidencia con rapidez y eficacia.
+              </p>
+            </div>
+          </div>
+
+          <!-- Tarjeta destacada con valores -->
+          <div class="lg:col-span-5">
+            <div class="rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 shadow-sm">
+              <h3 class="font-display text-xl font-bold text-[var(--color-foreground)] mb-6">
+                Lo que nos define
+              </h3>
+              <ul class="space-y-4">
+                <li class="flex items-start gap-3">
+                  <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)] text-[var(--color-foreground)] mt-0.5">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="text-sm sm:text-base text-[var(--color-foreground)]/85">
+                    <strong>Trato directo:</strong> contacto ágil y continuo con el cliente y los administradores de fincas.
+                  </span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)] text-[var(--color-foreground)] mt-0.5">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="text-sm sm:text-base text-[var(--color-foreground)]/85">
+                    <strong>Seguridad jurídica total:</strong> seguro de responsabilidad civil y personal con contrato laboral.
+                  </span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)] text-[var(--color-foreground)] mt-0.5">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="text-sm sm:text-base text-[var(--color-foreground)]/85">
+                    <strong>Supervisión continua:</strong> protocolos de calidad periódicos para asegurar resultados óptimos.
+                  </span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)] text-[var(--color-foreground)] mt-0.5">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="text-sm sm:text-base text-[var(--color-foreground)]/85">
+                    <strong>Precios justos y transparentes:</strong> presupuestos claros sin costes imprevistos.
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── Nuestros Valores ──────────────────────────────────────────────────── -->
+    <section class="py-24 bg-[var(--color-surface)] border-y border-[var(--color-border)]">
+      <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <div class="mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[var(--color-primary-dark)]">
+            Nuestros Principios
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[var(--color-foreground)]">
+            Los valores que guían nuestro trabajo
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {values.map((v) => (
+            <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-background)] p-6 transition-all duration-200 hover:border-[var(--color-primary)]/40 hover:shadow-md">
+              <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-primary-light)] text-[var(--color-primary-dark)]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={v.icon} />
+              </div>
+              <h3 class="font-display text-lg font-bold text-[var(--color-foreground)] mb-2">
+                {v.title}
+              </h3>
+              <p class="text-sm text-[var(--color-muted-fg)] leading-relaxed">
+                {v.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── Mucho más que limpieza: Multiservicios ────────────────────────────── -->
+    <section class="py-24 bg-[var(--color-background)]">
+      <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <div class="mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[var(--color-primary-dark)]">
+            Solución Global
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[var(--color-foreground)]">
+            Soluciones integrales de multiservicios
+          </h2>
+          <p class="mt-4 text-base sm:text-lg text-[var(--color-muted-fg)]">
+            Centraliza todas las necesidades de mantenimiento de tu comunidad o empresa con un único equipo y una sola factura.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {multiservices.map((m) => (
+            <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-primary-light)] text-[var(--color-primary-dark)]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={m.icon} />
+              </div>
+              <h3 class="font-display text-lg font-bold text-[var(--color-foreground)] mb-2">
+                {m.title}
+              </h3>
+              <p class="text-sm text-[var(--color-muted-fg)] leading-relaxed">
+                {m.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── Proyecto NaturGo Autocaravanas (Con tarjeta blanca y logo nítido) ─── -->
+    <section class="py-20 bg-[var(--color-surface)] border-t border-[var(--color-border)]">
+      <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <div class="rounded-3xl border border-[var(--color-border)] bg-gradient-to-br from-[var(--color-foreground)] to-[#152315] p-8 sm:p-12 lg:p-16 text-white overflow-hidden relative">
+          <!-- Background decoration -->
+          <div class="pointer-events-none absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-[var(--color-primary)]/10 blur-3xl" aria-hidden="true" />
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+            <div class="lg:col-span-7">
+              <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-[var(--color-primary)]/20 px-3 py-1 text-xs font-semibold text-[var(--color-primary-light)]">
+                Línea de Evolución
+              </div>
+              <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
+                NaturGo Autocaravanas
+              </h2>
+              <p class="mt-4 text-base sm:text-lg text-white/70 leading-relaxed font-sans">
+                Como parte de la evolución y crecimiento de <strong>Natur Limp Tarragona S.L.U.</strong> nace <strong>NaturGo Autocaravanas</strong>, nuestra línea dedicada al alquiler de autocaravanas totalmente equipadas para que disfrutes de tus escapadas con total libertad y comodidad.
+              </p>
+              <p class="mt-3 text-base text-white/60 leading-relaxed">
+                Mantenemos la misma filosofía que en nuestra área de multiservicios: cercanía, vehículos impecables, revisión exhaustiva y atención personalizada para que tu única preocupación sea disfrutar del viaje.
+              </p>
+              <div class="mt-8 flex flex-wrap gap-4">
+                <Button
+                  client:load
+                  as="a"
+                  href="https://naturgo.es"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="primary"
+                  size="md"
+                  className="!rounded-full font-bold inline-flex items-center gap-2"
+                >
+                  <span>Visitar web NaturGo</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                  </svg>
+                </Button>
+                <Button
+                  client:load
+                  as="a"
+                  href="/contacto"
+                  variant="white"
+                  size="md"
+                  className="!rounded-full font-bold"
+                >
+                  Contactar con nosotros
+                </Button>
+              </div>
+            </div>
+
+            <!-- Tarjeta blanca con logo NaturGo centrado y grande -->
+            <div class="lg:col-span-5 flex justify-center">
+              <div class="w-full max-w-md rounded-3xl bg-white p-10 sm:p-14 text-center shadow-2xl flex flex-col items-center justify-center">
+                <img
+                  src="/images/naturgo-logo.png"
+                  alt="Logo NaturGo Autocaravanas"
+                  class="w-full max-w-[280px] sm:max-w-[320px] h-auto object-contain transition-transform duration-300 hover:scale-105"
+                  loading="lazy"
+                />
+                <span class="mt-6 inline-block rounded-full bg-[var(--color-primary-light)] px-4 py-1.5 text-xs uppercase tracking-widest text-[var(--color-primary-dark)] font-bold border border-[var(--color-border)]">
+                  Alquiler de autocaravanas en Tarragona
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── CTA Final ─────────────────────────────────────────────────────────── -->
+    <section class="py-24 bg-[var(--color-foreground)] text-white text-center relative overflow-hidden">
+      <div
+        class="pointer-events-none absolute inset-0"
+        style="background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(162,217,97,0.15) 0%, transparent 70%);"
+        aria-hidden="true"
+      />
+      <div class="relative mx-auto max-w-4xl px-6 sm:px-10 lg:px-14">
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+          ¿Buscando una empresa de confianza para tu comunidad o empresa?
+        </h2>
+        <p class="mt-6 text-lg text-white/70 leading-relaxed">
+          Pide presupuesto sin compromiso. Nos acercamos a conocer tus instalaciones y te preparamos una propuesta adaptada a lo que realmente necesitas.
+        </p>
+        <div class="mt-10 flex flex-wrap justify-center gap-4">
+          <Button
+            client:load
+            as="a"
+            href="/contacto"
+            variant="primary"
+            size="lg"
+            className="!rounded-full font-bold"
+          >
+            Solicitar presupuesto gratuito
+          </Button>
+          <Button
+            client:load
+            as="a"
+            href="https://wa.me/34603765253?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n"
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="white"
+            size="lg"
+            className="!rounded-full font-bold"
+          >
+            Escríbenos por WhatsApp
+          </Button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer lang="es" t={flat} />
+</BaseLayout>

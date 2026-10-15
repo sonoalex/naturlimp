@@ -1,0 +1,429 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Button from '../../../components/Button';
+import { flattenI18n } from '../../../utils/i18n';
+
+const rawT = await import('../../../i18n/ca.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+
+const values = [
+  {
+    title: 'Confiança i tracte proper',
+    desc: 'Cuidem cada instal·lació i comunitat com si fos pròpia. Comunicació directa amb els responsables sense intermediaris.',
+    icon: `<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>`,
+  },
+  {
+    title: 'Professionalitat i equip propi',
+    desc: 'Personal contractat, format i de total confiança. Amb assegurança de responsabilitat civil per a la teva màxima tranquil·litat.',
+    icon: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>`,
+  },
+  {
+    title: 'Solucions a mida',
+    desc: 'Ens adaptem a les necessitats, horaris i freqüències de cada client: des de petites comunitats fins a grans instal·lacions.',
+    icon: `<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>`,
+  },
+  {
+    title: 'Compromís mediambiental',
+    desc: 'Utilitzem maquinària eficient i productes de neteja professionals respectuosos amb els materials i el medi ambient.',
+    icon: `<path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12A10 10 0 0 1 12 2z"/><path d="M12 6v6l4 2"/>`,
+  },
+];
+
+const multiservices = [
+  {
+    title: 'Neteja i Desinfecció Integral',
+    desc: 'Comunitats de veïns, pàrquings, portals, oficines, vidres, abrillantat i neteges de final dobra.',
+    icon: `<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>`,
+  },
+  {
+    title: 'Manteniment de Piscines',
+    desc: 'Control químic de laigua, depuradores, neteja de vas i posada a punt de temporada homologada.',
+    icon: `<path d="M2 12h4l2-6 4 12 2-8 2 4h6"/><path d="M2 20h20"/>`,
+  },
+  {
+    title: 'Jardineria i Zones Verdes',
+    desc: 'Cura de gespa, esporga de bardisses i arbrat, sistemes de reg i manteniment periòdic exterior.',
+    icon: `<path d="M12 22v-9"/><path d="M9 13a4.5 4.5 0 0 0 3-4.5 4.5 4.5 0 0 1 6 0 4.5 4.5 0 0 1-6 4.5"/><path d="M15 13a4.5 4.5 0 0 1-3-4.5 4.5 4.5 0 0 0-6 0 4.5 4.5 0 0 0 6 4.5"/>`,
+  },
+  {
+    title: 'Pintura i Manteniment General',
+    desc: 'Pintura descales, aparcaments, zones comunes i petites reparacions per centralitzar-ho tot amb un sol equip.',
+    icon: `<path d="m19 11-8-8-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0L19 11Z"/><path d="m5 2 5 5"/><path d="M2 13h15"/>`,
+  },
+];
+---
+
+<BaseLayout
+  title="Qui Som — Natur Limp Tarragona | Més de 17 Anys d'Experiència"
+  description="Coneix Natur Limp Tarragona SLU. Més de 17 anys oferint serveis professionals de neteja, manteniment de comunitats, piscines i jardineria a Tarragona."
+  lang="ca"
+  canonical="https://naturlimp.com/ca/nosaltres/"
+>
+  <Header lang="ca" t={flat} />
+
+  <main id="main-content">
+
+    <!-- ── Hero Section (Amb foto de NaturLimp visible dalt de tot) ──────────── -->
+    <section class="relative bg-[var(--color-foreground)] text-white pt-32 pb-20 overflow-hidden">
+      <!-- Glow ambient background -->
+      <div
+        class="pointer-events-none absolute inset-0"
+        style="background: radial-gradient(ellipse 70% 55% at 50% 20%, rgba(162,217,97,0.18) 0%, transparent 70%);"
+        aria-hidden="true"
+      />
+
+      <div class="relative mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <!-- Breadcrumb -->
+        <nav class="mb-6 flex items-center gap-2 text-xs text-white/50" aria-label="Fil d'Ariadna">
+          <a href="/ca" class="hover:text-white transition-colors">Inici</a>
+          <span>/</span>
+          <span class="text-[var(--color-primary)] font-medium">Qui som</span>
+        </nav>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <!-- Text left column (7 cols) -->
+          <div class="lg:col-span-7">
+            <div class="mb-5 inline-flex items-center gap-2 rounded-sm border border-[var(--color-primary)]/40 bg-[var(--color-primary)]/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-primary-light)]">
+              <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]" aria-hidden="true"></span>
+              Més de 17 anys d'experiència
+            </div>
+
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
+              Compromís, confiança i proximitat a cada racó.
+            </h1>
+
+            <p class="mt-6 text-lg sm:text-xl text-white/70 leading-relaxed font-sans">
+              <strong>Natur Limp Tarragona S.L.U.</strong> és una empresa consolidada de neteja i multiserveis. Cuidem cada espai amb l'atenció personalitzada que només un equip local i professional pot oferir.
+            </p>
+
+            <div class="mt-8 flex flex-wrap items-center gap-4">
+              <Button
+                client:load
+                as="a"
+                href="/ca/contacte"
+                variant="primary"
+                size="lg"
+                className="!rounded-full font-bold"
+              >
+                Demanar pressupost gratis
+              </Button>
+              <Button
+                client:load
+                as="a"
+                href="tel:+34603765253"
+                variant="secondary"
+                size="lg"
+                className="!rounded-full !border-white/20 !text-white hover:!bg-white/10"
+              >
+                Trucar al 603 765 253
+              </Button>
+            </div>
+          </div>
+
+          <!-- Foto real de NaturLimp (Visible a l'Hero) (5 cols) -->
+          <div class="lg:col-span-5">
+            <div class="relative overflow-hidden rounded-3xl border border-white/15 shadow-2xl bg-white/5 group">
+              <img
+                src="/images/nosotros-naturlimp.jpeg"
+                alt="Natur Limp Tarragona - Neteja i multiserveis"
+                class="w-full h-80 sm:h-96 lg:h-[420px] object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="eager"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-foreground)]/80 via-transparent to-transparent flex items-end p-6">
+                <div>
+                  <span class="inline-block rounded-full bg-[var(--color-primary)] px-3 py-1 text-xs font-bold text-[var(--color-foreground)] mb-1">
+                    Natur Limp Tarragona
+                  </span>
+                  <p class="text-sm text-white/90 font-medium">Empresa local de neteja i multiserveis</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ── Estadístiques clau ────────────────────────────────────────────────── -->
+    <section class="border-y border-[var(--color-border)] bg-[var(--color-surface)] py-12" aria-label="Xifres clau">
+      <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+          <div class="flex flex-col items-center text-center">
+            <span class="font-display text-4xl sm:text-5xl font-black text-[var(--color-primary-dark)]">+17</span>
+            <span class="mt-2 text-sm text-[var(--color-muted-fg)] font-medium">Anys d'experiència</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <span class="font-display text-4xl sm:text-5xl font-black text-[var(--color-primary-dark)]">100%</span>
+            <span class="mt-2 text-sm text-[var(--color-muted-fg)] font-medium">Personal propi assegurat</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <span class="font-display text-4xl sm:text-5xl font-black text-[var(--color-primary-dark)]">30 km</span>
+            <span class="mt-2 text-sm text-[var(--color-muted-fg)] font-medium">Radi de cobertura</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <span class="font-display text-4xl sm:text-5xl font-black text-[var(--color-primary-dark)]">&lt; 24h</span>
+            <span class="mt-2 text-sm text-[var(--color-muted-fg)] font-medium">Resposta pressupostos</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── Història i Trajectòria ────────────────────────────────────────────── -->
+    <section class="py-24 bg-[var(--color-background)]">
+      <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+          <!-- Text descriptiu -->
+          <div class="lg:col-span-7">
+            <div class="mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[var(--color-primary-dark)]">
+              La Nostra Trajectòria
+            </div>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[var(--color-foreground)]">
+              Creixent al costat de les comunitats i empreses de Tarragona
+            </h2>
+            <div class="mt-6 space-y-4 text-base sm:text-lg text-[var(--color-foreground)]/80 leading-relaxed font-sans">
+              <p>
+                <strong>Natur Limp Tarragona S.L.U.</strong> va néixer amb una vocació clara: professionalitzar el sector de la neteja i el manteniment a la nostra demarcació, oferint un servei rigorós on la confiança del client sigui el pilar fonamental.
+              </p>
+              <p>
+                Al llarg de més de 17 anys de treball constant, ens hem consolidat com el soci de confiança per a centenars de comunitats de propietaris, oficines corporatives, locals comercials i indústries a Tarragona, Reus, Salou, Cambrils, Vila-seca i municipis veïns.
+              </p>
+              <p>
+                No som una gran franquícia despersonalitzada: coneixem els nostres clients pel seu nom, supervisem directament cada servei i resolem qualsevol incidència amb rapidesa i eficàcia.
+              </p>
+            </div>
+          </div>
+
+          <!-- Targeta destacada amb valors -->
+          <div class="lg:col-span-5">
+            <div class="rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 shadow-sm">
+              <h3 class="font-display text-xl font-bold text-[var(--color-foreground)] mb-6">
+                El que ens defineix
+              </h3>
+              <ul class="space-y-4">
+                <li class="flex items-start gap-3">
+                  <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)] text-[var(--color-foreground)] mt-0.5">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="text-sm sm:text-base text-[var(--color-foreground)]/85">
+                    <strong>Tracte directe:</strong> contacte àgil i continu amb el client i els administradors de finques.
+                  </span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)] text-[var(--color-foreground)] mt-0.5">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="text-sm sm:text-base text-[var(--color-foreground)]/85">
+                    <strong>Seguretat jurídica total:</strong> assegurança de responsabilitat civil i personal contractat.
+                  </span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)] text-[var(--color-foreground)] mt-0.5">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="text-sm sm:text-base text-[var(--color-foreground)]/85">
+                    <strong>Supervisió contínua:</strong> protocols de qualitat periòdics per assegurar resultats òptims.
+                  </span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)] text-[var(--color-foreground)] mt-0.5">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="text-sm sm:text-base text-[var(--color-foreground)]/85">
+                    <strong>Preus justos i transparents:</strong> pressupostos clars sense costos imprevistos.
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── Els Nostres Valors ─────────────────────────────────────────────────── -->
+    <section class="py-24 bg-[var(--color-surface)] border-y border-[var(--color-border)]">
+      <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <div class="mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[var(--color-primary-dark)]">
+            Els Nostres Principis
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[var(--color-foreground)]">
+            Els valors que guien la nostra feina
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {values.map((v) => (
+            <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-background)] p-6 transition-all duration-200 hover:border-[var(--color-primary)]/40 hover:shadow-md">
+              <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-primary-light)] text-[var(--color-primary-dark)]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={v.icon} />
+              </div>
+              <h3 class="font-display text-lg font-bold text-[var(--color-foreground)] mb-2">
+                {v.title}
+              </h3>
+              <p class="text-sm text-[var(--color-muted-fg)] leading-relaxed">
+                {v.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── Molt més que neteja: Multiserveis ─────────────────────────────────── -->
+    <section class="py-24 bg-[var(--color-background)]">
+      <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <div class="mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[var(--color-primary-dark)]">
+            Solució Global
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[var(--color-foreground)]">
+            Solucions integrals de multiserveis
+          </h2>
+          <p class="mt-4 text-base sm:text-lg text-[var(--color-muted-fg)]">
+            Centralitza totes les necessitats de manteniment de la teva comunitat o empresa amb un únic equip i una sola factura.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {multiservices.map((m) => (
+            <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-primary-light)] text-[var(--color-primary-dark)]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={m.icon} />
+              </div>
+              <h3 class="font-display text-lg font-bold text-[var(--color-foreground)] mb-2">
+                {m.title}
+              </h3>
+              <p class="text-sm text-[var(--color-muted-fg)] leading-relaxed">
+                {m.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── Projecte NaturGo Autocaravanes (Amb targeta blanca i logo nítid) ──── -->
+    <section class="py-20 bg-[var(--color-surface)] border-t border-[var(--color-border)]">
+      <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <div class="rounded-3xl border border-[var(--color-border)] bg-gradient-to-br from-[var(--color-foreground)] to-[#152315] p-8 sm:p-12 lg:p-16 text-white overflow-hidden relative">
+          <!-- Background decoration -->
+          <div class="pointer-events-none absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-[var(--color-primary)]/10 blur-3xl" aria-hidden="true" />
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+            <div class="lg:col-span-7">
+              <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-[var(--color-primary)]/20 px-3 py-1 text-xs font-semibold text-[var(--color-primary-light)]">
+                Línia d'Evolució
+              </div>
+              <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
+                NaturGo Autocaravanes
+              </h2>
+              <p class="mt-4 text-base sm:text-lg text-white/70 leading-relaxed font-sans">
+                Com a part de l'evolució i creixement de <strong>Natur Limp Tarragona S.L.U.</strong> neix <strong>NaturGo Autocaravanes</strong>, la nostra línia dedicada al lloguer d'autocaravanes totalment equipades perquè gaudeixis de les teves escapades amb total llibertat i comoditat.
+              </p>
+              <p class="mt-3 text-base text-white/60 leading-relaxed">
+                Mantenim la mateixa filosofia que a la nostra àrea de multiserveis: proximitat, vehicles impecables, revisió exhaustiva i atenció personalitzada perquè la teva única preocupació sigui gaudir del viatge.
+              </p>
+              <div class="mt-8 flex flex-wrap gap-4">
+                <Button
+                  client:load
+                  as="a"
+                  href="https://naturgo.es"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="primary"
+                  size="md"
+                  className="!rounded-full font-bold inline-flex items-center gap-2"
+                >
+                  <span>Visitar web NaturGo</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                  </svg>
+                </Button>
+                <Button
+                  client:load
+                  as="a"
+                  href="/ca/contacte"
+                  variant="white"
+                  size="md"
+                  className="!rounded-full font-bold"
+                >
+                  Contactar amb nosaltres
+                </Button>
+              </div>
+            </div>
+
+            <!-- Targeta blanca amb logo NaturGo centrat i gran -->
+            <div class="lg:col-span-5 flex justify-center">
+              <div class="w-full max-w-md rounded-3xl bg-white p-10 sm:p-14 text-center shadow-2xl flex flex-col items-center justify-center">
+                <img
+                  src="/images/naturgo-logo.png"
+                  alt="Logo NaturGo Autocaravanes"
+                  class="w-full max-w-[280px] sm:max-w-[320px] h-auto object-contain transition-transform duration-300 hover:scale-105"
+                  loading="lazy"
+                />
+                <span class="mt-6 inline-block rounded-full bg-[var(--color-primary-light)] px-4 py-1.5 text-xs uppercase tracking-widest text-[var(--color-primary-dark)] font-bold border border-[var(--color-border)]">
+                  Lloguer d'autocaravanes a Tarragona
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── CTA Final ─────────────────────────────────────────────────────────── -->
+    <section class="py-24 bg-[var(--color-foreground)] text-white text-center relative overflow-hidden">
+      <div
+        class="pointer-events-none absolute inset-0"
+        style="background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(162,217,97,0.15) 0%, transparent 70%);"
+        aria-hidden="true"
+      />
+      <div class="relative mx-auto max-w-4xl px-6 sm:px-10 lg:px-14">
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+          Buscant una empresa de confiança per a la teva comunitat o empresa?
+        </h2>
+        <p class="mt-6 text-lg text-white/70 leading-relaxed">
+          Demana pressupost sense compromís. Ens apropem a conèixer les teves instal·lacions i et preparem una proposta adaptada al que realment necessites.
+        </p>
+        <div class="mt-10 flex flex-wrap justify-center gap-4">
+          <Button
+            client:load
+            as="a"
+            href="/ca/contacte"
+            variant="primary"
+            size="lg"
+            className="!rounded-full font-bold"
+          >
+            Sol·licitar pressupost gratuït
+          </Button>
+          <Button
+            client:load
+            as="a"
+            href="https://wa.me/34603765253?text=Hola%2C%20m%27agradaria%20demanar%20informaci%C3%B3"
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="white"
+            size="lg"
+            className="!rounded-full font-bold"
+          >
+            Escriu-nos per WhatsApp
+          </Button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer lang="ca" t={flat} />
+</BaseLayout>
