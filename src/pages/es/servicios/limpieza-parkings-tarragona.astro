@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ServiceLayout from '../../../components/ServiceLayout.astro';
+import { flattenI18n } from '../../../utils/i18n';
+
+const rawT = await import('../../../i18n/es.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Limpieza de parkings y garajes en Tarragona | NaturLimp"
+  description="Servicio profesional de limpieza de parkings comunitarios y comerciales en Tarragona, Reus y comarca. Fregadoras industriales y desengrasado profundo. Presupuesto gratis."
+  lang="es"
+  canonical="https://naturlimp.com/es/servicios/limpieza-parkings-tarragona/"
+>
+  <Header lang="es" t={flat} />
+  <main id="main-content">
+    <ServiceLayout
+      lang="es"
+      t={t}
+      heroImage="https://images.unsplash.com/photo-1590674899484-d5640e854abe?q=80&w=2000&auto=format&fit=crop"
+      serviceNum="04"
+      serviceTag="Garajes · Hidrolimpieza · Desengrasado"
+      breadcrumb="Limpieza de parkings"
+      headline="Limpieza de parkings y garajes en Tarragona y comarca"
+      subheadline="Mantenimiento preventivo y limpieza profunda de parkings comunitarios, públicos y privados con barredoras y fregadoras industriales con aspiración de agua."
+      stats={[
+        { value: '15', label: 'años de experiencia' },
+        { value: '120+', label: 'parkings tratados' },
+        { value: '30 km', label: 'radio de servicio' },
+        { value: '24 h', label: 'tiempo de respuesta' },
+      ]}
+      checklist={[
+        'Barrido mecánico y aspirado exhaustivo de polvo, hojas y rodaduras',
+        'Fregado mecanizado con máquinas fregadoras de conductor sentado',
+        'Tratamiento específico con desengrasantes ecológicos en manchas de aceite y carburante',
+        'Limpieza de rampas de acceso, viales y zonas de maniobra',
+        'Limpieza de tuberías vistas, bajantes, extintores y cajas de luz',
+        'Desempolvado y limpieza de luminarias y pilotos de emergencia',
+        'Limpieza y desinfección de puertas automáticas y botoneras de acceso',
+        'Vaciado de papeleras y limpieza de sumideros y arquetas perimetrales',
+      ]}
+      gallery={[
+        { src: 'https://picsum.photos/seed/nl-park-1/600/820', alt: 'Parking comunitario limpio con suelo brillante', caption: 'Pavimento de garaje impecable' },
+        { src: 'https://picsum.photos/seed/nl-park-2/500/400', alt: 'Fregadora industrial limpiando suelo de garaje', caption: 'Fregado mecánico con máquina industrial' },
+        { src: 'https://picsum.photos/seed/nl-park-3/500/400', alt: 'Rampa de garaje libre de suciedad y grasa', caption: 'Rampas y viales de acceso tratados' },
+        { src: 'https://picsum.photos/seed/nl-park-4/900/520', alt: 'Plazas de aparcamiento limpias con señalización visible', caption: 'Líneas y señalización tras la limpieza' },
+      ]}
+      zonesText="Limpieza de parkings y garajes en Tarragona capital (Eixample, Part Alta, Serrallo, Ponent), Reus, Salou, Cambrils, Vila-seca, Torredembarra, Altafulla y polígonos industriales de toda la comarca."
+      zones={['Tarragona', 'Reus', 'Salou', 'Cambrils', 'Vila-seca', 'Torredembarra', 'Constantí', 'La Canonja', 'Valls']}
+    />
+  </main>
+  <Footer lang="es" t={flat} />
+</BaseLayout>

@@ -24,28 +24,52 @@
     "subtitle": "Soluciones de limpieza profesional para toda la provincia de Tarragona",
     "items": {
       "communities": {
-        "name": "Comunidades de vecinos",
-        "desc": "Limpieza regular de portales, escaleras, garajes y zonas comunes en Tarragona, Reus y Salou."
+        "name": "Limpieza comunidades",
+        "desc": "Limpieza regular e integral de portales, escaleras, garajes y zonas comunes en Tarragona, Reus y Salou."
+      },
+      "gardening": {
+        "name": "Jardinería",
+        "desc": "Cuidado, poda, riego automático y mantenimiento integral de jardines y zonas verdes comunitarias."
       },
       "pools": {
-        "name": "Piscinas comunitarias",
-        "desc": "Mantenimiento, limpieza y desinfección de piscinas en comunidades de Cambrils, Vila-seca y Torredembarra."
+        "name": "Mantenimiento piscinas",
+        "desc": "Mantenimiento, limpieza profunda, control de pH y desinfección de piscinas en Tarragona y Costa Daurada."
       },
-      "construction": {
-        "name": "Final de obra",
-        "desc": "Limpieza exhaustiva tras reformas y obra nueva. Retiramos polvo, escombros y residuos en toda la Costa Daurada."
+      "parking": {
+        "name": "Limpieza de parkings",
+        "desc": "Barrido mecánico, hidrolimpieza desengrasante y desinfección de suelos en garajes comunitarios y públicos."
       },
       "floors": {
-        "name": "Abrillantado de suelos",
-        "desc": "Pulido, cristalizado y abrillantado de mármol, terrazo y porcelánico en el Part Alta, Serrallo y toda Tarragona."
+        "name": "Pulidos y abrillantados",
+        "desc": "Pulido, cristalizado y abrillantado de mármol, terrazo y pavimentos duros para recuperar su brillo original."
+      },
+      "painting": {
+        "name": "Pintura y reformas",
+        "desc": "Pintura de fachadas, interiores, parkings y pequeñas reformas de mantenimiento para comunidades y locales."
+      },
+      "electricity": {
+        "name": "Electricidad",
+        "desc": "Mantenimiento eléctrico, iluminación LED de bajo consumo, porteros automáticos y cuadros para fincas."
+      },
+      "construction": {
+        "name": "Limpieza final de obra",
+        "desc": "Limpieza exhaustiva tras reformas y obra nueva. Eliminación de restos de yeso, pintura y polvo de obra."
+      },
+      "offices": {
+        "name": "Limpieza de oficinas y locales",
+        "desc": "Mantenimiento diario o periódico para oficinas, despachos, comercios y naves sin alterar tu jornada laboral."
+      },
+      "tourist-apartments": {
+        "name": "Apartamentos turísticos",
+        "desc": "Limpieza express, cambio de lencería, reposición de amenities y desinfección completa entre huéspedes."
+      },
+      "healthcare": {
+        "name": "Residencias, farmacias, colegios y centros de la salud",
+        "desc": "Protocolos estrictos de desinfección e higienización para entornos sociosanitarios, educativos y farmacéuticos."
       },
       "windows": {
         "name": "Limpieza de cristales",
-        "desc": "Fachadas, escaparates y ventanas con técnicas profesionales en altura. Servicio en Tarragona y comarca."
-      },
-      "offices": {
-        "name": "Oficinas y locales",
-        "desc": "Mantenimiento diario o periódico de espacios comerciales e industriales en el área metropolitana de Tarragona."
+        "desc": "Fachadas acristaladas, escaparates y ventanas en altura con productos profesionales repelentes de agua."
       }
     }
   },

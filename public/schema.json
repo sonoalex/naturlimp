@@ -71,21 +71,33 @@
   "knowsAbout": [
     "limpieza de comunidades de vecinos",
     "neteja de comunitats de veïns",
+    "jardinería y mantenimiento de zonas verdes",
+    "jardineria i zones verdes",
     "limpieza de piscinas comunitarias",
-    "neteja de piscines comunitàries",
+    "manteniment de piscines comunitàries",
+    "limpieza de parkings y garajes",
+    "neteja de pàrquings i garatges",
+    "pulidos y abrillantados de suelos",
+    "polits i abrillantats de terres",
+    "pintura y reformas integrales",
+    "pintura i reformes",
+    "electricidad e instalaciones",
+    "electricitat i manteniment elèctric",
     "limpieza final de obra",
     "neteja final d'obra",
-    "abrillantado de suelos",
-    "abrillantat de terres",
+    "limpieza de oficinas y locales",
+    "neteja d'oficines i locals",
+    "limpieza de apartamentos turísticos",
+    "neteja d'apartaments turístics",
+    "limpieza de residencias colegios y centros de salud",
+    "neteja de residències col·legis i centres de salut",
     "limpieza de cristales",
-    "neteja de vidres",
-    "limpieza de oficinas",
     "desinfección profesional",
     "mantenimiento de zonas comunes"
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "Servicios de limpieza NaturLimp",
+    "name": "Servicios integrales y de limpieza NaturLimp",
     "itemListElement": [
       {
         "@type": "Offer",
@@ -99,8 +111,48 @@
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Limpieza de piscinas comunitarias Tarragona",
-          "description": "Mantenimiento, limpieza y desinfección de piscinas comunitarias en Cambrils, Vila-seca y toda la Costa Daurada."
+          "name": "Jardinería y mantenimiento de zonas verdes Tarragona",
+          "description": "Cuidado, poda, corte de césped y mantenimiento de jardines comunitarios y privados en la provincia de Tarragona."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Mantenimiento y limpieza de piscinas Tarragona",
+          "description": "Mantenimiento preventivo, control de pH y cloro, limpieza de vasos y desinfección homologada de piscinas."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Limpieza de parkings y garajes Tarragona",
+          "description": "Barrido mecánico, hidrolimpieza desengrasante y desinfección de pavimentos en aparcamientos comunitarios y comerciales."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Pulidos y abrillantados de suelos Tarragona",
+          "description": "Cristalizado, pulido y abrillantado profesional de mármol, terrazo y pavimentos duros."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Pintura y reformas integrales Tarragona",
+          "description": "Pintura de zaguanes, fachadas, escaleras y pequeñas reformas de mantenimiento para comunidades y negocios."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Electricidad e instalaciones Tarragona",
+          "description": "Mantenimiento eléctrico, cuadros, iluminación LED comunitaria y porteros automáticos."
         }
       },
       {
@@ -108,15 +160,31 @@
         "itemOffered": {
           "@type": "Service",
           "name": "Limpieza final de obra Tarragona",
-          "description": "Limpieza exhaustiva tras reformas y obra nueva. Retiramos polvo, escombros y residuos en toda la provincia."
+          "description": "Limpieza exhaustiva tras reformas y obra nueva. Eliminación de polvo, restos de yeso y residuos."
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Abrillantado de suelos Tarragona",
-          "description": "Pulido, cristalizado y abrillantado profesional de mármol, terrazo y porcelánico."
+          "name": "Limpieza de oficinas y locales comerciales Tarragona",
+          "description": "Mantenimiento diario o periódico de oficinas, despachos y locales con horarios adaptados."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Limpieza de apartamentos turísticos Tarragona",
+          "description": "Servicio express de limpieza, cambio de lencería, reposición y desinfección entre huéspedes vacacionales."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Limpieza de residencias, farmacias, colegios y centros de salud Tarragona",
+          "description": "Protocolos estrictos de desinfección e higienización para entornos sociosanitarios y educativos."
         }
       }
     ]

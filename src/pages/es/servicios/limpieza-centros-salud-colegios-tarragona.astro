@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ServiceLayout from '../../../components/ServiceLayout.astro';
+import { flattenI18n } from '../../../utils/i18n';
+
+const rawT = await import('../../../i18n/es.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Limpieza de residencias, farmacias, colegios y centros de salud en Tarragona | NaturLimp"
+  description="Servicio especializado de higienización y desinfección para farmacias, clínicas, colegios y residencias en Tarragona y comarca. Protocolos sanitarios rigurosos."
+  lang="es"
+  canonical="https://naturlimp.com/es/servicios/limpieza-centros-salud-colegios-tarragona/"
+>
+  <Header lang="es" t={flat} />
+  <main id="main-content">
+    <ServiceLayout
+      lang="es"
+      t={t}
+      heroImage="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2000&auto=format&fit=crop"
+      serviceNum="11"
+      serviceTag="Sanidad · Educación · Desinfección certificada"
+      breadcrumb="Residencias, farmacias y centros de salud"
+      headline="Limpieza de residencias, farmacias, colegios y centros de salud"
+      subheadline="Máxima rigurosidad higiénico-sanitaria para centros médicos, residencias de la tercera edad, farmacias y escuelas infantiles o colegios en Tarragona."
+      stats={[
+        { value: '15', label: 'años de experiencia' },
+        { value: '100%', label: 'productos virucidas y ecológicos' },
+        { value: '30 km', label: 'radio de servicio' },
+        { value: 'Certificado', label: 'de desinfección disponible' },
+      ]}
+      checklist={[
+        'Protocolos estandarizados de bioseguridad y prevención de contaminación cruzada por código de colores',
+        'Desinfección de salas de espera, consultas médicas, mostradores y boticas farmacéuticas',
+        'Higienización integral de aulas, comedores escolares, patios y zonas de juegos infantiles',
+        'Limpieza y desinfección de habitaciones, áreas de convivencia y baños adaptados en residencias',
+        'Utilización de virucidas, bactericidas y desinfectantes homologados por el Ministerio de Sanidad',
+        'Limpieza y filtración de aire con tecnología HEPA para espacios con personas vulnerables',
+        'Gestión higiénica y retirada segura de contenedores de residuos y papeleras',
+        'Auditorías periódicas de calidad con registros firmados de control higiénico',
+      ]}
+      gallery={[
+        { src: 'https://picsum.photos/seed/nl-salud-1/600/820', alt: 'Consulta médica perfectamente desinfectada y pulcra', caption: 'Centros médicos y consultas higienizadas' },
+        { src: 'https://picsum.photos/seed/nl-salud-2/500/400', alt: 'Mostrador de farmacia limpio y ordenado', caption: 'Farmacias y zonas de atención al público' },
+        { src: 'https://picsum.photos/seed/nl-salud-3/500/400', alt: 'Aula escolar limpia tras la jornada lectiva', caption: 'Colegios y centros infantiles seguros' },
+        { src: 'https://picsum.photos/seed/nl-salud-4/900/520', alt: 'Pasillo de residencia de mayores impoluto', caption: 'Residencias y entornos sociosanitarios' },
+      ]}
+      zonesText="Prestamos servicio en residencias, farmacias, centros sanitarios y colegios en Tarragona capital, Reus, Salou, Cambrils, Vila-seca, Constantí, Torredembarra, Valls y El Vendrell."
+      zones={['Tarragona', 'Reus', 'Salou', 'Cambrils', 'Vila-seca', 'Torredembarra', 'Valls', 'El Vendrell', 'Constantí']}
+    />
+  </main>
+  <Footer lang="es" t={flat} />
+</BaseLayout>

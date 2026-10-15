@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ServiceLayout from '../../../components/ServiceLayout.astro';
+import { flattenI18n } from '../../../utils/i18n';
+
+const rawT = await import('../../../i18n/ca.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+
+const checklist = [
+  'Tall, sega i perfilat periòdic de gespa i praderies',
+  'Poda sanitària i de formació d\'arbres, tanques vegetals, palmeres i arbustos',
+  'Instal·lació, programació i manteniment de sistemes de reg automàtic per degoteig o aspersió',
+  'Tractaments fitosanitaris ecològics i prevenció de plagues (morrut de la palmera, processionària)',
+  'Escarificat, airejat i adobat orgànic segons la temporada',
+  'Reposició de plantes de temporada, flors i tepes de gespa',
+  'Desbrossament i neteja de parcel·les, males herbes i talussos',
+  'Retirada de restes vegetals i gestió responsable a planta de compostatge',
+];
+
+const stats = [
+  { value: '15', label: 'anys d\'experiència' },
+  { value: '80+', label: 'jardins cuidats' },
+  { value: '30 km', label: 'radi de servei' },
+  { value: '24 h', label: 'temps de resposta' },
+];
+
+const gallery = [
+  { src: 'https://picsum.photos/seed/nl-jard-1/600/820', alt: 'Jardí comunitari cuidat a Tarragona', caption: 'Jardí comunitari amb gespa impecable' },
+  { src: 'https://picsum.photos/seed/nl-jard-2/500/400', alt: 'Poda de tanques vegetals i arbustos ornamentals', caption: 'Perfilat i poda de tanques vegetals' },
+  { src: 'https://picsum.photos/seed/nl-jard-3/500/400', alt: 'Sistema de reg automàtic programat', caption: 'Manteniment de reg per degoteig' },
+  { src: 'https://picsum.photos/seed/nl-jard-4/900/520', alt: 'Zona enjardinada residencial a la Costa Daurada', caption: 'Zones verdes comunitàries cuidades' },
+];
+
+const zones = ['Tarragona', 'Reus', 'Salou', 'Cambrils', 'Vila-seca', 'Torredembarra', 'Altafulla', 'Constantí', 'El Vendrell'];
+---
+
+<BaseLayout
+  title="Jardineria i manteniment de zones verdes a Tarragona | NaturLimp"
+  description="Servei professional de jardineria per a comunitats de veïns, finques i particulars a Tarragona, Reus, Salou i Cambrils. Poda, gespa i reg. Pressupost sense compromís."
+  lang="ca"
+  canonical="https://naturlimp.com/ca/serveis/jardineria-tarragona/"
+>
+  <Header lang="ca" t={flat} />
+  
+  <main id="main-content">
+    <ServiceLayout
+      lang="ca"
+      t={t}
+      heroImage="https://images.unsplash.com/photo-1558904541-efa8c4a08931?q=80&w=2000&auto=format&fit=crop"
+      serviceNum="02"
+      serviceTag="Zones verdes · Poda · Reg automàtic"
+      breadcrumb="Jardineria"
+      headline="Jardineria i manteniment de zones verdes a Tarragona"
+      subheadline="Cura integral de jardins comunitaris i privats amb jardiners professionals, maquinària pròpia i plans adaptats a cada estació de l'any."
+      checklist={checklist}
+      stats={stats}
+      gallery={gallery}
+      zones={zones}
+      zonesText="Oferim servei de jardineria integral a Tarragona (Llevant, Els Munts, Boscos, Part Alta, Serrallo), Reus, Salou, Cambrils, Vila-seca, La Pineda, Torredembarra, Altafulla i tots els municipis del Camp de Tarragona."
+    />
+  </main>
+  
+  <Footer lang="ca" t={flat} />
+</BaseLayout>

@@ -14,47 +14,82 @@ const flat = flattenI18n(t as unknown as Record<string, unknown>);
 
 const servicesList = [
   {
-    name: 'Comunidades de vecinos',
-    desc: 'Limpieza integral y periódica de portales, escaleras, garajes, ascensores y rellanos. Planes adaptados a comunidades grandes y pequeñas.',
+    name: 'Limpieza comunidades',
+    desc: 'Limpieza integral y periódica de portales, escaleras, garajes, ascensores y rellanos. Planes a medida para comunidades de vecinos en Tarragona y comarca.',
     icon: 'communities' as const,
     href: '/es/servicios/limpieza-comunidades-tarragona/',
     ctaLabel: 'Ver servicio de comunidades',
     featured: true,
   },
   {
-    name: 'Piscinas comunitarias',
-    desc: 'Mantenimiento, limpieza profunda y desinfección homologada de piscinas para comunidades en Tarragona, Salou y Cambrils.',
+    name: 'Jardinería',
+    desc: 'Cuidado, poda, corte de césped, sistemas de riego automático y mantenimiento de zonas verdes comunitarias y residenciales.',
+    icon: 'gardening' as const,
+    href: '/es/servicios/jardineria-tarragona/',
+    ctaLabel: 'Ver servicio de jardinería',
+  },
+  {
+    name: 'Mantenimiento piscinas',
+    desc: 'Mantenimiento preventivo, limpieza del vaso, control de cloro y pH y desinfección homologada de piscinas comunitarias y particulares.',
     icon: 'pools' as const,
     href: '/es/servicios/piscinas-comunitarias-tarragona/',
     ctaLabel: 'Ver mantenimiento de piscinas',
   },
   {
+    name: 'Limpieza de parkings',
+    desc: 'Barrido y fregado con hidrolimpiadoras industriales, desengrasado de manchas de aceite, señalización y ventilación de garajes.',
+    icon: 'parking' as const,
+    href: '/es/servicios/limpieza-parkings-tarragona/',
+    ctaLabel: 'Ver limpieza de parkings',
+  },
+  {
+    name: 'Pulidos y abrillantados',
+    desc: 'Cristalizado, pulido y abrillantado profesional de mármol, terrazo y pavimentos duros. Recupera el brillo y sella la porosidad del suelo.',
+    icon: 'floors' as const,
+    href: '/es/servicios/abrillantado-suelos-tarragona/',
+    ctaLabel: 'Ver pulidos y abrillantados',
+  },
+  {
+    name: 'Pintura y reformas',
+    desc: 'Pintura de zaguanes, fachadas, escaleras, garajes y pequeñas reformas integrales de mantenimiento para fincas y locales comerciales.',
+    icon: 'painting' as const,
+    href: '/es/servicios/pintura-reformas-tarragona/',
+    ctaLabel: 'Ver pintura y reformas',
+  },
+  {
+    name: 'Electricidad',
+    desc: 'Instalaciones y averías eléctricas, iluminación LED comunitaria con detector de presencia, porteros automáticos y boletines de seguridad.',
+    icon: 'electricity' as const,
+    href: '/es/servicios/electricidad-tarragona/',
+    ctaLabel: 'Ver servicio de electricidad',
+  },
+  {
     name: 'Limpieza final de obra',
-    desc: 'Eliminación exhaustiva de restos de pintura, cemento, polvo de yeso y residuos tras reformas o construcción nueva.',
+    desc: 'Eliminación exhaustiva de restos de cemento, yeso, pintura, adhesivos y polvo fino tras reformas integrales o promociones de obra nueva.',
     icon: 'construction' as const,
     href: '/es/servicios/limpieza-final-obra-tarragona/',
     ctaLabel: 'Ver limpieza fin de obra',
   },
   {
-    name: 'Abrillantado de suelos',
-    desc: 'Cristalizado, pulido y abrillantado profesional de mármol, terrazo y pavimentos duros. Recupera el brillo natural.',
-    icon: 'floors' as const,
-    href: '/es/servicios/abrillantado-suelos-tarragona/',
-    ctaLabel: 'Ver abrillantado de suelos',
-  },
-  {
-    name: 'Limpieza de cristales',
-    desc: 'Cristales, ventanales, escaparates y fachadas acristaladas con técnicas en altura y productos repelentes de agua y polvo.',
-    icon: 'windows' as const,
-    href: '/es/servicios/limpieza-cristales-tarragona/',
-    ctaLabel: 'Ver limpieza de cristales',
-  },
-  {
-    name: 'Oficinas y locales',
-    desc: 'Mantenimiento diario, semanal o mensual de oficinas, despachos, naves y comercios. Flexibilidad horaria sin interrumpir tu actividad.',
+    name: 'Limpieza de oficinas y locales',
+    desc: 'Mantenimiento diario o periódico de despachos, oficinas comerciales y naves industriales. Horarios flexibles que no interrumpen tu actividad.',
     icon: 'offices' as const,
     href: '/es/servicios/limpieza-oficinas-tarragona/',
     ctaLabel: 'Ver limpieza de oficinas',
+  },
+  {
+    name: 'Apartamentos turísticos',
+    desc: 'Servicio express de limpieza integral, cambio y lavandería de sábanas y toallas, check-in setup y desinfección entre huéspedes vacacionales.',
+    icon: 'tourist-apartments' as const,
+    href: '/es/servicios/apartamentos-turisticos-tarragona/',
+    ctaLabel: 'Ver apartamentos turísticos',
+  },
+  {
+    name: 'Residencias, farmacias, colegios y centros de la salud',
+    desc: 'Protocolos de máxima desinfección e higiene hospitalaria para farmacias, clínicas médicas, colegios, guarderías y residencias de mayores.',
+    icon: 'healthcare' as const,
+    href: '/es/servicios/limpieza-centros-salud-colegios-tarragona/',
+    ctaLabel: 'Ver centros de salud y educación',
   },
 ];
 
@@ -187,7 +222,7 @@ const beforeAfterItems = [
               </p>
             </div>
             <a
-              href="/contacto"
+              href="/contacto/"
               class="inline-flex items-center justify-center font-display font-bold px-6 py-3 rounded-full bg-[var(--color-primary)] text-[var(--color-foreground)] hover:bg-[var(--color-accent)] transition-colors shrink-0 text-sm shadow-sm"
             >
               Consultar otros multiservicios

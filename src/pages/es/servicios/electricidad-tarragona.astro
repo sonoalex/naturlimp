@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ServiceLayout from '../../../components/ServiceLayout.astro';
+import { flattenI18n } from '../../../utils/i18n';
+
+const rawT = await import('../../../i18n/es.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Servicios de electricidad e instalaciones en Tarragona | NaturLimp"
+  description="Instalaciones eléctricas y mantenimiento para comunidades, comercios y viviendas en Tarragona. Iluminación LED, boletines, cuadros y averías. Pide presupuesto."
+  lang="es"
+  canonical="https://naturlimp.com/es/servicios/electricidad-tarragona/"
+>
+  <Header lang="es" t={flat} />
+  <main id="main-content">
+    <ServiceLayout
+      lang="es"
+      t={t}
+      heroImage="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2000&auto=format&fit=crop"
+      serviceNum="07"
+      serviceTag="Electricidad · Iluminación LED · Averías"
+      breadcrumb="Electricidad"
+      headline="Electricidad y mantenimiento de instalaciones en Tarragona"
+      subheadline="Instaladores electricistas autorizados para comunidades de propietarios, empresas y particulares. Ahorro energético, reparaciones rápidas y máxima seguridad normativa."
+      stats={[
+        { value: '15', label: 'años de experiencia' },
+        { value: '100%', label: 'electricistas autorizados' },
+        { value: '30 km', label: 'radio de servicio' },
+        { value: '24 h', label: 'tiempo de respuesta' },
+      ]}
+      checklist={[
+        'Mantenimiento preventivo y correctivo de la red eléctrica comunitaria',
+        'Sustitución y migración a iluminación LED de bajo consumo con sensores de presencia',
+        'Reparación e instalación de porteros electrónicos y videoporteros digitales',
+        'Revisión, adecuación y sustitución de cuadros eléctricos y diferenciales',
+        'Instalación y revisión de luces de emergencia homologadas y sistemas de señalización',
+        'Detección y resolución de cortocircuitos, derivaciones y caídas de tensión',
+        'Instalación y mantenimiento de tomas de recarga para vehículos eléctricos en parkings',
+        'Emisión de boletines eléctricos y certificados de instalación eléctrica (CIE)',
+      ]}
+      gallery={[
+        { src: 'https://picsum.photos/seed/nl-elec-1/600/820', alt: 'Cuadro eléctrico general instalado con diferenciales', caption: 'Cuadros eléctricos comunitarios homologados' },
+        { src: 'https://picsum.photos/seed/nl-elec-2/500/400', alt: 'Iluminación LED con sensor de presencia en escalera', caption: 'Iluminación LED de bajo consumo' },
+        { src: 'https://picsum.photos/seed/nl-elec-3/500/400', alt: 'Videoportero digital instalado en portal', caption: 'Videoporteros de última generación' },
+        { src: 'https://picsum.photos/seed/nl-elec-4/900/520', alt: 'Punto de recarga de coche eléctrico en parking comunitario', caption: 'Puntos de recarga para vehículos' },
+      ]}
+      zonesText="Servicios de electricidad e instalaciones en toda la ciudad de Tarragona, Reus, Salou, Cambrils, Vila-seca, Torredembarra, Altafulla, Constantí y resto del Tarragonès y Baix Camp."
+      zones={['Tarragona', 'Reus', 'Salou', 'Cambrils', 'Vila-seca', 'Torredembarra', 'Altafulla', 'Constantí', 'Valls']}
+    />
+  </main>
+  <Footer lang="es" t={flat} />
+</BaseLayout>

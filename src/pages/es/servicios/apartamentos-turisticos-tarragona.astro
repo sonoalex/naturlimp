@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ServiceLayout from '../../../components/ServiceLayout.astro';
+import { flattenI18n } from '../../../utils/i18n';
+
+const rawT = await import('../../../i18n/es.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Limpieza de apartamentos turísticos en Tarragona y Costa Daurada | NaturLimp"
+  description="Servicio profesional de limpieza express para apartamentos turísticos, Airbnb y casas vacacionales en Tarragona, Salou y Cambrils. Lencería, desinfección y check-in."
+  lang="es"
+  canonical="https://naturlimp.com/es/servicios/apartamentos-turisticos-tarragona/"
+>
+  <Header lang="es" t={flat} />
+  <main id="main-content">
+    <ServiceLayout
+      lang="es"
+      t={t}
+      heroImage="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=2000&auto=format&fit=crop"
+      serviceNum="10"
+      serviceTag="Alojamientos · Check-in · Lavandería"
+      breadcrumb="Apartamentos turísticos"
+      headline="Limpieza de apartamentos turísticos en Tarragona y Costa Daurada"
+      subheadline="Garantiza las 5 estrellas en limpieza de tus huéspedes con nuestro servicio ágil de rotación, reposición de amenities, lavandería de lencería y desinfección completa."
+      stats={[
+        { value: '15', label: 'años de experiencia' },
+        { value: '5★', label: 'estándar de limpieza' },
+        { value: 'Express', label: 'rotación en 4 horas' },
+        { value: '7 días', label: 'disponibilidad en temporada' },
+      ]}
+      checklist={[
+        'Limpieza a fondo de dormitorios, salón, cocina, baños y terrazas',
+        'Lavandería industrial y cambio de sábanas, toallas y alfombrillas de baño',
+        'Higienización y desinfección bactericida de baños y superficies de alto contacto',
+        'Limpieza de electrodomésticos: horno, microondas, frigorífico y campana extractora',
+        'Revisión visual de inventario e informe fotográfico inmediato ante cualquier desperfecto',
+        'Reposición de kit de bienvenida y amenities (jabón, papel, bolsas de basura)',
+        'Vaciado de residuos, aromatización y preparación estética para la entrada de huéspedes',
+        'Coordinación directa mediante calendario o canales de reserva de la propiedad',
+      ]}
+      gallery={[
+        { src: 'https://picsum.photos/seed/nl-tur-1/600/820', alt: 'Apartamento turístico impecable con cama perfectamente vestida', caption: 'Dormitorios listos para el check-in' },
+        { src: 'https://picsum.photos/seed/nl-tur-2/500/400', alt: 'Baño de apartamento turístico desinfectado y brillante', caption: 'Baños higienizados y con toallas limpias' },
+        { src: 'https://picsum.photos/seed/nl-tur-3/500/400', alt: 'Cocina de alquiler vacacional completamente limpia', caption: 'Cocinas desengrasadas y vajilla revisada' },
+        { src: 'https://picsum.photos/seed/nl-tur-4/900/520', alt: 'Salón luminoso de vivienda vacacional en la playa', caption: 'Salones y terrazas acogedores para el huésped' },
+      ]}
+      zonesText="Servicio de rotación y limpieza de apartamentos turísticos en Tarragona (Part Alta, Platja del Miracle, Eixample), Salou, Cambrils, La Pineda, Vila-seca, Torredembarra, Altafulla, Miami Platja y toda la Costa Daurada."
+      zones={['Tarragona', 'Salou', 'Cambrils', 'La Pineda', 'Vila-seca', 'Torredembarra', 'Altafulla', 'Miami Platja', 'El Vendrell']}
+    />
+  </main>
+  <Footer lang="es" t={flat} />
+</BaseLayout>

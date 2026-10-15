@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ServiceLayout from '../../../components/ServiceLayout.astro';
+import { flattenI18n } from '../../../utils/i18n';
+
+const rawT = await import('../../../i18n/es.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Jardinería y mantenimiento de zonas verdes en Tarragona | NaturLimp"
+  description="Servicio profesional de jardinería para comunidades de vecinos, fincas y particulares en Tarragona, Reus, Salou y Cambrils. Poda, césped y riego. Presupuesto sin compromiso."
+  lang="es"
+  canonical="https://naturlimp.com/es/servicios/jardineria-tarragona/"
+>
+  <Header lang="es" t={flat} />
+  <main id="main-content">
+    <ServiceLayout
+      lang="es"
+      t={t}
+      heroImage="https://images.unsplash.com/photo-1558904541-efa8c4a08931?q=80&w=2000&auto=format&fit=crop"
+      serviceNum="02"
+      serviceTag="Zonas verdes · Poda · Riego automático"
+      breadcrumb="Jardinería"
+      headline="Jardinería y mantenimiento de zonas verdes en Tarragona"
+      subheadline="Cuidado integral de jardines comunitarios y privados con jardineros profesionales, maquinaria propia y planes adaptados a cada estación del año."
+      stats={[
+        { value: '15', label: 'años de experiencia' },
+        { value: '80+', label: 'jardines cuidados' },
+        { value: '30 km', label: 'radio de servicio' },
+        { value: '24 h', label: 'tiempo de respuesta' },
+      ]}
+      checklist={[
+        'Corte, segado y perfilado periódico de césped y praderas',
+        'Poda sanitaria y de formación de árboles, setos, palmeras y arbustos',
+        'Instalación, programación y mantenimiento de sistemas de riego automático por goteo o aspersión',
+        'Tratamientos fitosanitarios ecológicos y prevención de plagas (picudo rojo, procesionaria)',
+        'Escarificado, aireado y abonado orgánico estacional',
+        'Reposición de plantas de temporada, flores y tepes de césped',
+        'Desbroce y limpieza de parcelas, malas hierbas y taludes',
+        'Retirada de restos vegetales y gestión responsable en planta de compostaje',
+      ]}
+      gallery={[
+        { src: 'https://picsum.photos/seed/nl-jard-1/600/820', alt: 'Jardín comunitario cuidado en Tarragona', caption: 'Jardín comunitario con césped impecable' },
+        { src: 'https://picsum.photos/seed/nl-jard-2/500/400', alt: 'Poda de setos y arbustos ornamentales', caption: 'Perfilado y poda de setos' },
+        { src: 'https://picsum.photos/seed/nl-jard-3/500/400', alt: 'Sistema de riego automático programado', caption: 'Mantenimiento de riego por goteo' },
+        { src: 'https://picsum.photos/seed/nl-jard-4/900/520', alt: 'Zona ajardinada residencial en la Costa Daurada', caption: 'Zonas verdes comunitarias cuidadas' },
+      ]}
+      zonesText="Ofrecemos servicio de jardinería integral en Tarragona (Llevant, Els Munts, Boscos, Part Alta, Serrallo), Reus, Salou, Cambrils, Vila-seca, La Pineda, Torredembarra, Altafulla y todos los municipios del Camp de Tarragona."
+      zones={['Tarragona', 'Reus', 'Salou', 'Cambrils', 'Vila-seca', 'Torredembarra', 'Altafulla', 'Constantí', 'El Vendrell']}
+    />
+  </main>
+  <Footer lang="es" t={flat} />
+</BaseLayout>

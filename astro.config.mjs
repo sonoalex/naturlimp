@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://naturlimp.com',
+  trailingSlash: 'always',
   integrations: [
     react(),
     sitemap({

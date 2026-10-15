@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ServiceLayout from '../../../components/ServiceLayout.astro';
+import { flattenI18n } from '../../../utils/i18n';
+
+const rawT = await import('../../../i18n/ca.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+
+const checklist = [
+  'Protocols estandarditzats de bioseguretat i prevenció de contaminació creuada per codi de colors',
+  'Desinfecció de sales d\'espera, consultes mèdiques, taulells i apotecaris de farmàcia',
+  'Higienització integral d\'aules, menjadors escolars, patis i zones de jocs infantils',
+  'Neteja i desinfecció d\'habitacions, àrees de convivència i banys adaptats a residències',
+  'Utilització de viricides, bactericides i desinfectants homologats pel Ministeri de Sanitat',
+  'Neteja i filtració d\'aire amb tecnologia HEPA per a espais amb persones vulnerables',
+  'Gestió higiènica i retirada segura de contenidors de residus i papereres',
+  'Auditories periòdiques de qualitat amb registres signats de control higiènic',
+];
+
+const stats = [
+  { value: '15', label: 'anys d\'experiència' },
+  { value: '100%', label: 'productes viricides i ecològics' },
+  { value: '30 km', label: 'radi de servei' },
+  { value: 'Certificat', label: 'de desinfecció disponible' },
+];
+
+const gallery = [
+  { src: 'https://picsum.photos/seed/nl-salud-1/600/820', alt: 'Consulta mèdica perfectament desinfectada i pulcra', caption: 'Centres mèdics i consultes higienitzades' },
+  { src: 'https://picsum.photos/seed/nl-salud-2/500/400', alt: 'Taulell de farmàcia net i ordenat', caption: 'Farmàcies i zones d\'atenció al públic' },
+  { src: 'https://picsum.photos/seed/nl-salud-3/500/400', alt: 'Aula escolar neta després de la jornada lectiva', caption: 'Escoles i centres infantils segurs' },
+  { src: 'https://picsum.photos/seed/nl-salud-4/900/520', alt: 'Passadís de residència de gent gran impol·lut', caption: 'Residències i entorns sociosanitaris' },
+];
+
+const zones = ['Tarragona', 'Reus', 'Salou', 'Cambrils', 'Vila-seca', 'Torredembarra', 'Valls', 'El Vendrell', 'Constantí'];
+---
+
+<BaseLayout
+  title="Neteja de residències, farmàcies, col·legis i centres de salut a Tarragona | NaturLimp"
+  description="Servei especialitzat d'higienització i desinfecció per a farmàcies, clíniques, escoles i residències a Tarragona i comarca. Protocols sanitaris rigorosos."
+  lang="ca"
+  canonical="https://naturlimp.com/ca/serveis/neteja-centres-salut-colegis-tarragona/"
+>
+  <Header lang="ca" t={flat} />
+  
+  <main id="main-content">
+    <ServiceLayout
+      lang="ca"
+      t={t}
+      heroImage="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2000&auto=format&fit=crop"
+      serviceNum="11"
+      serviceTag="Sanitat · Educació · Desinfecció certificada"
+      breadcrumb="Residències, farmàcies i centres de salut"
+      headline="Neteja de residències, farmàcies, col·legis i centres de salut"
+      subheadline="Màxima rigorositat higienicosanitària per a centres mèdics, residències de gent gran, farmàcies i escoles infantils o col·legis a Tarragona."
+      checklist={checklist}
+      stats={stats}
+      gallery={gallery}
+      zones={zones}
+      zonesText="Prestem servei en residències, farmàcies, centres sanitaris i col·legis a Tarragona ciutat, Reus, Salou, Cambrils, Vila-seca, Constantí, Torredembarra, Valls i El Vendrell."
+    />
+  </main>
+  
+  <Footer lang="ca" t={flat} />
+</BaseLayout>

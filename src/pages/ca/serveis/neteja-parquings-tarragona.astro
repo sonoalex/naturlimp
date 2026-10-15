@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ServiceLayout from '../../../components/ServiceLayout.astro';
+import { flattenI18n } from '../../../utils/i18n';
+
+const rawT = await import('../../../i18n/ca.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+
+const checklist = [
+  'Escombrat mecànic i aspirat exhaustiu de pols, fulles i rodadures',
+  'Fregat mecanitzat amb màquines fregadores de conductor assegut',
+  'Tractament específic amb desgreixants ecològics en taques d\'oli i carburant',
+  'Neteja de rampes d\'accés, vials i zones de maniobra',
+  'Neteja de canonades vistes, baixants, extintors i caixes de llum',
+  'Despolsat i neteja de lluminàries i pilots d\'emergència',
+  'Neteja i desinfecció de portes automàtiques i botoneres d\'accés',
+  'Buidat de papereres i neteja d\'embornals i arquetes perimetrals',
+];
+
+const stats = [
+  { value: '15', label: 'anys d\'experiència' },
+  { value: '120+', label: 'pàrquings tractats' },
+  { value: '30 km', label: 'radi de servei' },
+  { value: '24 h', label: 'temps de resposta' },
+];
+
+const gallery = [
+  { src: 'https://picsum.photos/seed/nl-park-1/600/820', alt: 'Pàrquing comunitari net amb terra brillant', caption: 'Paviment de garatge impecable' },
+  { src: 'https://picsum.photos/seed/nl-park-2/500/400', alt: 'Fregadora industrial netejant terra de garatge', caption: 'Fregat mecànic amb màquina industrial' },
+  { src: 'https://picsum.photos/seed/nl-park-3/500/400', alt: 'Rampa de garatge lliure de brutícia i greix', caption: 'Rampes i vials d\'accés tractats' },
+  { src: 'https://picsum.photos/seed/nl-park-4/900/520', alt: 'Places d\'aparcament netes amb senyalització visible', caption: 'Línies i senyalització després de la neteja' },
+];
+
+const zones = ['Tarragona', 'Reus', 'Salou', 'Cambrils', 'Vila-seca', 'Torredembarra', 'Constantí', 'La Canonja', 'Valls'];
+---
+
+<BaseLayout
+  title="Neteja de pàrquings i garatges a Tarragona | NaturLimp"
+  description="Servei professional de neteja de pàrquings comunitaris i comercials a Tarragona, Reus i comarca. Fregadores industrials i desgreixatge profund. Pressupost gratuït."
+  lang="ca"
+  canonical="https://naturlimp.com/ca/serveis/neteja-parquings-tarragona/"
+>
+  <Header lang="ca" t={flat} />
+  
+  <main id="main-content">
+    <ServiceLayout
+      lang="ca"
+      t={t}
+      heroImage="https://images.unsplash.com/photo-1590674899484-d5640e854abe?q=80&w=2000&auto=format&fit=crop"
+      serviceNum="04"
+      serviceTag="Garatges · Hidroneteja · Desgreixatge"
+      breadcrumb="Neteja de pàrquings"
+      headline="Neteja de pàrquings i garatges a Tarragona i comarca"
+      subheadline="Manteniment preventiu i neteja a fons de pàrquings comunitaris, públics i privats amb escombradores i fregadores industrials amb aspiració d'aigua."
+      checklist={checklist}
+      stats={stats}
+      gallery={gallery}
+      zones={zones}
+      zonesText="Neteja de pàrquings i garatges a Tarragona ciutat (Eixample, Part Alta, Serrallo, Ponent), Reus, Salou, Cambrils, Vila-seca, Torredembarra, Altafulla i polígons industrials de tota la comarca."
+    />
+  </main>
+  
+  <Footer lang="ca" t={flat} />
+</BaseLayout>

@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ServiceLayout from '../../../components/ServiceLayout.astro';
+import { flattenI18n } from '../../../utils/i18n';
+
+const rawT = await import('../../../i18n/ca.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+
+const checklist = [
+  'Pintura plàstica i decorativa de portals, escales comunitàries i patis de llums',
+  'Reparació d\'esquerdes, desconxats, humitats i allisat de parets amb gotelé',
+  'Pintura de paviments de pàrquings amb resina epoxi d\'alta resistència al trànsit',
+  'Rehabilitació i pintura de façanes exteriors i impermeabilització de terrasses',
+  'Petites reformes de paleta: enrajolats, paviments i envans de cartró-guix',
+  'Tractament i esmaltat de Manyeria, baranes, reixes i portes d\'accés',
+  'Protecció exhaustiva de mobiliari, terres i ascensors durant l\'execució dels treballs',
+  'Neteja professional integral un cop finalitzada l\'obra per a un lliurament perfecte',
+];
+
+const stats = [
+  { value: '15', label: 'anys d\'experiència' },
+  { value: '300+', label: 'obres i reformes' },
+  { value: '30 km', label: 'radi de servei' },
+  { value: 'Garantia', label: 'en tots els treballs' },
+];
+
+const gallery = [
+  { src: 'https://picsum.photos/seed/nl-pint-1/600/820', alt: 'Escala comunitària acabada de pintar en blanc trencat', caption: 'Pintura en escala comunitària impecable' },
+  { src: 'https://picsum.photos/seed/nl-pint-2/500/400', alt: 'Pintor aplicant corró en paret llisa', caption: 'Acabats llisos i pintura de qualitat' },
+  { src: 'https://picsum.photos/seed/nl-pint-3/500/400', alt: 'Terra de resina epoxi acabat de pintar en pàrquing', caption: 'Paviment epoxi per a garatges' },
+  { src: 'https://picsum.photos/seed/nl-pint-4/900/520', alt: 'Façana i entrada de comunitat renovada', caption: 'Entrada i vestíbul rehabilitat' },
+];
+
+const zones = ['Tarragona', 'Reus', 'Salou', 'Cambrils', 'Vila-seca', 'Torredembarra', 'Altafulla', 'El Vendrell', 'Valls'];
+---
+
+<BaseLayout
+  title="Pintura i reformes a Tarragona | NaturLimp Multiserveis"
+  description="Serveis de pintura i reformes per a comunitats, habitatges i locals a Tarragona, Reus i Salou. Pintors professionals i obres de manteniment amb acabats de primer nivell."
+  lang="ca"
+  canonical="https://naturlimp.com/ca/serveis/pintura-reformes-tarragona/"
+>
+  <Header lang="ca" t={flat} />
+  
+  <main id="main-content">
+    <ServiceLayout
+      lang="ca"
+      t={t}
+      heroImage="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2000&auto=format&fit=crop"
+      serviceNum="06"
+      serviceTag="Pintura · Reformes · Manteniment"
+      breadcrumb="Pintura i reformes"
+      headline="Pintura i reformes a Tarragona i comarca"
+      subheadline="Pintura professional d'escales, vestíbuls, façanes i reformes integrals o parcials de manteniment per a comunitats de propietaris, pisos i comerços."
+      checklist={checklist}
+      stats={stats}
+      gallery={gallery}
+      zones={zones}
+      zonesText="Prestem serveis de pintura i reformes a Tarragona (Part Alta, Serrallo, Eixample, Torreforta, Bonavista), Reus, Salou, Cambrils, Vila-seca, Torredembarra, Altafulla, El Vendrell i tota la Costa Daurada."
+    />
+  </main>
+  
+  <Footer lang="ca" t={flat} />
+</BaseLayout>

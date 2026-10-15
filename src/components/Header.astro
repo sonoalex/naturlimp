@@ -11,6 +11,24 @@ const isCa = lang === 'ca';
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isHome = currentPath === '/' || currentPath === '/ca';
 
+const serviceSlugMapEsToCa: Record<string, string> = {
+  'limpieza-comunidades-tarragona': 'neteja-comunitats-tarragona',
+  'jardineria-tarragona': 'jardineria-tarragona',
+  'piscinas-comunitarias-tarragona': 'neteja-piscines-tarragona',
+  'limpieza-parkings-tarragona': 'neteja-parquings-tarragona',
+  'abrillantado-suelos-tarragona': 'abrillantat-terres-tarragona',
+  'pintura-reformas-tarragona': 'pintura-reformes-tarragona',
+  'electricidad-tarragona': 'electricitat-tarragona',
+  'limpieza-final-obra-tarragona': 'neteja-final-obra-tarragona',
+  'limpieza-oficinas-tarragona': 'neteja-oficines-tarragona',
+  'apartamentos-turisticos-tarragona': 'apartaments-turistics-tarragona',
+  'limpieza-centros-salud-colegios-tarragona': 'neteja-centres-salut-colegis-tarragona',
+  'limpieza-cristales-tarragona': 'neteja-vidres-tarragona',
+};
+const serviceSlugMapCaToEs: Record<string, string> = Object.fromEntries(
+  Object.entries(serviceSlugMapEsToCa).map(([es, ca]) => [ca, es])
+);
+
 const altLang = isCa ? 'es' : 'ca';
 let altPath = '/';
 if (isCa) {
@@ -18,12 +36,22 @@ if (isCa) {
   else if (currentPath === '/ca/contacte') altPath = '/contacto/';
   else if (currentPath === '/ca/nosaltres') altPath = '/nosotros/';
   else if (currentPath === '/ca') altPath = '/';
+  else if (currentPath.startsWith('/ca/serveis/')) {
+    const slug = currentPath.replace('/ca/serveis/', '');
+    const mapped = serviceSlugMapCaToEs[slug] || slug;
+    altPath = `/es/servicios/${mapped}/`;
+  }
   else altPath = `${currentPath.replace(/^\/ca/, '/es')}/`;
 } else {
   if (currentPath === '/servicios') altPath = '/ca/serveis/';
   else if (currentPath === '/contacto') altPath = '/ca/contacte/';
   else if (currentPath === '/nosotros') altPath = '/ca/nosaltres/';
   else if (currentPath === '/') altPath = '/ca/';
+  else if (currentPath.startsWith('/es/servicios/')) {
+    const slug = currentPath.replace('/es/servicios/', '');
+    const mapped = serviceSlugMapEsToCa[slug] || slug;
+    altPath = `/ca/serveis/${mapped}/`;
+  }
   else altPath = `/ca${currentPath.replace(/^\/es/, '')}/`;
 }
 
@@ -38,19 +66,29 @@ const isAboutActive = currentPath === '/nosotros' || currentPath === '/ca/nosalt
 const isContactActive = currentPath === '/contacto' || currentPath === '/ca/contacte';
 
 const serviceLinks = isCa ? [
-  { label: 'Comunitats de veïns',    href: '/ca/serveis/neteja-comunitats-tarragona/' },
-  { label: 'Piscines comunitàries',  href: '/ca/serveis/neteja-piscines-tarragona/' },
-  { label: "Neteja final d'obra",    href: '/ca/serveis/neteja-final-obra-tarragona/' },
-  { label: 'Abrillantat de terres',  href: '/ca/serveis/abrillantat-terres-tarragona/' },
-  { label: 'Neteja de vidres',       href: '/ca/serveis/neteja-vidres-tarragona/' },
-  { label: 'Oficines i locals',      href: '/ca/serveis/neteja-oficines-tarragona/' },
+  { label: 'Neteja de comunitats',                                  href: '/ca/serveis/neteja-comunitats-tarragona/' },
+  { label: 'Jardineria',                                            href: '/ca/serveis/jardineria-tarragona/' },
+  { label: 'Manteniment piscines',                                  href: '/ca/serveis/neteja-piscines-tarragona/' },
+  { label: 'Neteja de pàrquings',                                   href: '/ca/serveis/neteja-parquings-tarragona/' },
+  { label: 'Polits i abrillantats',                                 href: '/ca/serveis/abrillantat-terres-tarragona/' },
+  { label: 'Pintura i reformes',                                    href: '/ca/serveis/pintura-reformes-tarragona/' },
+  { label: 'Electricitat',                                          href: '/ca/serveis/electricitat-tarragona/' },
+  { label: "Neteja final d'obra",                                   href: '/ca/serveis/neteja-final-obra-tarragona/' },
+  { label: "Neteja d'oficines i locals",                            href: '/ca/serveis/neteja-oficines-tarragona/' },
+  { label: 'Apartaments turístics',                                 href: '/ca/serveis/apartaments-turistics-tarragona/' },
+  { label: 'Residències, farmàcies, col·legis i centres de salut',   href: '/ca/serveis/neteja-centres-salut-colegis-tarragona/' },
 ] : [
-  { label: 'Comunidades de vecinos', href: '/es/servicios/limpieza-comunidades-tarragona/' },
-  { label: 'Piscinas comunitarias',  href: '/es/servicios/piscinas-comunitarias-tarragona/' },
-  { label: 'Limpieza final de obra', href: '/es/servicios/limpieza-final-obra-tarragona/' },
-  { label: 'Abrillantado de suelos', href: '/es/servicios/abrillantado-suelos-tarragona/' },
-  { label: 'Limpieza de cristales',  href: '/es/servicios/limpieza-cristales-tarragona/' },
-  { label: 'Oficinas y locales',     href: '/es/servicios/limpieza-oficinas-tarragona/' },
+  { label: 'Limpieza comunidades',                                  href: '/es/servicios/limpieza-comunidades-tarragona/' },
+  { label: 'Jardinería',                                            href: '/es/servicios/jardineria-tarragona/' },
+  { label: 'Mantenimiento piscinas',                                href: '/es/servicios/piscinas-comunitarias-tarragona/' },
+  { label: 'Limpieza de parkings',                                  href: '/es/servicios/limpieza-parkings-tarragona/' },
+  { label: 'Pulidos y abrillantados',                               href: '/es/servicios/abrillantado-suelos-tarragona/' },
+  { label: 'Pintura y reformas',                                    href: '/es/servicios/pintura-reformas-tarragona/' },
+  { label: 'Electricidad',                                          href: '/es/servicios/electricidad-tarragona/' },
+  { label: 'Limpieza final de obra',                                href: '/es/servicios/limpieza-final-obra-tarragona/' },
+  { label: 'Limpieza de oficinas y locales',                        href: '/es/servicios/limpieza-oficinas-tarragona/' },
+  { label: 'Apartamentos turísticos',                               href: '/es/servicios/apartamentos-turisticos-tarragona/' },
+  { label: 'Residencias, farmacias, colegios y centros de la salud', href: '/es/servicios/limpieza-centros-salud-colegios-tarragona/' },
 ];
 
 const navLinks = [
@@ -163,7 +201,7 @@ const navLinks = [
               </svg>
               <span>{t['nav.services']}</span>
             </div>
-            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--color-primary)]/20 text-[var(--color-foreground)] font-bold">6</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--color-primary)]/20 text-[var(--color-foreground)] font-bold">{serviceLinks.length}</span>
           </a>
 
           <!-- Subservices indented -->

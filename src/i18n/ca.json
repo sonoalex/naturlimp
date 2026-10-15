@@ -24,28 +24,52 @@
     "subtitle": "Solucions de neteja professional per a tota la província de Tarragona",
     "items": {
       "communities": {
-        "name": "Comunitats de veïns",
-        "desc": "Neteja regular de portals, escales, garatges i zones comunes a Tarragona, Reus i Salou."
+        "name": "Neteja de comunitats",
+        "desc": "Neteja regular i integral de portals, escales, garatges i zones comunes a Tarragona, Reus i Salou."
+      },
+      "gardening": {
+        "name": "Jardineria",
+        "desc": "Cura, poda, reg automàtic i manteniment integral de jardins i zones verdes comunitàries."
       },
       "pools": {
-        "name": "Piscines comunitàries",
-        "desc": "Manteniment, neteja i desinfecció de piscines en comunitats de Cambrils, Vila-seca i Torredembarra."
+        "name": "Manteniment piscines",
+        "desc": "Manteniment, neteja profunda, control de pH i desinfecció de piscines a Tarragona i Costa Daurada."
       },
-      "construction": {
-        "name": "Final d'obra",
-        "desc": "Neteja exhaustiva després de reformes i obra nova. Retirem pols, runa i residus a tota la Costa Daurada."
+      "parking": {
+        "name": "Neteja de pàrquings",
+        "desc": "Escombrat mecànic, hidroneteja desgreixant i desinfecció de terres en garatges comunitaris i públics."
       },
       "floors": {
-        "name": "Abrillantat de terres",
-        "desc": "Polit, cristal·litzat i abrillantat de marbre, terratzo i porcelànic al Part Alta, Serrallo i tota Tarragona."
+        "name": "Polits i abrillantats",
+        "desc": "Polit, cristal·litzat i abrillantat de marbre, terratzo i paviments durs per recuperar la brillantor original."
+      },
+      "painting": {
+        "name": "Pintura i reformes",
+        "desc": "Pintura de façanes, interiors, pàrquings i petites reformes de manteniment per a comunitats i locals."
+      },
+      "electricity": {
+        "name": "Electricitat",
+        "desc": "Manteniment elèctric, il·luminació LED de baix consum, intèrfons i quadres elèctrics per a finques."
+      },
+      "construction": {
+        "name": "Neteja final d'obra",
+        "desc": "Neteja exhaustiva després de reformes i obra nova. Eliminació de restes de guix, pintura i pols d'obra."
+      },
+      "offices": {
+        "name": "Neteja d'oficines i locals",
+        "desc": "Manteniment diari o periòdic per a oficines, despatxos, comerços i naus sense alterar la jornada laboral."
+      },
+      "tourist-apartments": {
+        "name": "Apartaments turístics",
+        "desc": "Neteja exprés, canvi de roba de llit, reposició d'amenities i desinfecció completa entre hostes."
+      },
+      "healthcare": {
+        "name": "Residències, farmàcies, col·legis i centres de salut",
+        "desc": "Protocols estrictes de desinfecció i higienització per a entorns sociosanitaris, educatius i farmacèutics."
       },
       "windows": {
         "name": "Neteja de vidres",
-        "desc": "Façanes, aparadors i finestres amb tècniques professionals en altura. Servei a Tarragona i comarca."
-      },
-      "offices": {
-        "name": "Oficines i locals",
-        "desc": "Manteniment diari o periòdic d'espais comercials i industrials a l'àrea metropolitana de Tarragona."
+        "desc": "Façanes envidrades, aparadors i finestres en alçada amb productes professionals repel·lents d'aigua."
       }
     }
   },

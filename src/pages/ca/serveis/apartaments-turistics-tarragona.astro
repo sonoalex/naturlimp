@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ServiceLayout from '../../../components/ServiceLayout.astro';
+import { flattenI18n } from '../../../utils/i18n';
+
+const rawT = await import('../../../i18n/ca.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+
+const checklist = [
+  'Neteja a fons de dormitoris, sala d\'estar, cuina, banys i terrasses',
+  'Bugaderia industrial i canvi de llençols, tovalloles i estores de bany',
+  'Higienització i desinfecció bactericida de banys i superfícies d\'alt contacte',
+  'Neteja d\'electrodomèstics: forn, microones, nevera i campana extractora',
+  'Revisió visual d\'inventari i informe fotogràfic immediat davant de qualsevol desperfecte',
+  'Reposició del kit de benvinguda i amenities (sabó, paper, bosses d\'escombraries)',
+  'Buidat de residus, aromatització i preparació estètica per a l\'entrada dels hostes',
+  'Coordinació directa mitjançant calendari o canals de reserva de l\'allotjament',
+];
+
+const stats = [
+  { value: '15', label: 'anys d\'experiència' },
+  { value: '5★', label: 'estàndard de neteja' },
+  { value: 'Exprés', label: 'rotació en 4 hores' },
+  { value: '7 dies', label: 'disponibilitat en temporada' },
+];
+
+const gallery = [
+  { src: 'https://picsum.photos/seed/nl-tur-1/600/820', alt: 'Apartament turístic impecable amb llit perfectament vestit', caption: 'Dormitoris llestos per al check-in' },
+  { src: 'https://picsum.photos/seed/nl-tur-2/500/400', alt: 'Bany d\'apartament turístic desinfectat i lluent', caption: 'Banys higienitzats i amb tovalloles netes' },
+  { src: 'https://picsum.photos/seed/nl-tur-3/500/400', alt: 'Cuina de lloguer vacacional completament neta', caption: 'Cuines desgreixades i vaixella revisada' },
+  { src: 'https://picsum.photos/seed/nl-tur-4/900/520', alt: 'Sala d\'estar lluminosa d\'apartament vacacional a la platja', caption: 'Sales d\'estar i terrasses acollidores per a l\'hoste' },
+];
+
+const zones = ['Tarragona', 'Salou', 'Cambrils', 'La Pineda', 'Vila-seca', 'Torredembarra', 'Altafulla', 'Miami Platja', 'El Vendrell'];
+---
+
+<BaseLayout
+  title="Neteja d'apartaments turístics a Tarragona i Costa Daurada | NaturLimp"
+  description="Servei professional de neteja exprés per a apartaments turístics, Airbnb i cases vacacionals a Tarragona, Salou i Cambrils. Roba de llit, desinfecció i check-in."
+  lang="ca"
+  canonical="https://naturlimp.com/ca/serveis/apartaments-turistics-tarragona/"
+>
+  <Header lang="ca" t={flat} />
+  
+  <main id="main-content">
+    <ServiceLayout
+      lang="ca"
+      t={t}
+      heroImage="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=2000&auto=format&fit=crop"
+      serviceNum="10"
+      serviceTag="Allotjaments · Check-in · Bugaderia"
+      breadcrumb="Apartaments turístics"
+      headline="Neteja d'apartaments turístics a Tarragona i Costa Daurada"
+      subheadline="Garanteix les 5 estrelles en neteja dels teus hostes amb el nostre servei àgil de rotació, reposició d'amenities, bugaderia i desinfecció completa."
+      checklist={checklist}
+      stats={stats}
+      gallery={gallery}
+      zones={zones}
+      zonesText="Servei de rotació i neteja d'apartaments turístics a Tarragona (Part Alta, Platja del Miracle, Eixample), Salou, Cambrils, La Pineda, Vila-seca, Torredembarra, Altafulla, Miami Platja i tota la Costa Daurada."
+    />
+  </main>
+  
+  <Footer lang="ca" t={flat} />
+</BaseLayout>
