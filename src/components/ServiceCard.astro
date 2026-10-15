@@ -48,14 +48,12 @@ const icons: Record<string, string> = {
         href={href}
         variant="white"
         size="sm"
-        className="mt-8 hover:gap-3 !rounded-full"
-        rightIcon={
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        }
+        className="mt-8 hover:gap-3 !rounded-full group"
       >
-        {ctaLabel}
+        <span>{ctaLabel}</span>
+        <svg class="ml-2 transition-transform group-hover:translate-x-1" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
       </Button>
     </div>
   </article>
@@ -77,14 +75,12 @@ const icons: Record<string, string> = {
       as="a"
       href={href}
       variant="link"
-      className="mt-5 hover:gap-2 !text-[var(--color-primary)]"
-      rightIcon={
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      }
+      className="mt-5 hover:gap-2 !text-[var(--color-primary)] group"
     >
-      {ctaLabel}
+      <span>{ctaLabel}</span>
+      <svg class="ml-2 transition-transform group-hover:translate-x-1" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
     </Button>
   </article>
 )}

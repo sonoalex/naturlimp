@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { flattenI18n } from '../utils/i18n';
+
+const rawT = await import('../i18n/es.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Aviso Legal — Natur Limp Tarragona S.L.U."
+  description="Aviso legal y condiciones de uso de la página web de Natur Limp Tarragona S.L.U."
+  lang="es"
+  canonical="https://naturlimp.com/aviso-legal/"
+>
+  <Header lang="es" t={flat} />
+
+  <main id="main-content" class="pt-32 pb-24 bg-[var(--color-background)]">
+    <div class="mx-auto max-w-4xl px-6 sm:px-10">
+      
+      <!-- Breadcrumb -->
+      <nav class="mb-6 flex items-center gap-2 text-xs text-[var(--color-muted-fg)]" aria-label="Miga de pan">
+        <a href="/" class="hover:text-[var(--color-foreground)] transition-colors">Inicio</a>
+        <span>/</span>
+        <span class="text-[var(--color-foreground)] font-medium">Aviso Legal</span>
+      </nav>
+
+      <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 sm:p-12 shadow-sm">
+        <h1 class="font-display text-3xl sm:text-4xl font-bold text-[var(--color-foreground)] mb-8">
+          Aviso Legal
+        </h1>
+
+        <div class="prose prose-slate max-w-none space-y-6 text-sm text-[var(--color-muted-fg)] leading-relaxed">
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              1. Datos Identificativos del Responsable
+            </h2>
+            <p>
+              En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y Comercio Electrónico (LSSI-CE), se informa de los datos de la empresa titular del sitio web:
+            </p>
+            <ul class="list-disc pl-5 mt-2 space-y-1">
+              <li><strong>Denominación social:</strong> NATUR LIMP TARRAGONA S.L.U.</li>
+              <li><strong>Nombre comercial:</strong> NaturLimp</li>
+              <li><strong>Domicilio social:</strong> Tarragona, España</li>
+              <li><strong>Teléfono de contacto:</strong> <a href="tel:+34603765253" class="text-[var(--color-primary-dark)] font-medium hover:underline">603 765 253</a></li>
+              <li><strong>Correo electrónico:</strong> <a href="mailto:contacto@naturlimp.com" class="text-[var(--color-primary-dark)] font-medium hover:underline">contacto@naturlimp.com</a></li>
+              <li><strong>Actividad:</strong> Servicios integrales de limpieza, mantenimiento de comunidades, oficinas y multiservicios.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              2. Objeto y Condiciones de Uso
+            </h2>
+            <p>
+              El presente aviso legal regula el acceso y la utilización del sitio web <strong>naturlimp.com</strong>. La navegación por el sitio web atribuye la condición de usuario e implica la aceptación plena de todas las disposiciones incluidas en este Aviso Legal.
+            </p>
+            <p>
+              El usuario se compromete a hacer un uso adecuado de los contenidos y servicios de conformidad con la ley, la buena fe, el orden público y las presentes condiciones.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              3. Propiedad Intelectual e Industrial
+            </h2>
+            <p>
+              Todos los contenidos del sitio web (textos, fotografías, gráficos, imágenes, iconos, tecnología, software, diseño gráfico y códigos fuente) constituyen una obra cuya propiedad pertenece a NATUR LIMP TARRAGONA S.L.U., sin que puedan entenderse cedidos al usuario ninguno de los derechos de explotación sobre los mismos.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              4. Exclusión de Garantías y Responsabilidad
+            </h2>
+            <p>
+              NATUR LIMP TARRAGONA S.L.U. no se hace responsable, en ningún caso, de los daños y perjuicios de cualquier naturaleza que pudieran ocasionar: errores u omisiones en los contenidos, falta de disponibilidad del portal o la transmisión de virus a pesar de haber adoptado todas las medidas tecnológicas necesarias para evitarlo.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              5. Legislación Aplicable y Jurisdicción
+            </h2>
+            <p>
+              Para la resolución de cualquier controversia o cuestión litigiosa relativa al presente sitio web o de las actividades en él desarrolladas, será de aplicación la legislación española, siendo competentes los Juzgados y Tribunales de la ciudad de Tarragona.
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer lang="es" t={flat} />
+</BaseLayout>

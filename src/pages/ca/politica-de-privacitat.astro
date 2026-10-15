@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { flattenI18n } from '../../utils/i18n';
+
+const rawT = await import('../../i18n/ca.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Política de Privacitat — Natur Limp Tarragona S.L.U."
+  description="Informació sobre el tractament i protecció de dades personals de Natur Limp Tarragona S.L.U. conforme a l'RGPD."
+  lang="ca"
+  canonical="https://naturlimp.com/ca/politica-de-privacitat/"
+>
+  <Header lang="ca" t={flat} />
+
+  <main id="main-content" class="pt-32 pb-24 bg-[var(--color-background)]">
+    <div class="mx-auto max-w-4xl px-6 sm:px-10">
+      
+      <nav class="mb-6 flex items-center gap-2 text-xs text-[var(--color-muted-fg)]" aria-label="Ruta de navegació">
+        <a href="/ca" class="hover:text-[var(--color-foreground)] transition-colors">Inici</a>
+        <span>/</span>
+        <span class="text-[var(--color-foreground)] font-medium">Política de Privacitat</span>
+      </nav>
+
+      <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 sm:p-12 shadow-sm">
+        <h1 class="font-display text-3xl sm:text-4xl font-bold text-[var(--color-foreground)] mb-8">
+          Política de Privacitat
+        </h1>
+
+        <div class="prose prose-slate max-w-none space-y-6 text-sm text-[var(--color-muted-fg)] leading-relaxed">
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              1. Responsable del Tractament
+            </h2>
+            <p>
+              El responsable del tractament de les dades personals recollides a través d'aquest lloc web és <strong>NATUR LIMP TARRAGONA S.L.U.</strong>, amb domicili a Tarragona, Catalunya, i correu electrònic de contacte: <a href="mailto:contacto@naturlimp.com" class="text-[var(--color-primary-dark)] font-medium hover:underline">contacto@naturlimp.com</a>.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              2. Finalitat del Tractament de Dades
+            </h2>
+            <p>
+              Les dades facilitades pels usuaris mitjançant el formulari de contacte o trucades/WhatsApp seran tractades per atendre consultes, peticions de pressupost i gestionar els serveis de neteja contractats.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              3. Drets dels Usuaris
+            </h2>
+            <p>
+              L'usuari pot exercir en qualsevol moment els seus drets d'accés, rectificació, supressió, limitació i oposició adreçant-se per correu electrònic a <a href="mailto:contacto@naturlimp.com" class="text-[var(--color-primary-dark)] font-medium hover:underline">contacto@naturlimp.com</a>.
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer lang="ca" t={flat} />
+</BaseLayout>

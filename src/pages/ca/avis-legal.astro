@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { flattenI18n } from '../../utils/i18n';
+
+const rawT = await import('../../i18n/ca.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Avís Legal — Natur Limp Tarragona S.L.U."
+  description="Avís legal i condicions d'ús de la pàgina web de Natur Limp Tarragona S.L.U."
+  lang="ca"
+  canonical="https://naturlimp.com/ca/avis-legal/"
+>
+  <Header lang="ca" t={flat} />
+
+  <main id="main-content" class="pt-32 pb-24 bg-[var(--color-background)]">
+    <div class="mx-auto max-w-4xl px-6 sm:px-10">
+      
+      <nav class="mb-6 flex items-center gap-2 text-xs text-[var(--color-muted-fg)]" aria-label="Ruta de navegació">
+        <a href="/ca" class="hover:text-[var(--color-foreground)] transition-colors">Inici</a>
+        <span>/</span>
+        <span class="text-[var(--color-foreground)] font-medium">Avís Legal</span>
+      </nav>
+
+      <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 sm:p-12 shadow-sm">
+        <h1 class="font-display text-3xl sm:text-4xl font-bold text-[var(--color-foreground)] mb-8">
+          Avís Legal
+        </h1>
+
+        <div class="prose prose-slate max-w-none space-y-6 text-sm text-[var(--color-muted-fg)] leading-relaxed">
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              1. Dades Identificatives del Responsable
+            </h2>
+            <p>
+              En compliment de l'article 10 de la Llei 34/2002, d'11 de juliol, de Serveis de la Societat de la Informació i Comerç Electrònic (LSSI-CE), s'informa de les dades de l'empresa titular del lloc web:
+            </p>
+            <ul class="list-disc pl-5 mt-2 space-y-1">
+              <li><strong>Denominació social:</strong> NATUR LIMP TARRAGONA S.L.U.</li>
+              <li><strong>Nom comercial:</strong> NaturLimp</li>
+              <li><strong>Domicili social:</strong> Tarragona, Catalunya</li>
+              <li><strong>Telèfon de contacte:</strong> <a href="tel:+34603765253" class="text-[var(--color-primary-dark)] font-medium hover:underline">603 765 253</a></li>
+              <li><strong>Correu electrònic:</strong> <a href="mailto:contacto@naturlimp.com" class="text-[var(--color-primary-dark)] font-medium hover:underline">contacto@naturlimp.com</a></li>
+              <li><strong>Activitat:</strong> Serveis integrals de neteja, manteniment de comunitats, oficines i multiserveis.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              2. Objecte i Condicions d'Ús
+            </h2>
+            <p>
+              Aquest avís legal regula l'accés i la utilització del lloc web <strong>naturlimp.com</strong>. La navegació pel lloc web atribueix la condició d'usuari i implica l'acceptació plena de totes les disposicions incloses en aquest Avís Legal.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              3. Propietat Intel·lectual i Industrial
+            </h2>
+            <p>
+              Tots els continguts del lloc web (textos, fotografies, gràfics, imatges, icones, tecnologia, programari, disseny gràfic i codis font) són propietat de NATUR LIMP TARRAGONA S.L.U.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              4. Legislació Aplicable i Jurisdicció
+            </h2>
+            <p>
+              Per a la resolució de qualsevol controvèrsia relativa a aquest lloc web, serà aplicable la legislació espanyola, essent competents els Jutjats i Tribunals de la ciutat de Tarragona.
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer lang="ca" t={flat} />
+</BaseLayout>

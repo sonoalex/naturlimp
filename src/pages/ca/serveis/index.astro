@@ -1,0 +1,315 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ServiceCard from '../../../components/ServiceCard.astro';
+import BeforeAfterSlider from '../../../components/BeforeAfterSlider';
+import ContactForm from '../../../components/ContactForm';
+import FAQSection from '../../../components/FAQSection.astro';
+import { flattenI18n } from '../../../utils/i18n';
+
+const rawT = await import('../../../i18n/ca.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+
+const servicesList = [
+  {
+    name: 'Comunitats de veïns',
+    desc: 'Neteja integral i periòdica de portals, escales, garatges, ascensors i replans. Plans adaptats a comunitats grans i petites.',
+    icon: 'communities' as const,
+    href: '/ca/serveis/neteja-comunitats-tarragona',
+    ctaLabel: 'Veure servei de comunitats',
+    featured: true,
+  },
+  {
+    name: 'Piscines comunitàries',
+    desc: 'Manteniment, neteja profunda i desinfecció homologada de piscines per a comunitats a Tarragona, Salou i Cambrils.',
+    icon: 'pools' as const,
+    href: '/ca/serveis/neteja-piscines-tarragona',
+    ctaLabel: 'Veure manteniment de piscines',
+  },
+  {
+    name: "Final d'obra",
+    desc: 'Eliminació exhaustiva de restes de pintura, ciment, pols de guix i residus després de reformes o construcció nova.',
+    icon: 'construction' as const,
+    href: '/ca/serveis/neteja-final-obra-tarragona',
+    ctaLabel: "Veure neteja final d'obra",
+  },
+  {
+    name: 'Abrillantat de terres',
+    desc: 'Cristal·litzat, polit i abrillantat professional de marbre, terratzo i paviments durs. Recupera la brillantor natural.',
+    icon: 'floors' as const,
+    href: '/ca/serveis/abrillantat-terres-tarragona',
+    ctaLabel: 'Veure abrillantat de terres',
+  },
+  {
+    name: 'Neteja de vidres',
+    desc: 'Vidres, finestrals, aparadors i façanes envidrades amb tècniques en alçada i productes repel·lents d’aigua i pols.',
+    icon: 'windows' as const,
+    href: '/ca/serveis/neteja-vidres-tarragona',
+    ctaLabel: 'Veure neteja de vidres',
+  },
+  {
+    name: 'Oficines i locals',
+    desc: "Manteniment diari, setmanal o mensual d'oficines, despatxos, naus i comerços. Flexibilitat horària sense interrompre l'activitat.",
+    icon: 'offices' as const,
+    href: '/ca/serveis/neteja-oficines-tarragona',
+    ctaLabel: "Veure neteja d'oficines",
+  },
+];
+
+const beforeAfterItems = [
+  {
+    before: 'https://picsum.photos/seed/nl-obra-b/700/340',
+    after:  'https://picsum.photos/seed/nl-obra-a/700/340',
+    label:  "Final d'obra",
+    beforeAlt: "Terra d'obra abans de la neteja — pols i residus",
+    afterAlt:  "Terra d'obra després de la neteja — impecable",
+  },
+  {
+    before: 'https://picsum.photos/seed/nl-suelo-b/700/340',
+    after:  'https://picsum.photos/seed/nl-suelo-a/700/340',
+    label:  'Abrillantat de terres',
+    beforeAlt: "Terra de terratzo opac abans de l'abrillantat",
+    afterAlt:  "Terra de terratzo brillant després de l'abrillantat",
+  },
+  {
+    before: 'https://picsum.photos/seed/nl-pool-b/700/340',
+    after:  'https://picsum.photos/seed/nl-pool-a/700/340',
+    label:  'Neteja piscines',
+    beforeAlt: 'Piscina comunitària amb algues abans de la neteja',
+    afterAlt:  'Piscina comunitària neta i transparent',
+  },
+];
+---
+
+<BaseLayout
+  title="Serveis de Neteja a Tarragona — NaturLimp"
+  description="Empresa de neteja i multiserveis a Tarragona. Serveis professionals per a comunitats de veïns, oficines, final d'obra, abrillantat, vidres i piscines."
+  lang="ca"
+  canonical="https://naturlimp.com/ca/serveis/"
+>
+  <Header lang="ca" t={flat} />
+
+  <main id="main-content">
+
+    <!-- ── Hero Section ───────────────────────────────────────────────────────── -->
+    <section class="relative bg-[var(--color-foreground)] text-white pt-32 pb-20 overflow-hidden">
+      <div
+        class="pointer-events-none absolute inset-0"
+        style="background: radial-gradient(ellipse 65% 60% at 50% 20%, rgba(162,217,97,0.18) 0%, transparent 70%);"
+        aria-hidden="true"
+      />
+
+      <div class="relative mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <!-- Breadcrumb -->
+        <nav class="mb-6 flex items-center gap-2 text-xs text-white/50" aria-label="Ruta de navegació">
+          <a href="/ca" class="hover:text-white transition-colors">Inici</a>
+          <span>/</span>
+          <span class="text-[var(--color-primary)] font-medium">Serveis</span>
+        </nav>
+
+        <div class="max-w-3xl">
+          <div class="mb-5 inline-flex items-center gap-2 rounded-sm border border-[var(--color-primary)]/40 bg-[var(--color-primary)]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-primary-light)]">
+            <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]" aria-hidden="true"></span>
+            Multiserveis Professionals
+          </div>
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
+            Serveis de Neteja i Multiserveis a Tarragona
+          </h1>
+          <p class="mt-6 text-lg text-white/60 leading-relaxed">
+            Més de 15 anys d'experiència oferint màxima qualitat, sostenibilitat i atenció personalitzada per a comunitats, empreses i particulars a Tarragona i comarca.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-4 text-xs font-semibold text-white/80">
+            <span class="inline-flex items-center gap-2 rounded-lg bg-white/5 border border-white/10 px-3 py-1.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[var(--color-primary)]"><path d="M20 6L9 17l-5-5"/></svg>
+              Assegurança RC Inclosa
+            </span>
+            <span class="inline-flex items-center gap-2 rounded-lg bg-white/5 border border-white/10 px-3 py-1.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[var(--color-primary)]"><path d="M20 6L9 17l-5-5"/></svg>
+              Equip Propi Qualificat
+            </span>
+            <span class="inline-flex items-center gap-2 rounded-lg bg-white/5 border border-white/10 px-3 py-1.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[var(--color-primary)]"><path d="M20 6L9 17l-5-5"/></svg>
+              Productes Ecològics Certificats
+            </span>
+            <span class="inline-flex items-center gap-2 rounded-lg bg-white/5 border border-white/10 px-3 py-1.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[var(--color-primary)]"><path d="M20 6L9 17l-5-5"/></svg>
+              Pressupost en 24h Sense Compromís
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Main Services Grid ─────────────────────────────────────────────────── -->
+    <section class="py-20 bg-[var(--color-background)]" aria-labelledby="catalog-heading">
+      <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <h2 id="catalog-heading" class="font-display text-3xl sm:text-4xl font-bold text-[var(--color-foreground)]">
+            Catàleg de Serveis de Neteja
+          </h2>
+          <p class="mt-3 text-sm text-[var(--color-muted-fg)]">
+            Selecciona el servei que necessites per consultar els detalls específics i demanar pressupost.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {servicesList.map(svc => (
+            <div class="h-full">
+              <ServiceCard
+                name={svc.name}
+                desc={svc.desc}
+                icon={svc.icon}
+                href={svc.href}
+                ctaLabel={svc.ctaLabel}
+                featured={svc.featured}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-14 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 sm:p-10 shadow-sm">
+          <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+            <div class="space-y-2 text-center lg:text-left">
+              <span class="inline-block text-xs font-bold uppercase tracking-wider text-[var(--color-primary-dark)]">
+                Multiserveis Integrals
+              </span>
+              <h3 class="font-display text-2xl font-bold text-[var(--color-foreground)]">
+                Necessites feines especials de reformes, pintura o jardineria?
+              </h3>
+              <p class="text-sm text-[var(--color-muted-fg)] max-w-2xl leading-relaxed">
+                A NaturLimp també oferim polits i diamantats de terres, manteniment de jardins comunitaris, pintura de pàrquings i petites reformes integrals per a comunitats i negocis.
+              </p>
+            </div>
+            <a
+              href="/ca/contacte"
+              class="inline-flex items-center justify-center font-display font-bold px-6 py-3 rounded-full bg-[var(--color-primary)] text-[var(--color-foreground)] hover:bg-[var(--color-accent)] transition-colors shrink-0 text-sm shadow-sm"
+            >
+              Consultar altres multiserveis
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Before / After Interactive ─────────────────────────────────────────── -->
+    <section class="py-20 bg-[var(--color-muted)]" aria-labelledby="before-after-heading">
+      <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <div class="text-center max-w-xl mx-auto mb-12">
+          <span class="inline-block text-xs font-bold uppercase tracking-widest text-[var(--color-primary-dark)] mb-2">
+            Resultats comprovats
+          </span>
+          <h2 id="before-after-heading" class="font-display text-3xl sm:text-4xl font-bold text-[var(--color-foreground)]">
+            Abans i Després dels Nostres Treballs
+          </h2>
+          <p class="mt-3 text-sm text-[var(--color-muted-fg)]">
+            Arrossega el selector per comprovar l'eficàcia dels nostres equips i tractaments.
+          </p>
+        </div>
+
+        <div class="mx-auto max-w-4xl">
+          <BeforeAfterSlider client:visible items={beforeAfterItems} />
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ Section ────────────────────────────────────────────────────────── -->
+    <FAQSection
+      title={t.faq.title}
+      subtitle={t.faq.subtitle}
+      items={t.faq.items}
+      lang="ca"
+    />
+
+    <!-- ── Contact / CTA Section ──────────────────────────────────────────────── -->
+    <section id="contacte" class="relative py-24 bg-[var(--color-foreground)] overflow-hidden" aria-labelledby="contact-heading">
+      <div
+        class="pointer-events-none absolute inset-0"
+        aria-hidden="true"
+        style="background: radial-gradient(ellipse 55% 70% at 10% 60%, rgba(162,217,97,0.18) 0%, transparent 65%);"
+      />
+
+      <div class="relative mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <div class="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-20 xl:gap-28">
+
+          <!-- Left Info -->
+          <div class="flex flex-col justify-center">
+            <div class="mb-8 inline-flex w-fit items-center gap-2 rounded-sm border border-[var(--color-primary)]/40 bg-[var(--color-primary)]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-primary-light)]">
+              <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]" aria-hidden="true"></span>
+              {t.contact.title}
+            </div>
+
+            <h2 id="contact-heading" class="font-display text-4xl font-bold text-white sm:text-5xl lg:text-6xl" style="line-height:1.05">
+              Demana el teu pressupost a mida
+            </h2>
+            <p class="mt-5 max-w-sm text-lg leading-relaxed text-white/45">
+              Sense compromís ni permanència. Et visitem o enviem proposta detallada en menys de 24 hores.
+            </p>
+
+            <div class="mt-10 space-y-3">
+              <a
+                href="tel:+34603765253"
+                class="group flex items-center gap-4 rounded-xl border border-white/8 px-4 py-3.5 transition-colors duration-200 hover:border-[var(--color-primary)]/40 hover:bg-white/4"
+              >
+                <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]/20 text-[var(--color-primary-light)] transition-colors group-hover:bg-[var(--color-primary)]/30">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </span>
+                <div>
+                  <span class="block text-[11px] uppercase tracking-widest text-white/35">Telèfon directe</span>
+                  <span class="block text-sm font-semibold text-white">603 765 253</span>
+                </div>
+              </a>
+
+              <a
+                href="https://wa.me/34603765253?text=Hola%2C%20m%27agradaria%20demanar%20un%20pressupost"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex items-center gap-4 rounded-xl border border-white/8 px-4 py-3.5 transition-colors duration-200 hover:border-[var(--color-primary)]/40 hover:bg-white/4"
+              >
+                <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]/20 text-[var(--color-primary-light)] transition-colors group-hover:bg-[var(--color-primary)]/30">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                  </svg>
+                </span>
+                <div>
+                  <span class="block text-[11px] uppercase tracking-widest text-white/35">WhatsApp Immediat</span>
+                  <span class="block text-sm font-semibold text-white">603 765 253</span>
+                </div>
+              </a>
+
+              <a
+                href="mailto:contacto@naturlimp.com"
+                class="group flex items-center gap-4 rounded-xl border border-white/8 px-4 py-3.5 transition-colors duration-200 hover:border-[var(--color-primary)]/40 hover:bg-white/4"
+              >
+                <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]/20 text-[var(--color-primary-light)] transition-colors group-hover:bg-[var(--color-primary)]/30">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                  </svg>
+                </span>
+                <div>
+                  <span class="block text-[11px] uppercase tracking-widest text-white/35">Email</span>
+                  <span class="block text-sm font-semibold text-white">contacto@naturlimp.com</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Form -->
+          <div class="flex items-center">
+            <div class="w-full rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm sm:p-10 shadow-2xl">
+              <ContactForm client:visible t={t.contact} />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer lang="ca" t={flat} />
+</BaseLayout>

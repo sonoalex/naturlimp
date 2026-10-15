@@ -16,17 +16,17 @@ const contactHref = isCa ? '#contacte' : '#contacto';
 const serviceLinks = isCa ? [
   { label: 'Comunitats de veïns',    href: '/ca/serveis/neteja-comunitats-tarragona' },
   { label: 'Piscines comunitàries',  href: '/ca/serveis/neteja-piscines-tarragona' },
-  { label: "Neteja d'obra",          href: '/ca/serveis/neteja-obra-tarragona' },
-  { label: 'Abrillantat de terres',  href: contactHref },
-  { label: 'Neteja de cristals',     href: contactHref },
-  { label: 'Oficines i locals',      href: contactHref },
+  { label: "Neteja d'obra",          href: '/ca/serveis/neteja-final-obra-tarragona' },
+  { label: 'Abrillantat de terres',  href: '/ca/serveis/abrillantat-terres-tarragona' },
+  { label: 'Neteja de vidres',       href: '/ca/serveis/neteja-vidres-tarragona' },
+  { label: 'Oficines i locals',      href: '/ca/serveis/neteja-oficines-tarragona' },
 ] : [
-  { label: 'Comunidades de vecinos', href: '/servicios/limpieza-comunidades-tarragona' },
-  { label: 'Piscinas comunitarias',  href: '/servicios/limpieza-piscinas-tarragona' },
-  { label: 'Limpieza de obra',       href: '/servicios/limpieza-obra-tarragona' },
-  { label: 'Abrillantado de suelos', href: contactHref },
-  { label: 'Limpieza de cristales',  href: contactHref },
-  { label: 'Oficinas y locales',     href: contactHref },
+  { label: 'Comunidades de vecinos', href: '/es/servicios/limpieza-comunidades-tarragona' },
+  { label: 'Piscinas comunitarias',  href: '/es/servicios/piscinas-comunitarias-tarragona' },
+  { label: 'Limpieza final de obra', href: '/es/servicios/limpieza-final-obra-tarragona' },
+  { label: 'Abrillantado de suelos', href: '/es/servicios/abrillantado-suelos-tarragona' },
+  { label: 'Limpieza de cristales',  href: '/es/servicios/limpieza-cristales-tarragona' },
+  { label: 'Oficinas y locales',     href: '/es/servicios/limpieza-oficinas-tarragona' },
 ];
 
 const zoneLinks = isCa ? [
@@ -84,7 +84,7 @@ const zoneLinks = isCa ? [
             client:load
             type="whatsapp"
             value=""
-            href="https://wa.me/34977000000"
+            href="https://wa.me/34603765253"
             variant="footer"
             className="!p-0 !h-8 !w-8 items-center justify-center rounded-lg bg-white/5 !text-white/40 hover:!bg-white/10 hover:!text-white transition-all"
             ariaLabel={isCa ? "WhatsApp de NaturLimp" : "WhatsApp de NaturLimp"}
@@ -120,15 +120,15 @@ const zoneLinks = isCa ? [
           <ContactMethod
             client:load
             type="phone"
-            value="977 000 000"
-            href="tel:+34977000000"
+            value="603 765 253"
+            href="tel:+34603765253"
             variant="footer"
           />
           <ContactMethod
             client:load
             type="email"
-            value="info@naturlimp.com"
-            href="mailto:info@naturlimp.com"
+            value="contacto@naturlimp.com"
+            href="mailto:contacto@naturlimp.com"
             variant="footer"
           />
           <ContactMethod
@@ -176,9 +176,9 @@ const zoneLinks = isCa ? [
     <div class="flex flex-col items-center justify-between gap-4 pt-6 pb-2 text-xs text-white/25 sm:flex-row">
       <p>© {year} NaturLimp. {t['footer.rights']}.</p>
       <nav class="flex gap-5" aria-label={isCa ? 'Legal' : 'Legal'}>
-        <a href={isCa ? '/ca/privacitat' : '/privacidad'} class="hover:text-white/60 transition-colors duration-150">{t['footer.privacy']}</a>
+        <a href={isCa ? '/ca/politica-de-privacitat' : '/politica-de-privacidad'} class="hover:text-white/60 transition-colors duration-150">{t['footer.privacy']}</a>
         <a href={isCa ? '/ca/avis-legal' : '/aviso-legal'} class="hover:text-white/60 transition-colors duration-150">{t['footer.legal']}</a>
-        <a href={isCa ? '/ca/cookies' : '/cookies'} class="hover:text-white/60 transition-colors duration-150">{t['footer.cookies']}</a>
+        <a href={isCa ? '/ca/politica-de-cookies' : '/politica-de-cookies'} class="hover:text-white/60 transition-colors duration-150">{t['footer.cookies']}</a>
       </nav>
     </div>
   </div>

@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { flattenI18n } from '../../utils/i18n';
+
+const rawT = await import('../../i18n/ca.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Política de Cookies — Natur Limp Tarragona S.L.U."
+  description="Informació sobre l'ús de cookies al lloc web de Natur Limp Tarragona S.L.U."
+  lang="ca"
+  canonical="https://naturlimp.com/ca/politica-de-cookies/"
+>
+  <Header lang="ca" t={flat} />
+
+  <main id="main-content" class="pt-32 pb-24 bg-[var(--color-background)]">
+    <div class="mx-auto max-w-4xl px-6 sm:px-10">
+      
+      <nav class="mb-6 flex items-center gap-2 text-xs text-[var(--color-muted-fg)]" aria-label="Ruta de navegació">
+        <a href="/ca" class="hover:text-[var(--color-foreground)] transition-colors">Inici</a>
+        <span>/</span>
+        <span class="text-[var(--color-foreground)] font-medium">Política de Cookies</span>
+      </nav>
+
+      <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 sm:p-12 shadow-sm">
+        <h1 class="font-display text-3xl sm:text-4xl font-bold text-[var(--color-foreground)] mb-8">
+          Política de Cookies
+        </h1>
+
+        <div class="prose prose-slate max-w-none space-y-6 text-sm text-[var(--color-muted-fg)] leading-relaxed">
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              1. Què són les Cookies?
+            </h2>
+            <p>
+              Una cookie és un fitxer petit de text que els llocs web emmagatzemen al vostre navegador en visitar-los per recordar informació com el vostre idioma preferit i preferències de navegació.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              2. Cookies utilitzades
+            </h2>
+            <p>
+              Aquest lloc web utilitza exclusivament cookies tècniques i funcionals necessàries per a la navegació i el funcionament correcte del servei de pressupost i selector d'idioma.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              3. Gestió de Cookies
+            </h2>
+            <p>
+              Podeu permetre, bloquejar o eliminar les cookies instal·lades al vostre equip mitjançant la configuració de les opcions del navegador d'Internet instal·lat al vostre dispositiu.
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer lang="ca" t={flat} />
+</BaseLayout>

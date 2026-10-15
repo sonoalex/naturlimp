@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { flattenI18n } from '../utils/i18n';
+
+const rawT = await import('../i18n/es.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Política de Privacidad — Natur Limp Tarragona S.L.U."
+  description="Información sobre el tratamiento y protección de datos personales de Natur Limp Tarragona S.L.U. conforme al RGPD y LOPD-GDD."
+  lang="es"
+  canonical="https://naturlimp.com/politica-de-privacidad/"
+>
+  <Header lang="es" t={flat} />
+
+  <main id="main-content" class="pt-32 pb-24 bg-[var(--color-background)]">
+    <div class="mx-auto max-w-4xl px-6 sm:px-10">
+      
+      <!-- Breadcrumb -->
+      <nav class="mb-6 flex items-center gap-2 text-xs text-[var(--color-muted-fg)]" aria-label="Miga de pan">
+        <a href="/" class="hover:text-[var(--color-foreground)] transition-colors">Inicio</a>
+        <span>/</span>
+        <span class="text-[var(--color-foreground)] font-medium">Política de Privacidad</span>
+      </nav>
+
+      <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 sm:p-12 shadow-sm">
+        <h1 class="font-display text-3xl sm:text-4xl font-bold text-[var(--color-foreground)] mb-8">
+          Política de Privacidad
+        </h1>
+
+        <div class="prose prose-slate max-w-none space-y-6 text-sm text-[var(--color-muted-fg)] leading-relaxed">
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              1. Responsable del Tratamiento
+            </h2>
+            <p>
+              El responsable del tratamiento de los datos personales recogidos a través de este sitio web es <strong>NATUR LIMP TARRAGONA S.L.U.</strong>, con domicilio en Tarragona, España, y correo electrónico de contacto: <a href="mailto:contacto@naturlimp.com" class="text-[var(--color-primary-dark)] font-medium hover:underline">contacto@naturlimp.com</a>.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              2. Finalidad del Tratamiento de Datos
+            </h2>
+            <p>
+              Los datos facilitados por los usuarios a través del formulario de contacto o vías telefónicas/WhatsApp serán tratados con las siguientes finalidades:
+            </p>
+            <ul class="list-disc pl-5 mt-2 space-y-1">
+              <li>Atender, tramitar y responder a las consultas, solicitudes de información y peticiones de presupuesto solicitadas por el usuario.</li>
+              <li>Gestionar la relación contractual y prestación de servicios de limpieza y multiservicios acordados.</li>
+              <li>Cumplir con las obligaciones legales y fiscales aplicables a nuestra actividad empresarial.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              3. Legitimación para el Tratamiento
+            </h2>
+            <p>
+              La base legal para el tratamiento de sus datos es el <strong>consentimiento expreso</strong> otorgado al remitir el formulario de contacto o solicitud de presupuesto, así como la ejecución de medidas precontractuales o contractuales en caso de formalizar la contratación de un servicio.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              4. Conservación de los Datos
+            </h2>
+            <p>
+              Los datos personales se conservarán durante el tiempo estrictamente necesario para cumplir con la finalidad para la que se recabaron y, posteriormente, durante los plazos legalmente exigibles para atender posibles responsabilidades derivadas del tratamiento.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-heading text-lg font-semibold text-[var(--color-foreground)] mb-2">
+              5. Derechos de los Usuarios
+            </h2>
+            <p>
+              El usuario puede ejercer en cualquier momento sus derechos de <strong>acceso, rectificación, supresión, limitación del tratamiento, portabilidad y oposición</strong> enviando una comunicación escrita acompañada de copia de su documento de identidad a <a href="mailto:contacto@naturlimp.com" class="text-[var(--color-primary-dark)] font-medium hover:underline">contacto@naturlimp.com</a>.
+            </p>
+            <p class="mt-2">
+              Asimismo, tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) si considera que se han vulnerado sus derechos en materia de protección de datos.
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer lang="es" t={flat} />
+</BaseLayout>
