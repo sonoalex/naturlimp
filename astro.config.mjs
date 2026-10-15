@@ -1,9 +1,22 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  integrations: [react()],
+  site: 'https://naturlimp.com',
+  integrations: [
+    react(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'es',
+        locales: {
+          es: 'es-ES',
+          ca: 'ca-ES',
+        },
+      },
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

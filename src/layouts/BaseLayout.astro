@@ -18,6 +18,11 @@ const currentPath = Astro.url.pathname;
 const altPath = lang === 'es'
   ? currentPath.replace(/^\/es/, '/ca')
   : currentPath.replace(/^\/ca/, '/es');
+
+const isProduction =
+  import.meta.env.PUBLIC_INDEX_SITE === 'true' ||
+  process.env.ENVIRONMENT === 'production' ||
+  process.env.RAILWAY_ENVIRONMENT_NAME === 'production';
 ---
 
 <!doctype html>
@@ -29,6 +34,7 @@ const altPath = lang === 'es'
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content={isProduction ? 'index, follow' : 'noindex, nofollow'} />
     <link rel="canonical" href={canonical ?? `${baseUrl}${currentPath}`} />
 
     <!-- hreflang i18n -->

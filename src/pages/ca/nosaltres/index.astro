@@ -67,7 +67,8 @@ const multiservices = [
   <main id="main-content">
 
     <!-- ── Hero Section (Amb foto de NaturLimp visible dalt de tot) ──────────── -->
-    <section class="relative bg-[var(--color-foreground)] text-white pt-32 pb-20 overflow-hidden">
+    <!-- ── Hero Section (Amb foto i estadístiques acoblades a Desktop) ──────── -->
+    <section class="relative bg-[var(--color-foreground)] text-white pt-28 pb-12 lg:pb-14 overflow-hidden">
       <!-- Glow ambient background -->
       <div
         class="pointer-events-none absolute inset-0"
@@ -77,35 +78,35 @@ const multiservices = [
 
       <div class="relative mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
         <!-- Breadcrumb -->
-        <nav class="mb-6 flex items-center gap-2 text-xs text-white/50" aria-label="Fil d'Ariadna">
+        <nav class="mb-5 flex items-center gap-2 text-xs text-white/50" aria-label="Fil d'Ariadna">
           <a href="/ca" class="hover:text-white transition-colors">Inici</a>
           <span>/</span>
           <span class="text-[var(--color-primary)] font-medium">Qui som</span>
         </nav>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <!-- Text left column (7 cols) -->
           <div class="lg:col-span-7">
-            <div class="mb-5 inline-flex items-center gap-2 rounded-sm border border-[var(--color-primary)]/40 bg-[var(--color-primary)]/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-primary-light)]">
+            <div class="mb-4 inline-flex items-center gap-2 rounded-sm border border-[var(--color-primary)]/40 bg-[var(--color-primary)]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-primary-light)]">
               <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]" aria-hidden="true"></span>
               Més de 17 anys d'experiència
             </div>
 
-            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
+            <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-[1.1]">
               Compromís, confiança i proximitat a cada racó.
             </h1>
 
-            <p class="mt-6 text-lg sm:text-xl text-white/70 leading-relaxed font-sans">
+            <p class="mt-4 sm:mt-5 text-base sm:text-lg text-white/70 leading-relaxed font-sans">
               <strong>Natur Limp Tarragona S.L.U.</strong> és una empresa consolidada de neteja i multiserveis. Cuidem cada espai amb l'atenció personalitzada que només un equip local i professional pot oferir.
             </p>
 
-            <div class="mt-8 flex flex-wrap items-center gap-4">
+            <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-4">
               <Button
                 client:load
                 as="a"
                 href="/ca/contacte"
                 variant="primary"
-                size="lg"
+                size="md"
                 className="!rounded-full font-bold"
               >
                 Demanar pressupost gratis
@@ -115,7 +116,7 @@ const multiservices = [
                 as="a"
                 href="tel:+34603765253"
                 variant="secondary"
-                size="lg"
+                size="md"
                 className="!rounded-full !border-white/20 !text-white hover:!bg-white/10"
               >
                 Trucar al 603 765 253
@@ -129,46 +130,43 @@ const multiservices = [
               <img
                 src="/images/nosotros-naturlimp.jpeg"
                 alt="Natur Limp Tarragona - Neteja i multiserveis"
-                class="w-full h-80 sm:h-96 lg:h-[420px] object-cover transition-transform duration-500 group-hover:scale-105"
+                class="w-full h-64 sm:h-72 lg:h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
                 loading="eager"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-foreground)]/80 via-transparent to-transparent flex items-end p-6">
+              <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-foreground)]/80 via-transparent to-transparent flex items-end p-5">
                 <div>
-                  <span class="inline-block rounded-full bg-[var(--color-primary)] px-3 py-1 text-xs font-bold text-[var(--color-foreground)] mb-1">
+                  <span class="inline-block rounded-full bg-[var(--color-primary)] px-2.5 py-0.5 text-xs font-bold text-[var(--color-foreground)] mb-1">
                     Natur Limp Tarragona
                   </span>
-                  <p class="text-sm text-white/90 font-medium">Empresa local de neteja i multiserveis</p>
+                  <p class="text-xs sm:text-sm text-white/90 font-medium">Empresa local de neteja i multiserveis</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-      </div>
-    </section>
-
-
-    <!-- ── Estadístiques clau ────────────────────────────────────────────────── -->
-    <section class="border-y border-[var(--color-border)] bg-[var(--color-surface)] py-12" aria-label="Xifres clau">
-      <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
-        <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
-          <div class="flex flex-col items-center text-center">
-            <span class="font-display text-4xl sm:text-5xl font-black text-[var(--color-primary-dark)]">+17</span>
-            <span class="mt-2 text-sm text-[var(--color-muted-fg)] font-medium">Anys d'experiència</span>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <span class="font-display text-4xl sm:text-5xl font-black text-[var(--color-primary-dark)]">100%</span>
-            <span class="mt-2 text-sm text-[var(--color-muted-fg)] font-medium">Personal propi assegurat</span>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <span class="font-display text-4xl sm:text-5xl font-black text-[var(--color-primary-dark)]">30 km</span>
-            <span class="mt-2 text-sm text-[var(--color-muted-fg)] font-medium">Radi de cobertura</span>
-          </div>
-          <div class="flex flex-col items-center text-center">
-            <span class="font-display text-4xl sm:text-5xl font-black text-[var(--color-primary-dark)]">&lt; 24h</span>
-            <span class="mt-2 text-sm text-[var(--color-muted-fg)] font-medium">Resposta pressupostos</span>
+        <!-- ── Estadístiques clau acoblades directament a la secció superior ── -->
+        <div class="mt-10 pt-8 border-t border-white/10">
+          <div class="grid grid-cols-2 gap-6 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+            <div class="flex flex-col items-center text-center px-4">
+              <span class="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-[var(--color-primary)] tabular-nums">+17</span>
+              <span class="mt-1.5 text-xs sm:text-sm text-white/70 font-medium">Anys d'experiència</span>
+            </div>
+            <div class="flex flex-col items-center text-center px-4 pt-4 sm:pt-0">
+              <span class="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-[var(--color-primary)] tabular-nums">100%</span>
+              <span class="mt-1.5 text-xs sm:text-sm text-white/70 font-medium">Personal propi assegurat</span>
+            </div>
+            <div class="flex flex-col items-center text-center px-4 pt-4 sm:pt-0">
+              <span class="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-[var(--color-primary)] tabular-nums">30 km</span>
+              <span class="mt-1.5 text-xs sm:text-sm text-white/70 font-medium">Radi de cobertura</span>
+            </div>
+            <div class="flex flex-col items-center text-center px-4 pt-4 sm:pt-0">
+              <span class="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-[var(--color-primary)] tabular-nums">&lt; 24h</span>
+              <span class="mt-1.5 text-xs sm:text-sm text-white/70 font-medium">Resposta pressupostos</span>
+            </div>
           </div>
         </div>
+
       </div>
     </section>
 
