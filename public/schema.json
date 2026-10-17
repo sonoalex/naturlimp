@@ -192,34 +192,178 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
-    "reviewCount": "47",
+    "reviewCount": "51",
     "bestRating": "5",
     "worstRating": "1"
   },
   "review": [
     {
       "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "María García"
-      },
-      "reviewBody": "Llevamos 3 años con NaturLimp para la limpieza de nuestra comunidad en el Serrallo. Siempre puntuales, profesionales y el edificio queda impecable."
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Miguel Martín Martín" },
+      "reviewBody": "Son muy competentes, Raquel muy pendiente en todo momento de que todo quedara bien, con buenos precios, quedé muy satisfecho. Recomiendo 100%"
     },
     {
       "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Jordi Puig"
-      },
-      "reviewBody": "Contractem NaturLimp per a la neteja final d'obra del nostre local a Reus. Feina excel·lent, puntuals i preu molt competitiu."
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "patricia mm" },
+      "reviewBody": "Atención personalizada, tienen en cuenta hasta el último detalle, relación calidad-precio genial. Hasta el momento la mejor empresa de limpieza y pintura. Tanto los trabajadores como la jefa, un encanto todos."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Alex A." },
+      "reviewBody": "Estem molt contents amb el tracte i el servei de naturlimp a la comunitat"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Ester Lampreave" },
+      "reviewBody": "Sí, estoy totalmente satisfecha, han hecho un buen trabajo, todos los que han venido a limpiar son muy profesionales y trabajan muy bien, muy recomendable"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "francisco javier" },
+      "reviewBody": "Es una empresa que a nuestra comunidad de vecinos nos hace el trabajo de limpieza y mantenimiento muy bien, así que nosotros seguimos contando con ellos"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "sandra patricia loaiza vergara" },
+      "reviewBody": "Excelente servicio y responsabilidad, con productos de gran calidad. Totalmente recomendados."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Pilar Delgado Guerrero" },
+      "reviewBody": "Una gran empresa con personal cualificado. Y destacar el trato cercano de Raquel y su predisposición. La recomiendo."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "JOAN BEL" },
+      "reviewBody": "Servei ràpid i molt professional!!"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Pilar Ramos" },
+      "reviewBody": "Un acierto contratar a esta empresa, Raquel siempre tan competente, transparente y honesta, muy recomendable."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "carlos cccp" },
+      "reviewBody": "El Sr Jairo es una excelente persona y profesional."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Natalia Seor" },
+      "reviewBody": "Empresa muy responsable y personal amable y muy trabajador. Limpieza y compromiso de 10"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Pierina Torredemer cavallari" },
+      "reviewBody": "Excelente atencion y cuidando todos los detalles."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Sandra Roa" },
+      "reviewBody": "Excelente empresa con calidad del servicio y de personal se los recomiendo."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Erika Moreno" },
+      "reviewBody": "Muy buenos profesionales, muy resolutivos y gran capacidad de trabajo."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Toñi Montoro Garzon" },
+      "reviewBody": "Muy buen servicio. Raquel es una gran profesional"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Nuria Cebrian Garcia" },
+      "reviewBody": "Buen servicio y atencion"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Marta Barea" },
+      "reviewBody": "Són muy competentes. Relacion calidad precio perfecta."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Edu Garcia" },
+      "reviewBody": "Un placer contactar con esta empresa para sus servicios."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Mateo Fernandez" },
+      "reviewBody": "Cumplidores y muy eficientes"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Loli Dominguez" },
+      "reviewBody": "Muy profesionales."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Rubenuco" },
+      "reviewBody": "Super profesionales!!!!"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Maria Espadas" },
+      "reviewBody": "Todo perfecto buen trabajo"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "PERALBER Peralber" },
+      "reviewBody": "LO MEJOR DE LO MEJOR"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Santi Lopez" },
+      "reviewBody": "Profesionales en todo momento muy muy bien"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Luci Fuentes" },
+      "reviewBody": "Profesionales y responsable . Todo perfecto"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Gestiona I Més SL" },
+      "reviewBody": "Perfecto"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Gaspar Nadal" },
+      "reviewBody": "Buenos profesionales."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Juan Martinez" },
+      "reviewBody": "Todo perfecto"
     }
   ],
   "sameAs": [
