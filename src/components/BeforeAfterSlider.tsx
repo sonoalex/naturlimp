@@ -4,12 +4,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import type { PanInfo } from 'framer-motion';
 
-interface SlideItem {
+export interface SlideItem {
   before: string;
   after: string;
   label: string;
   beforeAlt: string;
   afterAlt: string;
+  description?: string;
 }
 
 interface Props {
@@ -150,6 +151,12 @@ const SliderItem = ({ item, lang, dark }: { item: SlideItem; lang: 'es' | 'ca'; 
           </span>
         </div>
       </motion.div>
+
+      {item.description && (
+        <p className={`mt-3 text-xs sm:text-sm leading-relaxed ${dark ? 'text-white/65' : 'text-[var(--color-muted-fg)]'}`}>
+          {item.description}
+        </p>
+      )}
     </div>
   );
 };
@@ -176,6 +183,9 @@ export default function BeforeAfterSlider({ items, dragHint, lang, dark = false 
                 decoding="async"
               />
             </div>
+            {item.description && (
+              <p className="mt-3 text-xs sm:text-sm text-white/50">{item.description}</p>
+            )}
           </div>
         ))}
       </div>
