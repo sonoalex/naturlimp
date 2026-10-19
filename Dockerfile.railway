@@ -18,6 +18,10 @@ RUN rm /etc/nginx/conf.d/default.conf && \
     index index.html;\n\
     absolute_redirect off;\n\
 \n\
+    sub_filter_once off;\n\
+    sub_filter_types text/html;\n\
+    sub_filter "https://naturlimp.com" "https://$host";\n\
+\n\
     location /_assets/ {\n\
         expires 1y;\n\
         add_header Cache-Control "public, immutable";\n\
