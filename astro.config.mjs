@@ -27,6 +27,14 @@ export default defineConfig({
     routing: { prefixDefaultLocale: false },
   },
   build: { assets: '_assets' },
+  redirects: {
+    '/blog': '/',
+    '/ofertas': '/servicios/',
+    '/declaracion-de-accesibilidad': '/aviso-legal/',
+    '/nuestros-servicios-1': '/servicios/',
+    '/galeria-de-fotos': '/servicios/',
+    '/promociones': '/servicios/',
+  },
   compressHTML: true,
   image: {
     service: { entrypoint: 'astro/assets/services/sharp' },

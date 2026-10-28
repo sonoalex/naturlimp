@@ -68,8 +68,30 @@ export default function ContactForm({ t, lang }: Props) {
 
     setStatus('loading');
     try {
-      // Replace with your actual form endpoint (Netlify, Formspree, etc.)
-      await new Promise(r => setTimeout(r, 1200));
+      const selectedServiceKey = String(data.get('service') || '');
+      const serviceLabel = t.service_options[selectedServiceKey] || selectedServiceKey;
+
+      const payload = {
+        name: String(data.get('name') || '').trim(),
+        phone: String(data.get('phone') || '').trim(),
+        service: serviceLabel,
+        zone: String(data.get('zone') || '').trim(),
+        message: String(data.get('message') || '').trim(),
+        _gotcha: String(data.get('_gotcha') || ''),
+      };
+
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        throw new Error('Error al enviar el formulario');
+      }
+
       setStatus('success');
       form.reset();
       setTouched({});
@@ -106,6 +128,16 @@ export default function ContactForm({ t, lang }: Props) {
       aria-label={lang === 'es' ? 'Formulario de contacto' : 'Formulari de contacte'}
       className="space-y-5"
     >
+      {/* Honeypot field for anti-spam */}
+      <input
+        type="text"
+        name="_gotcha"
+        style={{ display: 'none' }}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+      />
+
       {/* Name */}
       <div>
         <label htmlFor="contact-name" className="mb-1.5 block text-sm font-medium text-[var(--color-foreground)]">
