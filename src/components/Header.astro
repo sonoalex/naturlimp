@@ -116,16 +116,12 @@ const navLinks = [
   </a>
 
   <div class="flex items-center gap-2">
-    <Button
-      client:load
-      as="a"
+    <a
       href={contactHref}
-      variant="primary"
-      size="sm"
-      className="h-8 px-3.5 !rounded-full text-xs font-bold"
+      class="inline-flex items-center justify-center h-8 px-3.5 rounded-full text-xs font-bold bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-dark)] transition-colors shadow-sm"
     >
       {isCa ? 'Pressupost' : 'Presupuesto'}
-    </Button>
+    </a>
     <button
       id="mobile-menu-toggle"
       type="button"
@@ -310,16 +306,12 @@ const navLinks = [
       </div>
 
       <!-- Presupuesto CTA -->
-      <Button
-        client:load
-        as="a"
+      <a
         href={contactHref}
-        variant="primary"
-        size="md"
-        className="w-full !rounded-xl font-bold justify-center"
+        class="inline-flex items-center justify-center w-full rounded-xl py-3 px-4 font-bold text-sm bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-dark)] transition-colors shadow-md"
       >
         {isCa ? 'Demanar Pressupost' : 'Pedir Presupuesto'}
-      </Button>
+      </a>
     </div>
   </div>
 </div>
@@ -451,16 +443,12 @@ const navLinks = [
   </a>
 
   <!-- CTA -->
-  <Button
-    client:load
-    as="a"
+  <a
     href={contactHref}
-    variant="primary"
-    size="sm"
-    className="ml-1 h-8 !rounded-full"
+    class="ml-1 inline-flex items-center justify-center h-8 px-3.5 rounded-full text-xs font-bold bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-dark)] transition-colors shadow-sm"
   >
     {isCa ? 'Pressupost' : 'Presupuesto'}
-  </Button>
+  </a>
 
 </header>
 

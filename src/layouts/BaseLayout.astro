@@ -27,6 +27,7 @@ const altLang = lang === 'es' ? 'ca' : 'es';
 const baseUrl = 'https://naturlimp.com';
 const currentPath = Astro.url.pathname;
 const normalizedPath = currentPath.endsWith('/') ? currentPath : `${currentPath}/`;
+const isHome = normalizedPath === '/' || normalizedPath === '/ca/';
 
 // Smart alternate hreflang URL resolution
 let resolvedAltPath = alternateUrl;
@@ -132,9 +133,11 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${baseUrl}${ogImage}`
     <meta name="twitter:image:alt" content="NaturLimp Tarragona — Limpieza profesional y multiservicios" />
 
     <!-- Preloads -->
-    <link rel="preload" as="image" href="/images/hero-cleaning.avif" fetchpriority="high" />
+    {isHome && (
+      <link rel="preload" as="image" href="/images/naturlimp-bg-hero-new.webp" type="image/webp" fetchpriority="high" />
+    )}
 
-    <!-- Fonts -->
+    <!-- Fonts (Non-render-blocking with font-display: swap) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -145,7 +148,15 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${baseUrl}${ogImage}`
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap"
+      />
+    </noscript>
 
     <!-- JSON-LD structured data -->
     <script type="application/ld+json" set:html={JSON.stringify(schema.default ?? schema)} />

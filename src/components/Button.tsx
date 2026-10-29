@@ -11,6 +11,8 @@ interface ButtonProps {
   disabled?: boolean;
   as?: 'button' | 'a';
   href?: string;
+  target?: string;
+  rel?: string;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
 }
@@ -25,8 +27,11 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
   as = 'button',
   href,
+  target,
+  rel,
   leftIcon,
   rightIcon,
+  ...rest
 }) => {
   const baseStyles = 'inline-flex items-center justify-center font-display font-bold transition-colors duration-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
   
@@ -53,7 +58,10 @@ const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       disabled={disabled}
       href={href}
+      target={target}
+      rel={rel}
       className={combinedClasses}
+      {...rest}
     >
       {leftIcon && <span className="mr-2">{leftIcon}</span>}
       {children}

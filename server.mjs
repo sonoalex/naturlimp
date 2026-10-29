@@ -2,6 +2,7 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import zlib from 'node:zlib';
 import { Resend } from 'resend';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -146,18 +147,63 @@ function serveStatic(req, res) {
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
     const isImmutableAsset = urlPath.startsWith('/_assets/');
+    const isImageOrFont = /^\/(images|icons)\//.test(urlPath) || ['.ico', '.png', '.jpg', '.jpeg', '.webp', '.avif', '.woff', '.woff2'].includes(ext);
 
-    res.writeHead(200, {
+    let cacheControl = 'public, max-age=3600';
+    if (isImmutableAsset) {
+      cacheControl = 'public, max-age=31536000, immutable';
+    } else if (isImageOrFont) {
+      cacheControl = 'public, max-age=2592000, stale-while-revalidate=86400';
+    } else if (ext === '.html') {
+      cacheControl = 'public, max-age=0, must-revalidate';
+    }
+
+    const headers = {
       'Content-Type': contentType,
-      'Cache-Control': isImmutableAsset ? 'public, max-age=31536000, immutable' : 'public, max-age=3600',
-    });
+      'Cache-Control': cacheControl,
+      'Vary': 'Accept-Encoding',
+    };
+
+    const isCompressible = /^(text\/|application\/(javascript|json|xml)|image\/svg\+xml)/.test(contentType);
+    const acceptEncoding = req.headers['accept-encoding'] || '';
+
+    if (isCompressible) {
+      if (/\bbr\b/.test(acceptEncoding)) {
+        headers['Content-Encoding'] = 'br';
+        res.writeHead(200, headers);
+        return fs.createReadStream(filePath).pipe(zlib.createBrotliCompress()).pipe(res);
+      }
+      if (/\bgzip\b/.test(acceptEncoding)) {
+        headers['Content-Encoding'] = 'gzip';
+        res.writeHead(200, headers);
+        return fs.createReadStream(filePath).pipe(zlib.createGzip({ level: 6 })).pipe(res);
+      }
+    }
+
+    res.writeHead(200, headers);
     return fs.createReadStream(filePath).pipe(res);
   }
 
   // 404 handler
   const notFoundPath = path.join(DIST_DIR, '404.html');
   if (fs.existsSync(notFoundPath)) {
-    res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+    const acceptEncoding = req.headers['accept-encoding'] || '';
+    const headers = {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Vary': 'Accept-Encoding',
+      'Cache-Control': 'no-cache',
+    };
+    if (/\bbr\b/.test(acceptEncoding)) {
+      headers['Content-Encoding'] = 'br';
+      res.writeHead(404, headers);
+      return fs.createReadStream(notFoundPath).pipe(zlib.createBrotliCompress()).pipe(res);
+    }
+    if (/\bgzip\b/.test(acceptEncoding)) {
+      headers['Content-Encoding'] = 'gzip';
+      res.writeHead(404, headers);
+      return fs.createReadStream(notFoundPath).pipe(zlib.createGzip()).pipe(res);
+    }
+    res.writeHead(404, headers);
     return fs.createReadStream(notFoundPath).pipe(res);
   }
 

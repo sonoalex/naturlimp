@@ -28,7 +28,7 @@ const values = [
   {
     title: 'Compromís mediambiental',
     desc: 'Utilitzem maquinària eficient i productes de neteja professionals respectuosos amb els materials i el medi ambient.',
-    icon: `<path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12A10 10 0 0 1 12 2z"/><path d="M12 6v6l4 2"/>`,
+    icon: `<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>`,
   },
 ];
 
@@ -102,7 +102,6 @@ const multiservices = [
 
             <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-4">
               <Button
-                client:load
                 as="a"
                 href="/ca/contacte/"
                 variant="primary"
@@ -112,7 +111,6 @@ const multiservices = [
                 Demanar pressupost gratis
               </Button>
               <Button
-                client:load
                 as="a"
                 href="tel:+34603765253"
                 variant="secondary"
@@ -333,7 +331,6 @@ const multiservices = [
               </p>
               <div class="mt-8 flex flex-wrap gap-4">
                 <Button
-                  client:load
                   as="a"
                   href="https://naturgo.es"
                   target="_blank"
@@ -348,7 +345,6 @@ const multiservices = [
                   </svg>
                 </Button>
                 <Button
-                  client:load
                   as="a"
                   href="/ca/contacte/"
                   variant="white"
@@ -362,17 +358,22 @@ const multiservices = [
 
             <!-- Targeta blanca amb logo NaturGo centrat i gran -->
             <div class="lg:col-span-5 flex justify-center">
-              <div class="w-full max-w-md rounded-3xl bg-white p-10 sm:p-14 text-center shadow-2xl flex flex-col items-center justify-center">
+              <a
+                href="https://naturgo.es"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full max-w-md rounded-3xl bg-white p-10 sm:p-14 text-center shadow-2xl flex flex-col items-center justify-center transition-transform duration-300 hover:scale-[1.02] group"
+              >
                 <img
                   src="/images/naturgo-logo.png"
                   alt="Logo NaturGo Autocaravanes"
-                  class="w-full max-w-[280px] sm:max-w-[320px] h-auto object-contain transition-transform duration-300 hover:scale-105"
+                  class="w-full max-w-[280px] sm:max-w-[320px] h-auto object-contain transition-transform duration-300 group-hover:scale-105"
                   loading="lazy"
                 />
                 <span class="mt-6 inline-block rounded-full bg-[var(--color-primary-light)] px-4 py-1.5 text-xs uppercase tracking-widest text-[var(--color-primary-dark)] font-bold border border-[var(--color-border)]">
                   Lloguer d'autocaravanes a Tarragona
                 </span>
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -396,7 +397,6 @@ const multiservices = [
         </p>
         <div class="mt-10 flex flex-wrap justify-center gap-4">
           <Button
-            client:load
             as="a"
             href="/ca/contacte/"
             variant="primary"
@@ -406,7 +406,6 @@ const multiservices = [
             Sol·licitar pressupost gratuït
           </Button>
           <Button
-            client:load
             as="a"
             href="https://wa.me/34603765253?text=Hola%2C%20m%27agradaria%20demanar%20informaci%C3%B3"
             target="_blank"

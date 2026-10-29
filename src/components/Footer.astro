@@ -91,7 +91,6 @@ const zoneLinks = isCa ? [
         <!-- Social links -->
         <div class="flex gap-3 mt-1">
           <ContactMethod
-            client:load
             type="whatsapp"
             value=""
             href="https://wa.me/34603765253"
@@ -128,27 +127,23 @@ const zoneLinks = isCa ? [
         </h3>
         <div class="flex flex-col gap-4">
           <ContactMethod
-            client:load
             type="phone"
             value="603 765 253"
             href="tel:+34603765253"
             variant="footer"
           />
           <ContactMethod
-            client:load
             type="email"
             value="contacto@naturlimp.com"
             href="mailto:contacto@naturlimp.com"
             variant="footer"
           />
           <ContactMethod
-            client:load
             type="address"
             value={t['footer.address']}
             variant="footer"
           />
           <ContactMethod
-            client:load
             type="schedule"
             value={t['footer.schedule']}
             variant="footer"
