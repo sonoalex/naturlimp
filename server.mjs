@@ -54,7 +54,7 @@ async function handleContact(req, res) {
     }
 
     const resendApiKey = process.env.RESEND_API_KEY;
-    const toEmail = process.env.CONTACT_TO_EMAIL || 'nltarragona@gmail.com';
+    const toEmail = process.env.CONTACT_TO_EMAIL || 'elbalcodigital@gmail.com';
     const fromEmail = process.env.RESEND_FROM_EMAIL || 'NaturLimp Web <notificaciones@naturlimp.com>';
     const templateId = process.env.RESEND_TEMPLATE_ID || 'd6708ff2-18f6-4d14-a825-640e749cda13';
 
