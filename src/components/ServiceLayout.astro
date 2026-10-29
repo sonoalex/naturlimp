@@ -31,6 +31,22 @@ interface Props {
 
 const { headline, subheadline, serviceTag, serviceNum, breadcrumb, checklist, gallery, stats, zonesText, zones, heroImage, t, lang } = Astro.props;
 
+const serviceNumToKey: Record<string, string> = {
+  '01': 'communities',
+  '02': 'gardening',
+  '03': 'pools',
+  '04': 'parking',
+  '05': 'floors',
+  '06': 'painting',
+  '07': 'electricity',
+  '08': 'construction',
+  '09': 'offices',
+  '10': 'tourist-apartments',
+  '11': 'healthcare',
+  '12': 'windows',
+};
+const defaultService = serviceNumToKey[serviceNum];
+
 const isEs = lang === 'es';
 const contactId = isEs ? 'contacto' : 'contacte';
 
@@ -306,7 +322,7 @@ const steps = isEs ? [
         </div>
 
         <div class="reveal rounded-2xl bg-white p-8 shadow-2xl lg:p-10">
-          <ContactForm client:visible t={t.contact} lang={lang} />
+          <ContactForm client:visible t={t.contact} lang={lang} defaultService={defaultService} />
         </div>
       </div>
     </div>

@@ -23,6 +23,7 @@ interface Props {
   };
   lang?: 'es' | 'ca';
   dark?: boolean;
+  defaultService?: string;
 }
 
 interface Errors {
@@ -31,7 +32,7 @@ interface Errors {
   service?: string;
 }
 
-export default function ContactForm({ t, lang = 'es', dark = false }: Props) {
+export default function ContactForm({ t, lang = 'es', dark = false, defaultService }: Props) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errors, setErrors] = useState<Errors>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
@@ -216,7 +217,7 @@ export default function ContactForm({ t, lang = 'es', dark = false }: Props) {
           aria-describedby={errors.service ? 'error-service' : undefined}
           onBlur={() => handleBlur('service')}
           className={`${fieldClass('service')} cursor-pointer`}
-          defaultValue=""
+          defaultValue={defaultService || ""}
         >
           <option value="" disabled className={dark ? 'bg-slate-900 text-white' : 'text-slate-500'}>
             {lang === 'es' ? 'Selecciona un servicio' : 'Selecciona un servei'}

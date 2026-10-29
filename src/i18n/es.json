@@ -140,12 +140,18 @@
     "message": "Mensaje (opcional)",
     "service_options": {
       "communities": "Comunidades de vecinos",
-      "pools": "Piscinas comunitarias",
-      "construction": "Final de obra",
-      "floors": "Abrillantado de suelos",
+      "pools": "Mantenimiento de piscinas",
+      "construction": "Limpieza final de obra",
+      "floors": "Pulidos y abrillantados de suelos",
       "windows": "Limpieza de cristales",
-      "offices": "Oficinas y locales",
-      "other": "Otro servicio"
+      "offices": "Oficinas y locales comerciales",
+      "parking": "Limpieza de parkings y garajes",
+      "tourist-apartments": "Apartamentos turísticos",
+      "healthcare": "Residencias, colegios y clínicas",
+      "gardening": "Jardinería y zonas verdes",
+      "painting": "Pintura y reformas",
+      "electricity": "Electricidad y mantenimiento",
+      "other": "Otro servicio / Multiservicios"
     },
     "submit": "Enviar solicitud",
     "submitting": "Enviando...",
