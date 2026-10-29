@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button';
+import { flattenI18n } from '../utils/i18n';
+
+const rawT = await import('../i18n/es.json');
+const t = rawT.default;
+const flat = flattenI18n(t as unknown as Record<string, unknown>);
+---
+
+<BaseLayout
+  title="Página no encontrada (404) — NaturLimp Tarragona"
+  description="La página que estás buscando no existe o ha sido movida. Vuelve al inicio o contacta con NaturLimp Tarragona."
+  lang="es"
+  noindex={true}
+>
+  <Header lang="es" t={flat} />
+
+  <main id="main-content" class="min-h-[70vh] flex items-center justify-center pt-32 pb-20 px-6 bg-[var(--color-surface)]">
+    <div class="max-w-xl mx-auto text-center">
+      <span class="inline-block text-6xl font-black text-[var(--color-primary)] mb-4">404</span>
+      <h1 class="text-3xl sm:text-4xl font-display font-bold text-slate-900 mb-4">
+        Página no encontrada
+      </h1>
+      <p class="text-base text-slate-600 mb-8 leading-relaxed">
+        Lo sentimos, la página que buscas no existe o ha cambiado de dirección. Puedes regresar al inicio o explorar nuestros servicios de limpieza.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/">
+          <Button variant="primary" size="lg">
+            Volver al inicio
+          </Button>
+        </a>
+        <a href="/servicios/">
+          <Button variant="secondary" size="lg">
+            Ver servicios
+          </Button>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer lang="es" t={flat} />
+</BaseLayout>

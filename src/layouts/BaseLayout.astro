@@ -8,22 +8,68 @@ interface Props {
   lang: 'es' | 'ca';
   canonical?: string;
   ogImage?: string;
+  noindex?: boolean;
+  alternateUrl?: string;
 }
 
-const { title, description, lang, canonical, ogImage = '/images/og-image.jpg' } = Astro.props;
+const {
+  title,
+  description,
+  lang,
+  canonical,
+  ogImage = '/images/og-image.jpg',
+  noindex = false,
+  alternateUrl,
+} = Astro.props;
+
 const schema = await import('../../public/schema.json');
 const altLang = lang === 'es' ? 'ca' : 'es';
 const baseUrl = 'https://naturlimp.com';
 const currentPath = Astro.url.pathname;
-const altPath = lang === 'es'
-  ? currentPath.replace(/^\/es/, '/ca')
-  : currentPath.replace(/^\/ca/, '/es');
-const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${baseUrl}${ogImage}`;
+const normalizedPath = currentPath.endsWith('/') ? currentPath : `${currentPath}/`;
 
-const isProduction =
-  import.meta.env.PUBLIC_INDEX_SITE === 'true' ||
-  process.env.ENVIRONMENT === 'production' ||
-  process.env.RAILWAY_ENVIRONMENT_NAME === 'production';
+// Smart alternate hreflang URL resolution
+let resolvedAltPath = alternateUrl;
+if (!resolvedAltPath) {
+  if (normalizedPath === '/' || normalizedPath === '') {
+    resolvedAltPath = '/ca/';
+  } else if (normalizedPath === '/ca/') {
+    resolvedAltPath = '/';
+  } else if (lang === 'es') {
+    if (normalizedPath === '/contacto/') resolvedAltPath = '/ca/contacte/';
+    else if (normalizedPath === '/nosotros/') resolvedAltPath = '/ca/nosaltres/';
+    else if (normalizedPath === '/servicios/') resolvedAltPath = '/ca/serveis/';
+    else if (normalizedPath === '/aviso-legal/') resolvedAltPath = '/ca/avis-legal/';
+    else if (normalizedPath === '/politica-de-privacidad/') resolvedAltPath = '/ca/politica-de-privacitat/';
+    else if (normalizedPath === '/politica-de-cookies/') resolvedAltPath = '/ca/politica-de-cookies/';
+    else if (normalizedPath.startsWith('/es/limpieza-profesional-')) {
+      resolvedAltPath = normalizedPath.replace('/es/limpieza-profesional-', '/ca/neteja-professional-');
+    } else if (normalizedPath.startsWith('/es/servicios/')) {
+      resolvedAltPath = normalizedPath.replace('/es/servicios/', '/ca/serveis/');
+    } else {
+      resolvedAltPath = `/ca${normalizedPath}`;
+    }
+  } else {
+    if (normalizedPath === '/ca/contacte/') resolvedAltPath = '/contacto/';
+    else if (normalizedPath === '/ca/nosaltres/') resolvedAltPath = '/nosotros/';
+    else if (normalizedPath === '/ca/serveis/') resolvedAltPath = '/servicios/';
+    else if (normalizedPath === '/ca/avis-legal/') resolvedAltPath = '/aviso-legal/';
+    else if (normalizedPath === '/ca/politica-de-privacitat/') resolvedAltPath = '/politica-de-privacidad/';
+    else if (normalizedPath === '/ca/politica-de-cookies/') resolvedAltPath = '/politica-de-cookies/';
+    else if (normalizedPath.startsWith('/ca/neteja-professional-')) {
+      resolvedAltPath = normalizedPath.replace('/ca/neteja-professional-', '/es/limpieza-profesional-');
+    } else if (normalizedPath.startsWith('/ca/serveis/')) {
+      resolvedAltPath = normalizedPath.replace('/ca/serveis/', '/es/servicios/');
+    } else {
+      resolvedAltPath = normalizedPath.replace(/^\/ca/, '') || '/';
+    }
+  }
+}
+
+const canonicalHref = canonical ?? `${baseUrl}${normalizedPath}`;
+const alternateHref = `${baseUrl}${resolvedAltPath}`;
+const xDefaultHref = lang === 'es' ? canonicalHref : alternateHref;
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${baseUrl}${ogImage}`;
 ---
 
 <!doctype html>
@@ -35,19 +81,33 @@ const isProduction =
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content={isProduction ? 'index, follow' : 'noindex, nofollow'} />
+
+    <!-- Robots & Crawler Directives -->
+    {noindex ? (
+      <>
+        <meta name="robots" content="noindex, nofollow" />
+        <meta name="googlebot" content="noindex, nofollow" />
+      </>
+    ) : (
+      <>
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      </>
+    )}
+
     <!-- Favicon & App Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="canonical" href={canonical ?? `${baseUrl}${currentPath}`} />
+    <link rel="canonical" href={canonicalHref} />
 
     <!-- hreflang i18n -->
-    <link rel="alternate" hreflang={lang} href={`${baseUrl}${currentPath}`} />
-    <link rel="alternate" hreflang={altLang} href={`${baseUrl}${altPath}`} />
-    <link rel="alternate" hreflang="x-default" href={`${baseUrl}${currentPath}`} />
+    <link rel="alternate" hreflang={lang} href={canonicalHref} />
+    <link rel="alternate" hreflang={altLang} href={alternateHref} />
+    <link rel="alternate" hreflang="x-default" href={xDefaultHref} />
 
     <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
     <meta property="og:type" content="website" />

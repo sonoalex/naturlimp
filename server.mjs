@@ -170,6 +170,16 @@ const server = http.createServer((req, res) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
 
+  // Staging / Preview protection:
+  // If request is NOT on the production domain (e.g. *.up.railway.app, staging, PR previews),
+  // block search engine indexing via HTTP header (Google, Bing, etc. immediately obey this).
+  const rawHost = req.headers['x-forwarded-host'] || req.headers.host || '';
+  const host = String(rawHost).split(',')[0].trim().split(':')[0].toLowerCase();
+  const isProductionDomain = host === 'naturlimp.com' || host === 'www.naturlimp.com';
+  if (!isProductionDomain) {
+    res.setHeader('X-Robots-Tag', 'noindex, nofollow, noarchive');
+  }
+
   if (req.method === 'POST' && req.url === '/api/contact') {
     return handleContact(req, res);
   }
