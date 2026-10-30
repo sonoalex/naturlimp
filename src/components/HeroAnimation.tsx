@@ -65,8 +65,8 @@ export default function HeroAnimation({ subheadline, ctaPrimary, ctaSecondary, b
   const servicesHref = isCa ? '#serveis'  : '#servicios';
 
   const trustSignals = isCa
-    ? ['200+ clients actius', '15 anys a Tarragona', 'Assegurança RC inclosa']
-    : ['200+ clientes activos', '15 años en Tarragona', 'Seguro RC incluido'];
+    ? ['200+ clients actius', '17 anys a Tarragona', 'Assegurança RC inclosa']
+    : ['200+ clientes activos', '17 años en Tarragona', 'Seguro RC incluido'];
 
   // Single timer drives both rotations in lockstep
   useEffect(() => {
